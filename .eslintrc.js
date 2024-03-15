@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   root: true,
   env: { browser: true, es2020: true },
   extends: [
@@ -18,7 +18,7 @@ module.exports = {
         "printWidth": 100,
         "useTabs": false,
         "singleQuote": true,
-        "semi": false
+        "semi": true
       }
     ],
     'react-refresh/only-export-components': [
