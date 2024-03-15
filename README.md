@@ -11,10 +11,14 @@
 **Development Experience**
 * Commit lint
 * Eslint
+  * Plugins
+    * eslint-plugin-perfectionist
+    * eslint-plugin-prettier
 * Husky
 * Lint Staged
 * Typescript
 
 **Important Libs**
-***Development***
+
+*** Development***
 ***Production***
