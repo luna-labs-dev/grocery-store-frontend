@@ -1,9 +1,10 @@
+import { Login } from '@/view/pages';
 import { createFileRoute } from '@tanstack/react-router';
 
 const Index = () => {
   return (
     <div>
-      <h1>Example Homepage</h1>
+      <Login />
     </div>
   );
 };
