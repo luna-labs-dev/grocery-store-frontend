@@ -1,25 +1,37 @@
-import { jwtDecode } from 'jwt-decode';
 import { Button } from '@/view/components';
-import { GoogleLogin, googleLogout } from '@react-oauth/google';
+import { useFirebase } from '@/view/providers/firebase';
+
 export const Login = () => {
+  const { context, signinWithGoogle, signOut } = useFirebase();
+
   return (
-    <>
-      <GoogleLogin
-        onSuccess={(credentialResponse) => {
-          const credentialResponseDecoded = jwtDecode(credentialResponse.credential ?? '');
-          console.log(credentialResponseDecoded);
-        }}
-        onError={() => {
-          console.log('login Failed');
-        }}
-      />
-      <Button
-        onClick={() => {
-          googleLogout();
-        }}
-      >
-        Logou
-      </Button>
-    </>
+    <div className="flex flex-col items-center">
+      <div className="flex gap-2">
+        <Button
+          onClick={() => {
+            signinWithGoogle();
+          }}
+        >
+          Login
+        </Button>
+
+        <Button
+          variant={'secondary'}
+          onClick={() => {
+            signOut();
+          }}
+        >
+          Logout
+        </Button>
+      </div>
+      {context.currentUser && (
+        <div className="flex flex-col items-center">
+          <div className="text-center">
+            <h1>{context.currentUser.displayName}</h1>
+          </div>
+          <img src={context.currentUser.photoURL ?? undefined} className="w-32" alt="" />
+        </div>
+      )}
+    </div>
   );
 };
