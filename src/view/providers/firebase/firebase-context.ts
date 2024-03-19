@@ -1,10 +1,11 @@
 import { User } from '@firebase/auth';
 import { auth } from '@/main/config/firebase';
 import { useContext, createContext } from 'react';
-import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { IdTokenResult, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 
 interface FirebaseContextState {
   currentUser?: User;
+  tokens?: IdTokenResult;
   userLoggedIn: boolean;
   loading: boolean;
 }
