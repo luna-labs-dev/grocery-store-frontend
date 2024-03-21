@@ -1,35 +1,77 @@
-import { User } from '@firebase/auth';
 import { auth } from '@/main/config/firebase';
-import { IdTokenResult } from 'firebase/auth';
-import { useState, ReactNode, useEffect } from 'react';
+import { ReactNode, useEffect, useReducer, useCallback } from 'react';
 
-import { FirebaseContext } from './firebase-context';
+import { FirebaseContext, FirebaseContextState } from './firebase-context';
+
+const types = ['AUTH_USER'] as const;
+type Types = (typeof types)[number];
+
+type Payload = {
+  type: Types;
+  context: Partial<FirebaseContextState>;
+};
+
+const initialState: FirebaseContextState = {
+  loading: true,
+  userLoggedIn: false,
+};
 
 export const FirebaseProvider = ({ children }: { children: ReactNode }) => {
-  const [currentUser, setCurrentUser] = useState<User | undefined>();
-  const [idTokenResult, setIdTokenResult] = useState<IdTokenResult | undefined>(undefined);
-  const [userLoggedIn, setUserLoggedIn] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const reducer = (state: FirebaseContextState, action: Payload) => {
+    if (action.type === 'AUTH_USER') {
+      return { ...state, ...action.context };
+    }
+    return state;
+  };
+  const [state, dispatch] = useReducer(reducer, initialState);
 
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(async (user) => {
-      if (user) {
-        setCurrentUser({ ...user });
-        setUserLoggedIn(true);
-        const idTokenResult = await user.getIdTokenResult();
-        setIdTokenResult(idTokenResult);
-      } else {
-        setCurrentUser(undefined);
-        setUserLoggedIn(false);
-        setIdTokenResult(undefined);
-      }
-      setLoading(false);
-    });
+  const initialize = useCallback(() => {
+    try {
+      auth.onAuthStateChanged(async (user) => {
+        if (user) {
+          const idTokenResult = await user.getIdTokenResult();
 
-    return unsubscribe;
+          dispatch({
+            type: 'AUTH_USER',
+            context: {
+              currentUser: { ...user },
+              userLoggedIn: true,
+              idTokenResult,
+              loading: false,
+            },
+          });
+        } else {
+          dispatch({
+            type: 'AUTH_USER',
+            context: {
+              currentUser: undefined,
+              userLoggedIn: false,
+              idTokenResult: undefined,
+              loading: false,
+            },
+          });
+        }
+      });
+    } catch (error) {
+      console.error(error);
+
+      dispatch({
+        type: 'AUTH_USER',
+        context: {
+          currentUser: undefined,
+          userLoggedIn: false,
+          idTokenResult: undefined,
+          loading: false,
+        },
+      });
+    }
   }, []);
 
-  const value = { currentUser, idTokenResult, userLoggedIn, loading };
+  useEffect(() => {
+    initialize();
+  }, [initialize]);
 
-  return <FirebaseContext.Provider value={value}>{!loading && children}</FirebaseContext.Provider>;
+  return (
+    <FirebaseContext.Provider value={state}>{!state.loading && children}</FirebaseContext.Provider>
+  );
 };
