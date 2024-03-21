@@ -1,13 +1,24 @@
 import { routeTree } from '@/view/config/routes/routeTree.gen';
 import { createRouter, RouterProvider } from '@tanstack/react-router';
 
-const router = createRouter({ routeTree });
+import { useFirebase } from './firebase';
+
+const router = createRouter({ routeTree, context: { firebaseContext: undefined! } });
 
 declare module '@tanstack/react-router' {
   interface Register {
     router: typeof router;
   }
 }
+
 export const ConfiguredRouterProvider = () => {
-  return <RouterProvider router={router} />;
+  const { context } = useFirebase();
+  return (
+    <RouterProvider
+      router={router}
+      context={{
+        firebaseContext: context,
+      }}
+    />
+  );
 };

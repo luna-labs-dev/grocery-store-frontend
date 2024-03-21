@@ -11,28 +11,61 @@
 // Import Routes
 
 import { Route as rootRoute } from './../../routes/__root'
-import { Route as IndexImport } from './../../routes/index'
+import { Route as PublicRoutesImport } from './../../routes/_public-routes'
+import { Route as ProtectedRoutesImport } from './../../routes/_protected-routes'
+import { Route as ProtectedRoutesIndexImport } from './../../routes/_protected-routes/index'
+import { Route as PublicRoutesLoginImport } from './../../routes/_public-routes/login'
 
 // Create/Update Routes
 
-const IndexRoute = IndexImport.update({
-  path: '/',
+const PublicRoutesRoute = PublicRoutesImport.update({
+  id: '/_public-routes',
   getParentRoute: () => rootRoute,
+} as any)
+
+const ProtectedRoutesRoute = ProtectedRoutesImport.update({
+  id: '/_protected-routes',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ProtectedRoutesIndexRoute = ProtectedRoutesIndexImport.update({
+  path: '/',
+  getParentRoute: () => ProtectedRoutesRoute,
+} as any)
+
+const PublicRoutesLoginRoute = PublicRoutesLoginImport.update({
+  path: '/login',
+  getParentRoute: () => PublicRoutesRoute,
 } as any)
 
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      preLoaderRoute: typeof IndexImport
+    '/_protected-routes': {
+      preLoaderRoute: typeof ProtectedRoutesImport
       parentRoute: typeof rootRoute
+    }
+    '/_public-routes': {
+      preLoaderRoute: typeof PublicRoutesImport
+      parentRoute: typeof rootRoute
+    }
+    '/_public-routes/login': {
+      preLoaderRoute: typeof PublicRoutesLoginImport
+      parentRoute: typeof PublicRoutesImport
+    }
+    '/_protected-routes/': {
+      preLoaderRoute: typeof ProtectedRoutesIndexImport
+      parentRoute: typeof ProtectedRoutesImport
     }
   }
 }
 
 // Create and export the route tree
 
-export const routeTree = rootRoute.addChildren([IndexRoute])
+export const routeTree = rootRoute.addChildren([
+  ProtectedRoutesRoute.addChildren([ProtectedRoutesIndexRoute]),
+  PublicRoutesRoute.addChildren([PublicRoutesLoginRoute]),
+])
 
 /* prettier-ignore-end */

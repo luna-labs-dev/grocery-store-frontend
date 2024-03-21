@@ -1,14 +1,13 @@
-import { Login } from '@/view/pages';
 import { createFileRoute } from '@tanstack/react-router';
 
 const Index = () => {
   return (
     <div>
-      <Login />
+      <h1>Authenticated Place</h1>
     </div>
   );
 };
 
-export const Route = createFileRoute('/')({
+export const Route = createFileRoute('/_protected-routes/')({
   component: Index,
 });

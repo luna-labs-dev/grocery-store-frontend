@@ -8,8 +8,8 @@ export const Login = () => {
     <div className="flex flex-col items-center">
       <div className="flex gap-2">
         <Button
-          onClick={() => {
-            signinWithGoogle();
+          onClick={async () => {
+            await signinWithGoogle();
           }}
         >
           Login
