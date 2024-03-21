@@ -5,7 +5,7 @@ import { IdTokenResult, signInWithPopup, GoogleAuthProvider } from 'firebase/aut
 
 interface FirebaseContextState {
   currentUser?: User;
-  tokens?: IdTokenResult;
+  setIdTokenResult?: IdTokenResult;
   userLoggedIn: boolean;
   loading: boolean;
 }

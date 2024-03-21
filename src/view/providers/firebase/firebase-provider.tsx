@@ -7,7 +7,7 @@ import { FirebaseContext } from './firebase-context';
 
 export const FirebaseProvider = ({ children }: { children: ReactNode }) => {
   const [currentUser, setCurrentUser] = useState<User | undefined>();
-  const [tokens, setTokens] = useState<IdTokenResult | undefined>(undefined);
+  const [idTokenResult, setIdTokenResult] = useState<IdTokenResult | undefined>(undefined);
   const [userLoggedIn, setUserLoggedIn] = useState(false);
   const [loading, setLoading] = useState(true);
 
@@ -16,12 +16,12 @@ export const FirebaseProvider = ({ children }: { children: ReactNode }) => {
       if (user) {
         setCurrentUser({ ...user });
         setUserLoggedIn(true);
-        const tokens = await user.getIdTokenResult();
-        setTokens(tokens);
+        const idTokenResult = await user.getIdTokenResult();
+        setIdTokenResult(idTokenResult);
       } else {
         setCurrentUser(undefined);
         setUserLoggedIn(false);
-        setTokens(undefined);
+        setIdTokenResult(undefined);
       }
       setLoading(false);
     });
@@ -29,7 +29,7 @@ export const FirebaseProvider = ({ children }: { children: ReactNode }) => {
     return unsubscribe;
   }, []);
 
-  const value = { currentUser, tokens, userLoggedIn, loading };
+  const value = { currentUser, idTokenResult, userLoggedIn, loading };
 
   return <FirebaseContext.Provider value={value}>{!loading && children}</FirebaseContext.Provider>;
 };
