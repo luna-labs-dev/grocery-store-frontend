@@ -1,12 +1,12 @@
 import { RouteObject } from 'react-router-dom';
-import { App, HomePage, NotFound } from '@/view/pages';
+import { HomePage, NotFound, ProtectedApp } from '@/view/pages';
 
 import { AppRedirectionHandler } from '../components';
 
 export const protectedRoutes: RouteObject[] = [
   {
     path: '/',
-    element: <App />,
+    element: <ProtectedApp />,
     children: [
       {
         path: '/',

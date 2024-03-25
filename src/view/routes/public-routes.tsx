@@ -1,0 +1,21 @@
+import { RouteObject } from 'react-router-dom';
+import { Login, PublicApp } from '@/view/pages';
+import { AppRedirectionHandler } from '@/view/components';
+
+export const publicRoutes: RouteObject[] = [
+  {
+    path: '/',
+    element: <PublicApp />,
+    children: [
+      {
+        path: '/',
+        element: <Login />,
+      },
+    ],
+  },
+
+  {
+    path: '*',
+    element: <AppRedirectionHandler redirectTo="/login" />,
+  },
+];
