@@ -1,4 +1,4 @@
-import { TanStackRouterVite } from '@tanstack/router-vite-plugin'
+
 import react from '@vitejs/plugin-react-swc'
 import path from 'path'
 import { defineConfig } from 'vite'
@@ -7,7 +7,6 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   plugins: [
     react(),
-    TanStackRouterVite()
   ],
   server:{
     port: 3000
