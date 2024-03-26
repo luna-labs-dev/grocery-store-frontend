@@ -14,6 +14,7 @@ export const protectedRoutes: RouteObject[] = [
       },
     ],
   },
+  { path: '/login', element: <AppRedirectionHandler redirectTo="/" /> },
   { path: '', element: <AppRedirectionHandler redirectTo="/" /> },
   { path: '/*', element: <NotFound /> },
 ];

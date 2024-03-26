@@ -9,6 +9,10 @@ export const publicRoutes: RouteObject[] = [
     children: [
       {
         path: '/',
+        element: <AppRedirectionHandler redirectTo="/login" />,
+      },
+      {
+        path: '/login',
         element: <Login />,
       },
     ],
