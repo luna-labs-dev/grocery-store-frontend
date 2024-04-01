@@ -23,3 +23,5 @@ src/setupTests.ts
 
 commitlint.config.js
 terraform
+
+src/view/components/shadcn/ui/**/*
