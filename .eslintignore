@@ -25,3 +25,6 @@ commitlint.config.js
 terraform
 
 src/view/components/shadcn/ui/**/*
+src/view/config/style/**/*
+
+tailwind.config.js
