@@ -1,37 +1,30 @@
+import { Icon } from '@iconify/react';
 import { Button } from '@/view/components';
 import { useFirebase } from '@/view/providers/firebase';
-
 export const Login = () => {
-  const { context, signinWithGoogle, signOut } = useFirebase();
+  const { signinWithGoogle } = useFirebase();
 
   return (
-    <div className="flex flex-col items-center">
-      <div className="flex gap-2">
-        <Button
-          onClick={async () => {
-            await signinWithGoogle();
-          }}
-        >
-          Login
-        </Button>
-
-        <Button
-          variant={'secondary'}
-          onClick={() => {
-            signOut();
-          }}
-        >
-          Logout
-        </Button>
-      </div>
-      {context.currentUser && (
-        <div className="flex flex-col items-center">
-          <div className="text-center">
-            <h1>{context.currentUser.displayName}</h1>
+    <div className="flex items-center justify-center w-full h-full bg-center bg-slate-200 bg-cover bg-[url('../../assets/images/grocery-products-01.jpg')]">
+      <div className="flex items-center w-full h-screen gap-2 p-6 md:w-1/3">
+        <div className="flex flex-col items-center justify-center w-full py-6 bg-opacity-25 bg-slate-600 backdrop-blur-sm rounded-xl">
+          <div className="flex flex-col items-center gap-4 p-4 text-3xl text-white w-80">
+            <div className="text-center">
+              <h1 className="font-bold">Bem vindo</h1>
+            </div>
+            <Button
+              className="flex justify-between w-48 gap-2"
+              onClick={async () => {
+                await signinWithGoogle();
+              }}
+            >
+              <Icon icon="mdi:google" />
+              Entrar
+              <span></span>
+            </Button>
           </div>
-          <img src={context.currentUser.photoURL ?? undefined} className="w-32" alt="" />
         </div>
-      )}
+      </div>
     </div>
   );
 };
