@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 
 import { Navigation } from './navigation';
+import { Breadcrumbs } from './breadcrumbs';
 
 interface MainLayoutProps {
   children: ReactNode;
@@ -12,7 +13,12 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
       <div className="flex justify-end px-4 pt-2">
         <h1 className="font-bold">Current Page</h1>
       </div>
-      <div className="px-4">{children}</div>
+      <div className="px-4">
+        <div>
+          <Breadcrumbs />
+        </div>
+        {children}
+      </div>
     </div>
   );
 };
