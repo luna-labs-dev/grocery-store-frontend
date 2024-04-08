@@ -29,7 +29,9 @@ export const Navigation = () => {
 
   const newVersion = (
     <Drawer direction="left">
-      <DrawerTrigger>Open</DrawerTrigger>
+      <DrawerTrigger className="absolute p-4">
+        <Icon icon="mingcute:menu-line" />
+      </DrawerTrigger>
       <DrawerContent>
         <DrawerHeader>
           <DrawerTitle>Current Page</DrawerTitle>
