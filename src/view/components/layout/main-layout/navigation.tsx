@@ -18,7 +18,7 @@ export const Navigation = () => {
     <div className="px-4">
       <ul className="flex flex-col gap-2">
         <li>
-          <Link to={'/login'}>Login</Link>
+          <Link to={'/market'}>Market</Link>
         </li>
         <li>
           <Link to={'/'}>Home</Link>

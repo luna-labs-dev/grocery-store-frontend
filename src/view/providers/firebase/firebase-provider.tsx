@@ -1,4 +1,5 @@
 import { auth } from '@/main/config/firebase';
+import { setAuthToken } from '@/main/clients';
 import { ReactNode, useEffect, useReducer, useCallback } from 'react';
 
 import { FirebaseContext, FirebaseContextState } from './firebase-context';
@@ -30,6 +31,8 @@ export const FirebaseProvider = ({ children }: { children: ReactNode }) => {
       auth.onAuthStateChanged(async (user) => {
         if (user) {
           const idTokenResult = await user.getIdTokenResult();
+
+          setAuthToken(idTokenResult.token);
 
           dispatch({
             type: 'AUTH_USER',
