@@ -18,6 +18,7 @@ export const useQueryFactory = <HttpParams, HttpResponse>({
     queryKey: [queryKey, params],
     queryFn: ({ queryKey }) => fn(queryKey[1] as HttpParams),
     retry,
+    refetchOnWindowFocus: true,
   });
 
   return { ...query };
