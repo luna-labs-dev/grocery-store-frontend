@@ -1,6 +1,7 @@
 import { RouteObject } from 'react-router-dom';
-import { HomePage, NotFound, ProtectedApp } from '@/view/pages';
+import { NotFound, ProtectedApp } from '@/view/pages';
 
+import { HomeRoute, MarketRoute } from './pages';
 import { AppRedirectionHandler } from '../components';
 
 export const protectedRoutes: RouteObject[] = [
@@ -10,7 +11,11 @@ export const protectedRoutes: RouteObject[] = [
     children: [
       {
         path: '/',
-        element: <HomePage />,
+        element: <HomeRoute />,
+      },
+      {
+        path: '/market',
+        element: <MarketRoute />,
       },
     ],
   },
