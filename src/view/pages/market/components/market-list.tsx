@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { cn } from '@/view/lib/utils';
+import { Icon } from '@iconify/react';
 import { FetchListParams } from '@/domain';
 import { Button } from '@/view/components';
 import { usePagination } from '@mantine/hooks';
@@ -22,7 +23,6 @@ export const MarketList = () => {
   const pagination = usePagination({
     total: total,
     initialPage: 1,
-
     onChange: (page) => {
       setPaginationParams({
         ...paginationParams,
@@ -36,39 +36,43 @@ export const MarketList = () => {
   }
 
   return (
-    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      <div className="flex justify-between pb-2">
-        <div className="flex gap-2">
-          <Button disabled={isFetching || pagination.active === 1} onClick={pagination.previous}>
-            {'<'}
-          </Button>
-          <Button disabled={isFetching || pagination.active === total} onClick={pagination.next}>
-            {'>'}
-          </Button>
-        </div>
-        <div className="flex">
-          {pagination.range.map((page, index) => {
-            return (
-              <div key={index} className={'flex items-center'}>
-                <span
-                  onClick={() => {
-                    if (!isNaN(page as number)) {
-                      pagination.setPage(page as number);
-                    }
-                  }}
-                  className={cn(
-                    pagination.active === page ? 'bg-primary text-white rounded-md' : '',
-                    'px-[.6rem] py-[.2rem]',
-                  )}
-                >
-                  {isNaN(page as number) ? '...' : page}
-                </span>
-              </div>
-            );
-          })}
+    <div>
+      <div>
+        <div className="flex justify-between pb-2 md:gap-2 md:justify-end">
+          <div className="flex gap-2">
+            <Button disabled={isFetching || pagination.active === 1} onClick={pagination.previous}>
+              <Icon icon="mingcute:left-line" />
+            </Button>
+            <Button disabled={isFetching || pagination.active === total} onClick={pagination.next}>
+              <Icon icon="mingcute:right-line" />
+            </Button>
+          </div>
+          <div className="flex">
+            {pagination.range.map((page, index) => {
+              return (
+                <div key={index} className={'flex items-center'}>
+                  <span
+                    onClick={() => {
+                      if (!isNaN(page as number)) {
+                        pagination.setPage(page as number);
+                      }
+                    }}
+                    className={cn(
+                      pagination.active === page ? 'bg-primary text-white rounded-md' : '',
+                      'px-[.6rem] py-[.2rem]',
+                    )}
+                  >
+                    {isNaN(page as number) ? '...' : page}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
-      {data?.items.map((item) => <MarketItem key={item.id} market={item} />)}
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {data?.items.map((item) => <MarketItem key={item.id} market={item} />)}
+      </div>
     </div>
   );
 };
