@@ -5,12 +5,18 @@ import { useBreadCrumbs } from '@/view/hooks';
 export const HomeRoute = () => {
   const { addBreadcrumbs } = useBreadCrumbs();
   useEffect(() => {
-    addBreadcrumbs([
+    addBreadcrumbs(
+      [
+        {
+          label: 'Home page',
+          to: '/',
+        },
+      ],
+
       {
-        label: 'Home page',
-        to: '/',
+        title: 'Home Page',
       },
-    ]);
+    );
   }, [addBreadcrumbs]);
   return <HomePage />;
 };

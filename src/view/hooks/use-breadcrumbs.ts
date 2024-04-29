@@ -4,18 +4,26 @@ export type BreadcrumbType = {
   label: string;
   to: string;
 };
-
+export type CurrentPage = {
+  title: string;
+  subTitle?: string;
+};
 interface BreadcrumbsStore {
   breadcrumbs: BreadcrumbType[];
-  addBreadcrumbs: (breadcrumbs: BreadcrumbType[]) => void;
+  currentPage: CurrentPage;
+  addBreadcrumbs: (breadcrumbs: BreadcrumbType[], currentPage: CurrentPage) => void;
   clearBreadcrumbs: () => void;
 }
 
 export const useBreadCrumbs = create<BreadcrumbsStore>((set) => ({
   breadcrumbs: [],
-  addBreadcrumbs: (breadcrumbs: BreadcrumbType[]) => {
+  currentPage: {
+    title: '',
+  },
+  addBreadcrumbs: (breadcrumbs: BreadcrumbType[], currentPage: CurrentPage) => {
     set({
       breadcrumbs: breadcrumbs,
+      currentPage: currentPage,
     });
   },
   clearBreadcrumbs: () => {
