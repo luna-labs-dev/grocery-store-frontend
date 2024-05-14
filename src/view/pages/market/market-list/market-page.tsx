@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Button } from '@/view/components';
 
 import { MarketList } from './components/market-list';
@@ -7,7 +8,11 @@ export const MarketPage = () => {
     <div className="flex flex-col gap-4">
       <div className="flex flex-col justify-end gap-2 pt-2 sm:gap-0 sm:flex-row">
         <div>
-          <Button className="w-full">Novo</Button>
+          <Button className="w-full">
+            <Link to={'/market/new'} replace>
+              Novo Mercado
+            </Link>
+          </Button>
         </div>
       </div>
       <MarketList />
