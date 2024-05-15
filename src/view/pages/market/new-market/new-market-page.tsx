@@ -2,7 +2,7 @@ import { NewMarketForm } from './components/new-market-form';
 
 export const NewMarketPage = () => {
   return (
-    <div>
+    <div className="py-4">
       <NewMarketForm />
     </div>
   );
