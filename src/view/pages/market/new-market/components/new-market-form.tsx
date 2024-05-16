@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useNewMarketMutation } from '@/infrastructure';
 import {
@@ -19,7 +20,13 @@ const FormInputSchema = z.object({
 
 type FormInput = z.infer<typeof FormInputSchema>;
 
-export const NewMarketForm = () => {
+interface NewMarketFormProps {
+  setOpen?: (open: boolean) => void;
+}
+
+export const NewMarketForm = ({ setOpen }: NewMarketFormProps) => {
+  const navigate = useNavigate();
+
   const form = useForm<FormInput>({
     resolver: zodResolver(FormInputSchema),
     defaultValues: {
@@ -27,12 +34,20 @@ export const NewMarketForm = () => {
     },
   });
 
-  const { control, handleSubmit } = form;
+  const { control, handleSubmit, reset } = form;
 
   const { mutateAsync, isPending } = useNewMarketMutation();
 
+  const onFinished = () => {
+    if (setOpen) {
+      setOpen(false);
+    }
+    navigate('/market');
+  };
+
   const onSubmit = async (values: FormInput) => {
     await mutateAsync(values);
+    onFinished();
   };
 
   return (
@@ -52,7 +67,14 @@ export const NewMarketForm = () => {
           )}
         />
         <div className="flex flex-col gap-4 md:justify-end md:flex-row">
-          <Button variant={'outline'} type="button">
+          <Button
+            onClick={() => {
+              reset();
+              onFinished();
+            }}
+            variant={'outline'}
+            type="button"
+          >
             Cancelar
           </Button>
           <Button type="submit" className="md:w-24">
