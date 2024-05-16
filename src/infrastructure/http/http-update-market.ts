@@ -1,10 +1,13 @@
 import { isAxiosError } from 'axios';
 import { httpClient } from '@/main/clients';
-import { MarketResponse, NewMarketParams } from '@/domain';
+import { MarketResponse, UpdateMarketParams } from '@/domain';
 
-export const httpNewMarket = async ({ marketName }: NewMarketParams): Promise<MarketResponse> => {
+export const httpUpdateMarket = async ({
+  marketId,
+  marketName,
+}: UpdateMarketParams): Promise<MarketResponse> => {
   try {
-    const response = await httpClient.post('/api/grocery-shopping/v1/market', {
+    const response = await httpClient.put(`/api/grocery-shopping/v1/market/${marketId}`, {
       marketName,
     });
 

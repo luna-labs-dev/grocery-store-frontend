@@ -3,11 +3,12 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import {
   HttpError,
   errorMapper,
+  MarketResponse,
   FetchListParams,
   NewMarketParams,
   useQueryFactory,
-  NewMarketResponse,
   MarketListResponse,
+  UpdateMarketParams,
 } from '@/domain';
 
 import { httpGetMarketList } from '../http';
@@ -27,8 +28,29 @@ export const useGetMarketListQuery = (params: FetchListParams) => {
 
 export const useNewMarketMutation = () => {
   const queryClient = useQueryClient();
-  const mutation = useMutation<NewMarketResponse, HttpError, NewMarketParams>({
+  const mutation = useMutation<MarketResponse, HttpError, NewMarketParams>({
     mutationFn: async (payload: NewMarketParams) => httpNewMarket(payload),
+    onSettled: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['get-market-list'],
+      });
+    },
+    onError: (error, params) => {
+      const { title, description } = errorMapper(error.code)(params);
+
+      toast.error(title, {
+        description,
+      });
+    },
+  });
+
+  return { ...mutation };
+};
+
+export const useUpdateMarketMutation = () => {
+  const queryClient = useQueryClient();
+  const mutation = useMutation<MarketResponse, HttpError, UpdateMarketParams>({
+    mutationFn: async (payload: UpdateMarketParams) => httpNewMarket(payload),
     onSettled: () => {
       queryClient.invalidateQueries({
         queryKey: ['get-market-list'],

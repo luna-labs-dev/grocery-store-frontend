@@ -11,7 +11,12 @@ export interface NewMarketParams {
   marketName: string;
 }
 
-export interface NewMarketResponse extends NewResponse {
+export interface UpdateMarketParams {
+  marketId: string;
+  marketName: string;
+}
+
+export interface MarketResponse extends NewResponse {
   code: string;
   name: string;
 }
