@@ -52,6 +52,7 @@
         "args": "none"
       }
     ],
+    "@typescript-eslint/no-explicit-any": "off",
     "react/jsx-no-useless-fragment": [
       1,
       {

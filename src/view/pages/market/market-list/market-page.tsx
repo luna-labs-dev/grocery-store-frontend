@@ -9,10 +9,9 @@ export const MarketPage = () => {
     <div className="flex flex-col gap-4">
       <div className="flex flex-col justify-end gap-2 pt-2 sm:gap-0 sm:flex-row">
         <div>
-          <Button className="w-full">
-            <NewMarketDialog triggerName="Novo Mercado" />
-
-            <Link to={'/market/new'} replace className="md:hidden">
+          <NewMarketDialog triggerName="Novo Mercado" />
+          <Button className="w-full md:hidden">
+            <Link to={'/market/new'} replace>
               Novo Mercado
             </Link>
           </Button>

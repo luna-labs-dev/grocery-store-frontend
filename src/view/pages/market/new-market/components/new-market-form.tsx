@@ -1,6 +1,7 @@
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useNewMarketMutation } from '@/infrastructure';
 import {
   Form,
   Input,
@@ -25,10 +26,13 @@ export const NewMarketForm = () => {
       marketName: '',
     },
   });
+
   const { control, handleSubmit } = form;
 
-  const onSubmit = (values: FormInput) => {
-    console.log(values);
+  const { mutateAsync, isPending } = useNewMarketMutation();
+
+  const onSubmit = async (values: FormInput) => {
+    await mutateAsync(values);
   };
 
   return (
@@ -41,14 +45,16 @@ export const NewMarketForm = () => {
             <FormItem>
               <FormLabel>Nome</FormLabel>
               <FormControl>
-                <Input placeholder="Nome do mercado" {...field} />
+                <Input disabled={isPending} placeholder="Nome do mercado" {...field} />
               </FormControl>
               <FormDescription>Digite aqui o nome do mercado</FormDescription>
             </FormItem>
           )}
         />
         <div className="flex flex-col gap-4 md:justify-end md:flex-row">
-          <Button variant={'outline'}>Cancelar</Button>
+          <Button variant={'outline'} type="button">
+            Cancelar
+          </Button>
           <Button type="submit" className="md:w-24">
             Criar
           </Button>
