@@ -66,7 +66,7 @@ export const NewMarketForm = ({ setOpen }: NewMarketFormProps) => {
             </FormItem>
           )}
         />
-        <div className="flex flex-col gap-4 md:justify-end md:flex-row">
+        <div className="flex flex-col-reverse items-end gap-4 md:justify-end md:flex-row">
           <Button
             onClick={() => {
               reset();
@@ -74,10 +74,11 @@ export const NewMarketForm = ({ setOpen }: NewMarketFormProps) => {
             }}
             variant={'outline'}
             type="button"
+            className="w-24"
           >
             Cancelar
           </Button>
-          <Button type="submit" className="md:w-24">
+          <Button type="submit" className="w-full md:w-24">
             Criar
           </Button>
         </div>

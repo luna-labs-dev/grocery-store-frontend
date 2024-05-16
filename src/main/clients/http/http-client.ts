@@ -15,4 +15,9 @@ export const setAuthToken = (token: string) => {
     request.headers.set('x-authorization-token', token);
     return request;
   });
+  httpClient.interceptors.response.use(undefined, (error) => {
+    console.log(error);
+    // auth.currentUser?.getIdToken(true);
+    return error;
+  });
 };
