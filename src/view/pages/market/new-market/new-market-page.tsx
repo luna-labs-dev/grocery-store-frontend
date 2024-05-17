@@ -1,9 +1,9 @@
-import { NewMarketForm } from './components/new-market-form';
+import { MarketForm } from './components/market-form';
 
 export const NewMarketPage = () => {
   return (
     <div className="py-4">
-      <NewMarketForm />
+      <MarketForm />
     </div>
   );
 };

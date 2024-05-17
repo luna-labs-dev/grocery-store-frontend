@@ -3,11 +3,12 @@ import { Dialog, DialogTitle, DialogHeader, DialogContent, DialogTrigger } from 
 
 import { MarketForm } from './market-form';
 
-interface NewMarketDialogProps {
+interface UpdateMarketDialogProps {
   triggerName: string;
+  marketId: string;
 }
 
-export const NewMarketDialog = ({ triggerName }: NewMarketDialogProps) => {
+export const UpdateMarketDialog = ({ triggerName, marketId }: UpdateMarketDialogProps) => {
   const [open, setOpen] = useState<boolean>(false);
 
   return (

@@ -63,6 +63,11 @@ export const useUpdateMarketMutation = () => {
         description,
       });
     },
+    onSuccess: (_, params) => {
+      toast.success('Mercado atualizado', {
+        description: `o novo nome do mercado agora é "${params.marketName}"`,
+      });
+    },
   });
 
   return { ...mutation };

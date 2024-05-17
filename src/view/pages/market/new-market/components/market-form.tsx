@@ -1,8 +1,9 @@
 import { z } from 'zod';
+import { Market } from '@/domain';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useNewMarketMutation } from '@/infrastructure';
+import { useNewMarketMutation, useUpdateMarketMutation } from '@/infrastructure';
 import {
   Form,
   Input,
@@ -20,23 +21,25 @@ const FormInputSchema = z.object({
 
 type FormInput = z.infer<typeof FormInputSchema>;
 
-interface NewMarketFormProps {
+interface MarketFormProps {
   setOpen?: (open: boolean) => void;
+  market?: Market;
 }
 
-export const NewMarketForm = ({ setOpen }: NewMarketFormProps) => {
+export const MarketForm = ({ setOpen, market }: MarketFormProps) => {
   const navigate = useNavigate();
 
   const form = useForm<FormInput>({
     resolver: zodResolver(FormInputSchema),
     defaultValues: {
-      marketName: '',
+      marketName: market?.name ?? '',
     },
   });
 
   const { control, handleSubmit, reset } = form;
 
-  const { mutateAsync, isPending } = useNewMarketMutation();
+  const { mutateAsync: newMutateAsync, isPending: newIsPending } = useNewMarketMutation();
+  const { mutateAsync: updateMutateAsync, isPending: updateIsPending } = useUpdateMarketMutation();
 
   const onFinished = () => {
     if (setOpen) {
@@ -46,9 +49,19 @@ export const NewMarketForm = ({ setOpen }: NewMarketFormProps) => {
   };
 
   const onSubmit = async (values: FormInput) => {
-    await mutateAsync(values);
+    if (market) {
+      const { id } = market;
+      await updateMutateAsync({
+        marketId: id,
+        marketName: values.marketName,
+      });
+    } else {
+      await newMutateAsync(values);
+    }
     onFinished();
   };
+
+  const isPending = newIsPending || updateIsPending;
 
   return (
     <Form {...form}>
