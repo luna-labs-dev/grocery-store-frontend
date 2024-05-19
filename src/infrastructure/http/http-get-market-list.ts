@@ -9,6 +9,7 @@ export const httpGetMarketList = async (params: FetchListParams): Promise<Market
 
   if (isAxiosError(response)) {
     console.error(response);
+    throw response.response?.data;
   }
 
   return response.data;

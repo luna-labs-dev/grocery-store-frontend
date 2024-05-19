@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { useBreadCrumbs } from '@/view/hooks/use-breadcrumbs';
 import {
@@ -20,16 +21,18 @@ export const Breadcrumbs = () => {
           </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
-        {breadcrumbs.map((breadcrumb, index) => (
-          <div key={index}>
-            <BreadcrumbItem>
-              <BreadcrumbLink asChild>
-                <Link to={breadcrumb.to}>{breadcrumb.label}</Link>
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-            {index + 1 < breadcrumbs.length && <BreadcrumbSeparator />}
-          </div>
-        ))}
+        {breadcrumbs.map((breadcrumb, index) => {
+          return (
+            <React.Fragment key={index}>
+              <BreadcrumbItem key={index}>
+                <BreadcrumbLink asChild>
+                  <Link to={breadcrumb.to}>{breadcrumb.label}</Link>
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              {index + 1 < breadcrumbs.length && <BreadcrumbSeparator />}
+            </React.Fragment>
+          );
+        })}
       </BreadcrumbList>
     </Breadcrumb>
   );
