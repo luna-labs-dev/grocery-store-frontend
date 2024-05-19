@@ -2,7 +2,13 @@ import { RouteObject } from 'react-router-dom';
 import { NotFound, ProtectedApp } from '@/view/pages';
 
 import { AppRedirectionHandler } from '../components';
-import { HomeRoute, MarketRoute, NewMarketRoute, UpdateMarketRoute } from './pages';
+import {
+  HomeRoute,
+  MarketRoute,
+  NewMarketRoute,
+  UpdateMarketRoute,
+  ShoppingEventListRoute,
+} from './pages';
 
 export const protectedRoutes: RouteObject[] = [
   {
@@ -24,6 +30,10 @@ export const protectedRoutes: RouteObject[] = [
       {
         path: '/market/update/:marketId',
         element: <UpdateMarketRoute />,
+      },
+      {
+        path: '/shopping-event',
+        element: <ShoppingEventListRoute />,
       },
     ],
   },

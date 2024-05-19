@@ -18,17 +18,7 @@ export const Navigation = () => {
 
   const navigationItems = (
     <div className="px-4">
-      <ul className="flex flex-col gap-2">
-        <li>
-          <Link
-            onClick={() => {
-              setIsOpen(false);
-            }}
-            to={'/market'}
-          >
-            Market
-          </Link>
-        </li>
+      <ul className="flex flex-col gap-4">
         <li>
           <Link
             onClick={() => {
@@ -37,6 +27,26 @@ export const Navigation = () => {
             to={'/'}
           >
             Home
+          </Link>
+        </li>
+        <li>
+          <Link
+            onClick={() => {
+              setIsOpen(false);
+            }}
+            to={'/market'}
+          >
+            Mercados
+          </Link>
+        </li>
+        <li>
+          <Link
+            onClick={() => {
+              setIsOpen(false);
+            }}
+            to={'/shopping-event'}
+          >
+            Eventos de compra
           </Link>
         </li>
       </ul>
