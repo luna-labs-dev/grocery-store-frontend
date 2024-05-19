@@ -33,9 +33,6 @@ export const MarketItem = ({ market }: MarketItemParams) => {
           <Link to={`/market/update/${market.id}`} className="block md:hidden">
             <Button size={'sm'}>Editar</Button>
           </Link>
-          <Button variant={'destructive'} size={'sm'}>
-            excluir
-          </Button>
         </div>
       </CardContent>
     </Card>
