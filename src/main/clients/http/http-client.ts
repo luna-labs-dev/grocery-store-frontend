@@ -1,4 +1,6 @@
-import axios from 'axios';
+import { HttpError } from '@/domain';
+import axios, { AxiosError } from 'axios';
+import { auth } from '@/main/config/firebase';
 
 import { env } from '../../config/env';
 
@@ -11,13 +13,16 @@ export const httpClient = axios.create({
 export const setAuthToken = (token: string) => {
   // TODO Remove this console.log
   console.log(token);
+
   httpClient.interceptors.request.use((request) => {
     request.headers.set('x-authorization-token', token);
     return request;
   });
-  httpClient.interceptors.response.use(undefined, (error) => {
-    console.log(error);
-    // auth.currentUser?.getIdToken(true);
-    return error;
+
+  httpClient.interceptors.response.use(undefined, (error: AxiosError<HttpError>) => {
+    if (error.response?.data?.code === 'UNAUTHORIZED_ERROR') {
+      auth.currentUser?.getIdToken(true);
+    }
+    throw error;
   });
 };

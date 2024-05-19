@@ -1,9 +1,13 @@
 import { z } from 'zod';
-import { Market } from '@/domain';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useNewMarketMutation, useUpdateMarketMutation } from '@/infrastructure';
+import {
+  useNewMarketMutation,
+  useGetMarketByIdQuery,
+  useUpdateMarketMutation,
+} from '@/infrastructure';
 import {
   Form,
   Input,
@@ -22,28 +26,38 @@ const FormInputSchema = z.object({
 type FormInput = z.infer<typeof FormInputSchema>;
 
 interface MarketFormProps {
-  setOpen?: (open: boolean) => void;
-  market?: Market;
+  updateProps?: {
+    setOpen?: (open: boolean) => void;
+    marketId?: string;
+  };
 }
 
-export const MarketForm = ({ setOpen, market }: MarketFormProps) => {
+export const MarketForm = ({ updateProps }: MarketFormProps) => {
   const navigate = useNavigate();
+
+  const { data: market } = useGetMarketByIdQuery({ marketId: updateProps?.marketId });
 
   const form = useForm<FormInput>({
     resolver: zodResolver(FormInputSchema),
     defaultValues: {
-      marketName: market?.name ?? '',
+      marketName: '',
     },
   });
 
-  const { control, handleSubmit, reset } = form;
+  const { control, handleSubmit, reset, setValue } = form;
+
+  useEffect(() => {
+    if (market) {
+      setValue('marketName', market.name);
+    }
+  }, [market, setValue]);
 
   const { mutateAsync: newMutateAsync, isPending: newIsPending } = useNewMarketMutation();
   const { mutateAsync: updateMutateAsync, isPending: updateIsPending } = useUpdateMarketMutation();
 
   const onFinished = () => {
-    if (setOpen) {
-      setOpen(false);
+    if (updateProps?.setOpen) {
+      updateProps.setOpen(false);
     }
     navigate('/market');
   };
@@ -92,7 +106,7 @@ export const MarketForm = ({ setOpen, market }: MarketFormProps) => {
             Cancelar
           </Button>
           <Button type="submit" className="w-full md:w-24">
-            Criar
+            Salvar
           </Button>
         </div>
       </form>

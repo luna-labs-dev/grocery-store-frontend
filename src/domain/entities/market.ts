@@ -7,6 +7,10 @@ export interface Market extends Entity {
   createdBy: string;
 }
 
+export interface GetMarketByIdParams {
+  marketId?: string;
+}
+
 export interface NewMarketParams {
   marketName: string;
 }

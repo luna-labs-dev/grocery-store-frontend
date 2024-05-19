@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { MarketListItem } from '@/domain';
 import {
   Card,
@@ -8,7 +9,7 @@ import {
   CardDescription,
 } from '@/view/components';
 
-import { UpdateMarketDialog } from '../../new-market/components/update-market-dialog';
+import { UpdateMarketDialog } from '../../update-market/update-market-dialog';
 
 export interface MarketItemParams {
   market: MarketListItem;
@@ -23,8 +24,15 @@ export const MarketItem = ({ market }: MarketItemParams) => {
       </CardHeader>
       <CardContent>
         <div className="flex justify-end gap-2">
-          <UpdateMarketDialog triggerName="Editar" marketId={market.id} />
-          <Button size={'sm'}>Editar</Button>
+          <UpdateMarketDialog
+            options={{
+              triggerName: 'Editar',
+              marketId: market.id,
+            }}
+          />
+          <Link to={`/market/update/${market.id}`} className="block md:hidden">
+            <Button size={'sm'}>Editar</Button>
+          </Link>
           <Button variant={'destructive'} size={'sm'}>
             excluir
           </Button>

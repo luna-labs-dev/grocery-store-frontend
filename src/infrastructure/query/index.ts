@@ -1,1 +1,1 @@
-export * from './market-list-query';
+export * from './market-query';

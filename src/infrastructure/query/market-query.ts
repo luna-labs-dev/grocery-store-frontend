@@ -1,6 +1,8 @@
 import { toast } from 'sonner';
+import { AxiosError } from 'axios';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import {
+  Market,
   HttpError,
   errorMapper,
   MarketResponse,
@@ -9,10 +11,11 @@ import {
   useQueryFactory,
   MarketListResponse,
   UpdateMarketParams,
+  GetMarketByIdParams,
 } from '@/domain';
 
-import { httpGetMarketList } from '../http';
 import { httpNewMarket } from '../http/http-new-market';
+import { httpUpdateMarket, httpGetMarketById, httpGetMarketList } from '../http';
 
 export const useGetMarketListQuery = (params: FetchListParams) => {
   const query = useQueryFactory<FetchListParams, MarketListResponse>({
@@ -26,20 +29,39 @@ export const useGetMarketListQuery = (params: FetchListParams) => {
   return { ...query };
 };
 
+export const useGetMarketByIdQuery = (params: GetMarketByIdParams) => {
+  const query = useQueryFactory<GetMarketByIdParams, Market>({
+    queryKey: 'get-market-by-id',
+    queryFunction: {
+      fn: httpGetMarketById,
+      params,
+    },
+    enabled: !!params.marketId,
+  });
+
+  return { ...query };
+};
+
 export const useNewMarketMutation = () => {
   const queryClient = useQueryClient();
-  const mutation = useMutation<MarketResponse, HttpError, NewMarketParams>({
-    mutationFn: async (payload: NewMarketParams) => httpNewMarket(payload),
-    onSettled: () => {
-      queryClient.invalidateQueries({
-        queryKey: ['get-market-list'],
-      });
-    },
+  const mutation = useMutation<MarketResponse, AxiosError | HttpError, NewMarketParams>({
+    mutationFn: (params: NewMarketParams) => httpNewMarket(params),
+
     onError: (error, params) => {
-      const { title, description } = errorMapper(error.code)(params);
+      const { title, description } = errorMapper(error.code ?? '')(params);
 
       toast.error(title, {
         description,
+      });
+    },
+    onSuccess: (_, params) => {
+      toast.success('Mercado Criado', {
+        description: `o mercado "${params.marketName}" foi criado com sucesso`,
+      });
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['get-market-list'],
       });
     },
   });
@@ -50,12 +72,7 @@ export const useNewMarketMutation = () => {
 export const useUpdateMarketMutation = () => {
   const queryClient = useQueryClient();
   const mutation = useMutation<MarketResponse, HttpError, UpdateMarketParams>({
-    mutationFn: async (payload: UpdateMarketParams) => httpNewMarket(payload),
-    onSettled: () => {
-      queryClient.invalidateQueries({
-        queryKey: ['get-market-list'],
-      });
-    },
+    mutationFn: async (payload: UpdateMarketParams) => httpUpdateMarket(payload),
     onError: (error, params) => {
       const { title, description } = errorMapper(error.code)(params);
 
@@ -66,6 +83,11 @@ export const useUpdateMarketMutation = () => {
     onSuccess: (_, params) => {
       toast.success('Mercado atualizado', {
         description: `o novo nome do mercado agora é "${params.marketName}"`,
+      });
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['get-market-list'],
       });
     },
   });

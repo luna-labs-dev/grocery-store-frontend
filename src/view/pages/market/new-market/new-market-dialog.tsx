@@ -1,7 +1,6 @@
 import { useState } from 'react';
+import { MarketForm } from '@/view/pages/market/components';
 import { Dialog, DialogTitle, DialogHeader, DialogContent, DialogTrigger } from '@/view/components';
-
-import { MarketForm } from './market-form';
 
 interface NewMarketDialogProps {
   triggerName: string;
@@ -19,7 +18,11 @@ export const NewMarketDialog = ({ triggerName }: NewMarketDialogProps) => {
         <DialogHeader>
           <DialogTitle>Novo Mercado</DialogTitle>
         </DialogHeader>
-        <MarketForm setOpen={setOpen} />
+        <MarketForm
+          updateProps={{
+            setOpen: setOpen,
+          }}
+        />
       </DialogContent>
     </Dialog>
   );

@@ -8,7 +8,7 @@ export const httpUpdateMarket = async ({
 }: UpdateMarketParams): Promise<MarketResponse> => {
   try {
     const response = await httpClient.put(`/api/grocery-shopping/v1/market/${marketId}`, {
-      marketName,
+      name: marketName,
     });
 
     return response.data;
