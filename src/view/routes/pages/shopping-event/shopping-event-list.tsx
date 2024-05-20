@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useBreadCrumbs } from '@/view/hooks';
-import { ShoppingEventListPage } from '@/view/pages';
+import { ShoppingEventPage } from '@/view/pages';
 
 export const ShoppingEventListRoute = () => {
   const { addBreadcrumbs } = useBreadCrumbs();
@@ -19,5 +19,5 @@ export const ShoppingEventListRoute = () => {
     );
   }, [addBreadcrumbs]);
 
-  return <ShoppingEventListPage />;
+  return <ShoppingEventPage />;
 };

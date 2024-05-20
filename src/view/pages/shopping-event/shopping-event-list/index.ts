@@ -1,1 +1,1 @@
-export * from './shopping-event-list-page';
+export * from './shopping-event-page';
