@@ -1,7 +1,7 @@
-export interface FetchListParams {
+export interface FetchListParams<TOrderBy = string> {
   pageIndex: number;
   pageSize: number;
-  orderBy: string;
+  orderBy: TOrderBy;
   orderDirection: 'asc' | 'desc';
 }
 
