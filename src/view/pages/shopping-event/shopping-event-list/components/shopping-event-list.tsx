@@ -29,7 +29,9 @@ export const ShoppingEventList = () => {
           isFetching,
         }}
       />
-      {data?.items.map((se) => <ShoppingEventItem key={se.id} shoppingEvent={se} />)}
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {data?.items.map((se) => <ShoppingEventItem key={se.id} shoppingEvent={se} />)}
+      </div>
     </div>
   );
 };

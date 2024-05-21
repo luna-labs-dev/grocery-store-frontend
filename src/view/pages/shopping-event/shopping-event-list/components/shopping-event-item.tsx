@@ -17,11 +17,11 @@ export const ShoppingEventItem = ({ shoppingEvent }: ShoppingEventListItemProps)
   shoppingEvent.createdAt = new Date(shoppingEvent.createdAt);
   return (
     <Card>
-      <CardHeader className="flex flex-col p-4">
+      <CardHeader className="flex flex-col p-3">
         <CardTitle className="flex flex-col items-start">{shoppingEvent.market}</CardTitle>
         <CardDescription className="text-sm">{shoppingEvent.status}</CardDescription>
       </CardHeader>
-      <CardContent className="p-4 pt-0">
+      <CardContent className="p-3 pt-0">
         <div className="flex gap-6">
           <div className="grid grid-cols-[20px_1fr] items-start">
             <CircleIcon width={12} height={12} className="translate-y-2" />
@@ -46,7 +46,7 @@ export const ShoppingEventItem = ({ shoppingEvent }: ShoppingEventListItemProps)
           </div>
         </div>
       </CardContent>
-      <CardFooter>
+      <CardFooter className="p-3">
         <div className="flex items-end justify-between w-full">
           <p className="text-xs text-muted-foreground">{shoppingEvent.createdAt.toISOString()}</p>
           <Button>Detalhes</Button>
