@@ -1,3 +1,5 @@
+import { format } from 'date-fns';
+import { ptBR } from 'date-fns/locale';
 import { ShoppingEventListItem } from '@/domain';
 import { CircleIcon, ViewGridIcon } from '@radix-ui/react-icons';
 import {
@@ -48,7 +50,14 @@ export const ShoppingEventItem = ({ shoppingEvent }: ShoppingEventListItemProps)
       </CardContent>
       <CardFooter className="p-3">
         <div className="flex items-end justify-between w-full">
-          <p className="text-xs text-muted-foreground">{shoppingEvent.createdAt.toISOString()}</p>
+          <div>
+            <p className="text-xs font-bold text-muted-foreground">
+              {format(shoppingEvent.createdAt, 'dd MM yyyy', { locale: ptBR })}
+            </p>
+            <p className="text-[8pt] font-bold text-muted-foreground">
+              {format(shoppingEvent.createdAt, 'HH:mm:ss', { locale: ptBR })}
+            </p>
+          </div>
           <Button>Detalhes</Button>
         </div>
       </CardFooter>
