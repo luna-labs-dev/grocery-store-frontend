@@ -1,5 +1,6 @@
 import { Product } from './product';
 import { MarketResponse } from './market';
+import { ShoppingEventStatus } from './status';
 import { Entity, FetchListParams, FetchListResponse } from '../core';
 
 export interface ShoppingEventCalculatedTotals {
@@ -10,8 +11,6 @@ export interface ShoppingEventCalculatedTotals {
   retailPaidDifferenceValue: number;
   wholesalePaidDifferenceValue: number;
 }
-
-export type ShoppingEventStatus = 'CANCELED' | 'FINISHED' | 'ONGOING';
 
 export interface ShoppingEvent extends Entity {
   status: ShoppingEventStatus;

@@ -1,7 +1,7 @@
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
-import { ShoppingEventListItem } from '@/domain';
 import { CircleIcon, ViewGridIcon } from '@radix-ui/react-icons';
+import { fCurrency, getStatus, ShoppingEventListItem } from '@/domain';
 import {
   Card,
   Button,
@@ -21,7 +21,7 @@ export const ShoppingEventItem = ({ shoppingEvent }: ShoppingEventListItemProps)
     <Card>
       <CardHeader className="flex flex-col p-3">
         <CardTitle className="flex flex-col items-start">{shoppingEvent.market}</CardTitle>
-        <CardDescription className="text-sm">{shoppingEvent.status}</CardDescription>
+        <CardDescription className="text-sm">{getStatus(shoppingEvent.status)}</CardDescription>
       </CardHeader>
       <CardContent className="p-3 pt-0">
         <div className="flex gap-6">
@@ -43,7 +43,7 @@ export const ShoppingEventItem = ({ shoppingEvent }: ShoppingEventListItemProps)
               <span className="text-xs font-medium leading-none text-muted-foreground">
                 total atacado
               </span>
-              <p className="text-sm">{shoppingEvent.totals.wholesaleTotal}</p>
+              <p className="text-sm">{fCurrency(shoppingEvent.totals.wholesaleTotal)}</p>
             </div>
           </div>
         </div>
