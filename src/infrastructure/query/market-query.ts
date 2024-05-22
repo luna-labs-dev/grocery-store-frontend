@@ -14,7 +14,7 @@ import {
   GetMarketByIdParams,
 } from '@/domain';
 
-import { httpNewMarket } from '../http/http-new-market';
+import { httpNewMarket } from '../http/market/http-new-market';
 import { httpUpdateMarket, httpGetMarketById, httpGetMarketList } from '../http';
 
 export const useGetMarketListQuery = (params: FetchListParams) => {
