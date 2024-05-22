@@ -39,3 +39,14 @@ export interface ShoppingEventListItem extends Pick<ShoppingEvent, 'id' | 'statu
 }
 
 export interface ShoppingEventListResponse extends FetchListResponse<ShoppingEventListItem> {}
+
+export interface StartShoppingEventParams {
+  marketId: string;
+}
+
+export interface StartShoppingEventResult {
+  id: string;
+  market: string;
+  status: string;
+  createdAt: Date;
+}
