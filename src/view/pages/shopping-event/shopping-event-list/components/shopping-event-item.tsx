@@ -6,8 +6,8 @@ import {
   Card,
   Button,
   CardTitle,
-  CardHeader,
   CardFooter,
+  CardHeader,
   CardContent,
   CardDescription,
 } from '@/view/components';
@@ -32,7 +32,7 @@ export const ShoppingEventItem = ({ shoppingEvent }: ShoppingEventListItemProps)
               <span className="text-xs font-medium leading-none text-muted-foreground">
                 total varejo
               </span>
-              <p className="text-sm">{shoppingEvent.totals.retailTotal}</p>
+              <p className="text-sm">{fCurrency(shoppingEvent.totals.retailTotal)}</p>
             </div>
           </div>
 
