@@ -4,7 +4,6 @@ import { CircleIcon, ViewGridIcon } from '@radix-ui/react-icons';
 import { fCurrency, getStatus, ShoppingEventListItem } from '@/domain';
 import {
   Card,
-  Button,
   CardTitle,
   CardFooter,
   CardHeader,
@@ -49,16 +48,15 @@ export const ShoppingEventItem = ({ shoppingEvent }: ShoppingEventListItemProps)
         </div>
       </CardContent>
       <CardFooter className="p-3">
-        <div className="flex items-end justify-between w-full">
-          <div>
-            <p className="text-xs font-bold text-muted-foreground">
-              {format(shoppingEvent.createdAt, 'dd MM yyyy', { locale: ptBR })}
-            </p>
+        <div className="flex items-end justify-end w-full">
+          <div className="flex flex-col items-end">
             <p className="text-[8pt] font-bold text-muted-foreground">
               {format(shoppingEvent.createdAt, 'HH:mm:ss', { locale: ptBR })}
             </p>
+            <p className="text-xs font-bold text-muted-foreground">
+              {format(shoppingEvent.createdAt, 'dd MM yyyy', { locale: ptBR })}
+            </p>
           </div>
-          <Button>Detalhes</Button>
         </div>
       </CardFooter>
     </Card>
