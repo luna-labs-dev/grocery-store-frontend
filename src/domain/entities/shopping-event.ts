@@ -41,7 +41,7 @@ export interface ShoppingEventListItem extends Pick<ShoppingEvent, 'id' | 'statu
 export interface ShoppingEventListResponse extends FetchListResponse<ShoppingEventListItem> {}
 
 export interface GetShoppingEventByIdParams {
-  shoppingEventId: string;
+  shoppingEventId?: string;
 }
 
 export interface StartShoppingEventParams {

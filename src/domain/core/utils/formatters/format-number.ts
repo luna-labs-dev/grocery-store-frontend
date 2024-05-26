@@ -9,12 +9,14 @@ export function fNumber(number: InputValue) {
 }
 
 export function fCurrency(number: InputValue) {
+  console.log(number !== undefined);
+  console.log(number);
   return Intl.NumberFormat('pt-BR', {
     style: 'currency',
     currency: 'BRL',
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
-  }).format(Number(number ?? 0));
+  }).format(Number(number !== undefined ? number : 0));
 }
 
 export function fPercent(number: InputValue) {
