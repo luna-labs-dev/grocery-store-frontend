@@ -4,14 +4,17 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import {
   HttpError,
   errorMapper,
+  ShoppingEvent,
   useQueryFactory,
   StartShoppingEventParams,
   StartShoppingEventResult,
   ShoppingEventListResponse,
+  GetShoppingEventByIdParams,
   FetchShoppingEventListParams,
 } from '@/domain';
 
 import { httpStartShoppingEvent, httpGetShoppingEventList } from '../http';
+import { httpGetShoppingEventById } from '../http/shopping-event/http-get-shopping-event-by-id';
 
 export const useGetShoppingEventListQuery = (params: FetchShoppingEventListParams) => {
   const query = useQueryFactory<FetchShoppingEventListParams, ShoppingEventListResponse>({
@@ -20,6 +23,19 @@ export const useGetShoppingEventListQuery = (params: FetchShoppingEventListParam
       fn: httpGetShoppingEventList,
       params,
     },
+  });
+
+  return { ...query };
+};
+
+export const useGetShoppingEventByIdQuery = (params: GetShoppingEventByIdParams) => {
+  const query = useQueryFactory<GetShoppingEventByIdParams, ShoppingEvent>({
+    queryKey: 'get-shopping-event-by-id',
+    queryFunction: {
+      fn: httpGetShoppingEventById,
+      params,
+    },
+    staleTime: 1000 * 30,
   });
 
   return { ...query };

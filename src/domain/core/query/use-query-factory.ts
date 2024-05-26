@@ -6,6 +6,7 @@ export interface UseQueryFactory<HttpParams, HttpResponse> {
     fn: (params: HttpParams) => Promise<HttpResponse>;
     params: HttpParams;
   };
+  staleTime?: number;
   retry?: boolean | number;
   enabled?: boolean;
 }
@@ -13,6 +14,7 @@ export interface UseQueryFactory<HttpParams, HttpResponse> {
 export const useQueryFactory = <HttpParams, HttpResponse>({
   queryKey,
   queryFunction: { fn, params },
+  staleTime,
   retry,
   enabled,
 }: UseQueryFactory<HttpParams, HttpResponse>) => {
@@ -22,6 +24,7 @@ export const useQueryFactory = <HttpParams, HttpResponse>({
     retry,
     refetchOnWindowFocus: true,
     enabled: enabled ?? true,
+    staleTime,
   });
 
   return { ...query };
