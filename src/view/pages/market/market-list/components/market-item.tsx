@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
 import { MarketListItem } from '@/domain';
+import { Link, useNavigate } from 'react-router-dom';
 import { useStartShoppingEventMutation } from '@/infrastructure';
 import {
   Card,
@@ -18,6 +18,7 @@ export interface MarketItemParams {
 
 export const MarketItem = ({ market }: MarketItemParams) => {
   const { mutateAsync } = useStartShoppingEventMutation();
+  const navigate = useNavigate();
   return (
     <Card>
       <CardHeader>
@@ -42,7 +43,8 @@ export const MarketItem = ({ market }: MarketItemParams) => {
               size={'sm'}
               variant="secondary"
               onClick={async () => {
-                await mutateAsync({ marketId: market.id });
+                const shoppingEvent = await mutateAsync({ marketId: market.id });
+                navigate(`/shopping-event/ongoing/${shoppingEvent.id}`, { replace: true });
               }}
             >
               Iniciar compra
