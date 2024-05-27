@@ -14,6 +14,7 @@ export const OngoingShoppingEventPage = () => {
   if (!data) {
     return <div>No data</div>;
   }
+
   return (
     <div className="flex flex-col pt-2">
       <section>
@@ -57,23 +58,15 @@ export const OngoingShoppingEventPage = () => {
             props={{
               title: 'Economia',
               text: fCurrency(data.calculatedTotals.wholesaleSavingValue),
-              iconName: 'mingcute:pig-money-line',
+              iconName: 'mingcute:wallet-3-line',
             }}
           />
 
           <KeyValueWithIcon
             props={{
-              title: 'Pago',
-              text: fCurrency(data.calculatedTotals.paidValue),
-              iconName: 'mingcute:pig-money-line',
-            }}
-          />
-
-          <KeyValueWithIcon
-            props={{
-              title: 'Div. Varejo',
+              title: 'Dif. Varejo',
               text: fCurrency(data.calculatedTotals.retailPaidDifferenceValue),
-              iconName: 'mingcute:pig-money-line',
+              iconName: 'mingcute:chart-bar-line',
             }}
           />
 
@@ -81,9 +74,41 @@ export const OngoingShoppingEventPage = () => {
             props={{
               title: 'Dif. Atacado',
               text: fCurrency(data.calculatedTotals.wholesalePaidDifferenceValue),
-              iconName: 'mingcute:pig-money-line',
+              iconName: 'mingcute:chart-bar-2-line',
             }}
           />
+
+          <KeyValueWithIcon
+            props={{
+              title: 'Pago',
+              text: fCurrency(data.calculatedTotals.paidValue),
+              iconName: 'mingcute:currency-dollar-line',
+            }}
+          />
+        </div>
+      </section>
+      <section className="flex flex-col gap-2">
+        <div>
+          <h3>Produtos</h3>
+        </div>
+        <div>
+          {data.products.map((product) => {
+            console.log(product);
+            return (
+              <div key={product.id} className="p-1 border-b">
+                <div className="flex justify-between ">
+                  <p className="text-sm">{product.name}</p>
+                  <p className="text-sm">{format(product.addedAt, 'HH:mm:ss', { locale: ptBR })}</p>
+                </div>
+                <div className="text-xs">
+                  <p>{product.amount}</p>
+                  <p>{product.wholesaleMinAmount}</p>
+                  <p>{fCurrency(product.price)}</p>
+                  <p>{fCurrency(product.whosalePrice)}</p>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </section>
     </div>

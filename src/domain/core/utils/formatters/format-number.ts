@@ -9,8 +9,6 @@ export function fNumber(number: InputValue) {
 }
 
 export function fCurrency(number: InputValue) {
-  console.log(number !== undefined);
-  console.log(number);
   return Intl.NumberFormat('pt-BR', {
     style: 'currency',
     currency: 'BRL',
