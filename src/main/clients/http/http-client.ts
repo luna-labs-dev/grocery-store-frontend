@@ -12,10 +12,15 @@ export const httpClient = axios.create({
 
 export const setAuthToken = (token: string) => {
   // TODO Remove this console.log
-  console.log(token);
 
   httpClient.interceptors.request.use((request) => {
-    request.headers.set('x-authorization-token', token);
+    console.log({
+      current: request.headers.get('x-authorization-token'),
+      token,
+    });
+    if (request.headers.get('x-authorization-token') !== token) {
+      request.headers.set('x-authorization-token', token);
+    }
     return request;
   });
 

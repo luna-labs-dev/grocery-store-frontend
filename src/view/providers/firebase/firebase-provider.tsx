@@ -30,7 +30,35 @@ export const FirebaseProvider = ({ children }: { children: ReactNode }) => {
     try {
       auth.onAuthStateChanged(async (user) => {
         if (user) {
-          const idTokenResult = await user.getIdTokenResult();
+          const idTokenResult = await user.getIdTokenResult(true);
+
+          setAuthToken(idTokenResult.token);
+
+          dispatch({
+            type: 'AUTH_USER',
+            context: {
+              currentUser: { ...user },
+              userLoggedIn: true,
+              idTokenResult,
+              loading: false,
+            },
+          });
+        } else {
+          dispatch({
+            type: 'AUTH_USER',
+            context: {
+              currentUser: undefined,
+              userLoggedIn: false,
+              idTokenResult: undefined,
+              loading: false,
+            },
+          });
+        }
+      });
+
+      auth.onIdTokenChanged(async (user) => {
+        if (user) {
+          const idTokenResult = await user.getIdTokenResult(true);
 
           setAuthToken(idTokenResult.token);
 
