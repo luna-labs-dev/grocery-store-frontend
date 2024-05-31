@@ -35,8 +35,9 @@ export const useGetShoppingEventByIdQuery = (params: GetShoppingEventByIdParams)
       fn: httpGetShoppingEventById,
       params,
     },
-    staleTime: 1000 * 30,
+    staleTime: 1000 * 5,
     enabled: !!params.shoppingEventId,
+    // refetchInterval: 1000 * 2,
   });
 
   return { ...query };

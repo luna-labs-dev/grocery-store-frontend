@@ -1,5 +1,6 @@
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
+import { useNavigate } from 'react-router-dom';
 import { CircleIcon, ViewGridIcon } from '@radix-ui/react-icons';
 import { fCurrency, getStatus, ShoppingEventListItem } from '@/domain';
 import {
@@ -15,9 +16,16 @@ interface ShoppingEventListItemProps {
   shoppingEvent: ShoppingEventListItem;
 }
 export const ShoppingEventItem = ({ shoppingEvent }: ShoppingEventListItemProps) => {
+  const navigate = useNavigate();
   shoppingEvent.createdAt = new Date(shoppingEvent.createdAt);
+
   return (
-    <Card>
+    <Card
+      onClick={() => {
+        navigate(`/shopping-event/ongoing/${shoppingEvent.id}`);
+      }}
+      className="cursor-pointer"
+    >
       <CardHeader className="flex flex-col p-3">
         <CardTitle className="flex flex-col items-start">{shoppingEvent.market}</CardTitle>
         <CardDescription className="text-sm">{getStatus(shoppingEvent.status)}</CardDescription>
