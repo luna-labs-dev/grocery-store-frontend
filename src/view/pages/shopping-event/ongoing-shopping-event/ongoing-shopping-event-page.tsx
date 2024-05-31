@@ -16,7 +16,7 @@ export const OngoingShoppingEventPage = () => {
   }
 
   return (
-    <div className="flex flex-col pt-2">
+    <div className="flex flex-col gap-4 pt-2">
       <section>
         <div className="flex flex-col gap-2 md:flex-row md:gap-6">
           <div className="flex items-center gap-1">
@@ -35,7 +35,7 @@ export const OngoingShoppingEventPage = () => {
           </div>
         </div>
       </section>
-      <div className="flex flex-col gap-2 md:flex-row">
+      <div className="flex flex-col gap-4 md:flex-row">
         <section className="flex flex-col gap-2">
           <h3 className="text-xl font-bold ">Totais</h3>
 
