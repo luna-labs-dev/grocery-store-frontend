@@ -19,4 +19,8 @@ export interface AddProductToCartParams {
   params: AddProductToCartInputParams;
 }
 
+export interface UpdateProductInCartParams extends AddProductToCartParams {
+  productId: string;
+}
+
 export interface AddProductToCartSuccessResult extends Pick<Product, 'id' | 'addedAt'> {}
