@@ -4,6 +4,8 @@ import { ptBR } from 'date-fns/locale';
 import { Product, fCurrency } from '@/domain';
 import { Button, KeyValue } from '@/view/components';
 
+import { AddProductToCartSheet } from './add-product-to-cart-sheet';
+
 interface OngoingShoppingEventProductsProps {
   products: Product[];
 }
@@ -11,7 +13,14 @@ interface OngoingShoppingEventProductsProps {
 export const OngoingShoppingEventProducts = ({ products }: OngoingShoppingEventProductsProps) => {
   return (
     <section className="flex flex-col gap-2">
-      <h3 className="text-xl font-bold ">Produtos</h3>
+      <div className="flex justify-between">
+        <h3 className="text-xl font-bold ">Produtos</h3>
+        <AddProductToCartSheet>
+          <Button variant={'ghost'}>
+            <Icon icon="fa:cart-plus" fontSize={20} />
+          </Button>
+        </AddProductToCartSheet>
+      </div>
 
       <div className="flex flex-col gap-2">
         {products.map((product) => {
