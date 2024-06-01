@@ -1,19 +1,22 @@
 import { toast } from 'sonner';
 import { format } from 'date-fns';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import {
   HttpError,
   errorMapper,
   ShoppingEvent,
   useQueryFactory,
+  AddProductToCartParams,
   StartShoppingEventParams,
   StartShoppingEventResult,
   ShoppingEventListResponse,
   GetShoppingEventByIdParams,
   FetchShoppingEventListParams,
+  AddProductToCartSuccessResult,
 } from '@/domain';
 
 import { httpStartShoppingEvent, httpGetShoppingEventList } from '../http';
+import { httpAddProductToCart } from '../http/shopping-event/http-add-product-to-cart';
 import { httpGetShoppingEventById } from '../http/shopping-event/http-get-shopping-event-by-id';
 
 export const useGetShoppingEventListQuery = (params: FetchShoppingEventListParams) => {
@@ -29,15 +32,12 @@ export const useGetShoppingEventListQuery = (params: FetchShoppingEventListParam
 };
 
 export const useGetShoppingEventByIdQuery = (params: GetShoppingEventByIdParams) => {
-  const query = useQueryFactory<GetShoppingEventByIdParams, ShoppingEvent>({
-    queryKey: 'get-shopping-event-by-id',
-    queryFunction: {
-      fn: httpGetShoppingEventById,
-      params,
-    },
+  const query = useQuery<ShoppingEvent, undefined, GetShoppingEventByIdParams>({
+    queryKey: ['get-shopping-event-by-id', params],
+    queryFn: ({ queryKey }) => httpGetShoppingEventById(queryKey[1] as GetShoppingEventByIdParams),
     staleTime: 1000 * 5,
     enabled: !!params.shoppingEventId,
-    // refetchInterval: 1000 * 2,
+    refetchInterval: 1000 * 30,
   });
 
   return { ...query };
@@ -62,6 +62,30 @@ export const useStartShoppingEventMutation = () => {
     onSettled: () => {
       queryClient.invalidateQueries({
         queryKey: ['get-shopping-event-list'],
+      });
+    },
+  });
+
+  return { ...mutation };
+};
+
+export const useAddProductCartMutation = () => {
+  const queryClient = useQueryClient();
+
+  const mutation = useMutation<AddProductToCartSuccessResult, HttpError, AddProductToCartParams>({
+    mutationFn: httpAddProductToCart,
+    onError: (error) => {
+      const { title } = errorMapper(error.code ?? '')();
+      toast.error(title);
+    },
+    onSuccess: (_, params) => {
+      toast.success('Produto adicionado ao carrinho', {
+        description: `O produto ${params.params.name} foi adicionado ao carrinho`,
+      });
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['get-shopping-event-by-id'],
       });
     },
   });

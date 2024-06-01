@@ -19,4 +19,4 @@ export interface AddProductToCartParams {
   params: AddProductToCartInputParams;
 }
 
-export interface AddProductSuccessResponse extends Pick<Product, 'id' | 'addedAt'> {}
+export interface AddProductToCartSuccessResult extends Pick<Product, 'id' | 'addedAt'> {}

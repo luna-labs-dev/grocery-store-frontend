@@ -1,11 +1,11 @@
 import { isAxiosError } from 'axios';
 import { httpClient } from '@/main/clients';
-import { AddProductToCartParams, AddProductSuccessResponse } from '@/domain';
+import { AddProductToCartParams, AddProductToCartSuccessResult } from '@/domain';
 
 export const httpAddProductToCart = async ({
   shoppingEventId,
   params,
-}: AddProductToCartParams): Promise<AddProductSuccessResponse> => {
+}: AddProductToCartParams): Promise<AddProductToCartSuccessResult> => {
   try {
     const response = await httpClient.post(
       `/api/grocery-shopping/v1/shopping-event/${shoppingEventId}/cart`,

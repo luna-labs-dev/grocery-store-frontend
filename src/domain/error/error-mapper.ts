@@ -5,12 +5,15 @@ export interface MappedError {
   description?: string;
 }
 
-type MakeMappedError = (params: any) => MappedError;
+type MakeMappedError = (params?: any) => MappedError;
 
 const mappedErrors: Record<string, MakeMappedError> = {
   MARKET_ALREADY_EXISTS_ERROR: (params: NewMarketParams) => ({
     title: 'Erro ao criar Mercado',
     description: `o mercado "${params.marketName}" já existe`,
+  }),
+  SHOPPING_EVENT_NOT_FOUND_ERROR: () => ({
+    title: 'Evento de compra não localizado',
   }),
   UNKOWN: () => ({
     title: 'Ocorreu um erro inesperado',
