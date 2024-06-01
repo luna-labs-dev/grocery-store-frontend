@@ -21,7 +21,7 @@ export const OngoingShoppingEventPage = () => {
       <OngoingShoppingEventHeaderDetails shoppingEvent={data} />
       <div className="flex flex-col gap-4 md:flex-row">
         <OngoingShoppingEventTotals calculatedTotals={data.calculatedTotals} />
-        <OngoingShoppingEventProducts products={data.products} />
+        <OngoingShoppingEventProducts products={data.products} shoppingEventId={data.id} />
       </div>
     </div>
   );

@@ -4,7 +4,6 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import {
   HttpError,
   errorMapper,
-  ShoppingEvent,
   useQueryFactory,
   AddProductToCartParams,
   StartShoppingEventParams,
@@ -32,7 +31,7 @@ export const useGetShoppingEventListQuery = (params: FetchShoppingEventListParam
 };
 
 export const useGetShoppingEventByIdQuery = (params: GetShoppingEventByIdParams) => {
-  const query = useQuery<ShoppingEvent, undefined, GetShoppingEventByIdParams>({
+  const query = useQuery({
     queryKey: ['get-shopping-event-by-id', params],
     queryFn: ({ queryKey }) => httpGetShoppingEventById(queryKey[1] as GetShoppingEventByIdParams),
     staleTime: 1000 * 5,

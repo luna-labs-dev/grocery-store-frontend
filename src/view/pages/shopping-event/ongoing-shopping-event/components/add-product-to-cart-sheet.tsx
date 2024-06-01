@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   Sheet,
   SheetTitle,
@@ -11,17 +12,22 @@ import { ProductForm } from './product-form';
 
 interface AddProductToCartSheetProps {
   children: React.ReactElement;
+  shoppingEventId: string;
 }
-export const AddProductToCartSheet = ({ children }: AddProductToCartSheetProps) => {
+export const AddProductToCartSheet = ({
+  children,
+  shoppingEventId,
+}: AddProductToCartSheetProps) => {
+  const [open, setOpen] = useState<boolean>(false);
   return (
-    <Sheet>
+    <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>{children}</SheetTrigger>
-      <SheetContent>
+      <SheetContent className="w-full">
         <SheetHeader>
           <SheetTitle>Adicionar Produto</SheetTitle>
           <SheetDescription>Adicionar um novo produto ao carrinho</SheetDescription>
         </SheetHeader>
-        <ProductForm />
+        <ProductForm shoppingEventId={shoppingEventId} setOpen={setOpen} />
       </SheetContent>
     </Sheet>
   );
