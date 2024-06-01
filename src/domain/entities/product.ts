@@ -5,13 +5,13 @@ export interface Product extends Entity {
   amount: number;
   wholesaleMinAmount: number;
   price: number;
-  whosalePrice: number;
+  wholesalePrice: number;
   addedAt: Date;
 }
 
 export interface AddProductToCartInputParams extends Pick<Product, 'name' | 'amount' | 'price'> {
   wholesaleMinAmount?: number;
-  whosalePrice?: number;
+  wholesalePrice?: number;
 }
 
 export interface AddProductToCartParams {

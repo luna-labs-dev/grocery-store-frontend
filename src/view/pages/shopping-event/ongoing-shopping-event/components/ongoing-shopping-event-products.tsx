@@ -59,7 +59,7 @@ export const OngoingShoppingEventProducts = ({
                 <KeyValue
                   props={{
                     title: 'Preço atacado',
-                    text: fCurrency(product.whosalePrice ?? 0),
+                    text: fCurrency(product.wholesalePrice ?? 0),
                   }}
                 />
 

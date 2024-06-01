@@ -63,7 +63,7 @@ export const ProductForm = ({ setOpen, shoppingEventId }: ProductFormProps) => {
         amount: values.amount,
         price: values.price,
         wholesaleMinAmount: isWholesale ? values.wholesaleMinAmount : undefined,
-        whosalePrice: isWholesale ? values.wholesalePrice : undefined,
+        wholesalePrice: isWholesale ? values.wholesalePrice : undefined,
       },
     });
 
@@ -78,20 +78,20 @@ export const ProductForm = ({ setOpen, shoppingEventId }: ProductFormProps) => {
         <FormField
           control={control}
           name="name"
-          render={({ field }) => (
+          render={({ field, fieldState: { error } }) => (
             <FormItem>
               <FormLabel>Nome</FormLabel>
               <FormControl>
                 <Input placeholder="Nome do Produto" {...field} />
               </FormControl>
-              <FormDescription>Digite aqui o nome do produto</FormDescription>
+              {error && <FormDescription>{error.message}</FormDescription>}
             </FormItem>
           )}
         />
         <FormField
           control={control}
           name="amount"
-          render={({ field }) => (
+          render={({ field, fieldState: { error } }) => (
             <FormItem>
               <FormLabel>Quantidade</FormLabel>
               <FormControl>
@@ -105,7 +105,7 @@ export const ProductForm = ({ setOpen, shoppingEventId }: ProductFormProps) => {
                   }}
                 />
               </FormControl>
-              <FormDescription>Digite aqui a quantidade</FormDescription>
+              {error && <FormDescription>{error.message}</FormDescription>}
             </FormItem>
           )}
         />
@@ -115,13 +115,13 @@ export const ProductForm = ({ setOpen, shoppingEventId }: ProductFormProps) => {
           <Label htmlFor="airplane-mode">atacado</Label>
         </div>
         {isWholesale && (
-          <div>
+          <div className="flex flex-col gap-4">
             <FormField
               control={control}
               name="wholesaleMinAmount"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Quantidade</FormLabel>
+                  <FormLabel>Quantidade atacado</FormLabel>
                   <FormControl>
                     <Input
                       placeholder="Quantidade mín. atacado"
@@ -145,7 +145,7 @@ export const ProductForm = ({ setOpen, shoppingEventId }: ProductFormProps) => {
             />
           </div>
         )}
-        <div className="grid grid-cols-2 gap-2">
+        <div className="grid grid-cols-2 gap-4">
           <Button
             variant={'outline'}
             type="button"
