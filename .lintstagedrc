@@ -1,6 +1,5 @@
 {
   "*.{js,jsx,ts,tsx,json}": [
-    "eslint --fix",
     "biome check --files-ignore-unknown=true",
     "biome check --apply --no-errors-on-unmatched",
     "biome check --apply --organize-imports-enabled=false --no-errors-on-unmatched",
