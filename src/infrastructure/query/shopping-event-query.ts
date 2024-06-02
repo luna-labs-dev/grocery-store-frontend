@@ -6,6 +6,8 @@ import {
   errorMapper,
   useQueryFactory,
   AddProductToCartParams,
+  EndShoppingEventParams,
+  EndShoppingEventResult,
   StartShoppingEventParams,
   StartShoppingEventResult,
   ShoppingEventListResponse,
@@ -19,6 +21,7 @@ import {
 import { httpAddProductToCart } from '../http/shopping-event/http-add-product-to-cart';
 import { httpGetShoppingEventById } from '../http/shopping-event/http-get-shopping-event-by-id';
 import {
+  httpEndShoppingEvent,
   httpStartShoppingEvent,
   httpUpdateProductInCart,
   httpGetShoppingEventList,
@@ -68,6 +71,35 @@ export const useStartShoppingEventMutation = () => {
     onSettled: () => {
       queryClient.invalidateQueries({
         queryKey: ['get-shopping-event-list'],
+      });
+    },
+  });
+
+  return { ...mutation };
+};
+
+export const useEndShoppingEventMutation = () => {
+  const queryClient = useQueryClient();
+  const mutation = useMutation<EndShoppingEventResult, HttpError, EndShoppingEventParams>({
+    mutationFn: httpEndShoppingEvent,
+    onError: (error, params) => {
+      const { title, description } = errorMapper(error.code ?? '')(params);
+
+      toast.error(title, {
+        description,
+      });
+    },
+    onSuccess: (success) => {
+      toast.success('Evento finalizado', {
+        description: `O evento de compra foi finalizado às ${format(success.createdAt, 'HH:mm:ss')}`,
+      });
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['get-shopping-event-list'],
+      });
+      queryClient.invalidateQueries({
+        queryKey: ['get-shopping-event-by-id'],
       });
     },
   });

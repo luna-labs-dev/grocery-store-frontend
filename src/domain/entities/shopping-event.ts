@@ -18,6 +18,7 @@ export interface ShoppingEvent extends Entity {
   calculatedTotals: ShoppingEventCalculatedTotals;
   products: Product[];
   createdAt: Date;
+  finishedAt?: Date;
   createdBy: string;
 }
 
@@ -54,3 +55,12 @@ export interface StartShoppingEventResult {
   status: string;
   createdAt: Date;
 }
+
+export interface EndShoppingEventParams {
+  shoppingEventId: string;
+  params: {
+    totalPaid: number;
+  };
+}
+
+export interface EndShoppingEventResult extends Omit<ShoppingEvent, 'products'> {}
