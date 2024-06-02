@@ -1,12 +1,12 @@
-import { format } from 'date-fns';
-import { Icon } from '@iconify/react';
-import { ptBR } from 'date-fns/locale';
+import { Product, ShoppingEventStatus, fCurrency } from '@/domain';
 import { Button, KeyValue } from '@/view/components';
-import { Product, fCurrency, ShoppingEventStatus } from '@/domain';
+import { Icon } from '@iconify/react';
+import { format } from 'date-fns';
+import { ptBR } from 'date-fns/locale';
 
 import { AddProductToCartSheet } from './add-product-to-cart-sheet';
-import { UpdateProductInCartSheet } from './update-product-in-cart-sheet';
 import { RemoveProductFromCartDialog } from './remove-product-from-cart-dialog';
+import { UpdateProductInCartSheet } from './update-product-in-cart-sheet';
 
 interface OngoingShoppingEventProductsProps {
   products: Product[];

@@ -1,10 +1,10 @@
-import { useParams } from 'react-router-dom';
 import { useGetShoppingEventByIdQuery } from '@/infrastructure';
+import { useParams } from 'react-router-dom';
 
 import {
-  OngoingShoppingEventTotals,
-  OngoingShoppingEventProducts,
   OngoingShoppingEventHeaderDetails,
+  OngoingShoppingEventProducts,
+  OngoingShoppingEventTotals,
 } from './components';
 
 export const OngoingShoppingEventPage = () => {

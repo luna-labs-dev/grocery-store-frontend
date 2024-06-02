@@ -1,12 +1,12 @@
-import { useState } from 'react';
 import {
   Sheet,
-  SheetTitle,
-  SheetHeader,
   SheetContent,
-  SheetTrigger,
   SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
 } from '@/view/components';
+import { useState } from 'react';
 
 import { ProductForm } from './product-form';
 

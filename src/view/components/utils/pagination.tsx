@@ -1,6 +1,6 @@
-import { Icon } from '@iconify/react';
-import { cn } from '@/view/lib/utils';
 import { FetchListParams } from '@/domain';
+import { cn } from '@/view/lib/utils';
+import { Icon } from '@iconify/react';
 import { usePagination } from '@mantine/hooks';
 
 import { Button } from '../shadcn';
@@ -43,21 +43,22 @@ export const Pagination = <TFetchParams,>({
         </Button>
       </div>
       <div className="flex">
-        {pagination.range.map((page, index) => {
+        {pagination.range.map((page) => {
           return (
-            <div key={index} className={'flex items-center'}>
+            <div key={page as number} className={'flex items-center'}>
               <span
                 onClick={() => {
-                  if (!isNaN(page as number)) {
+                  if (!Number.isNaN(page as number)) {
                     pagination.setPage(page as number);
                   }
                 }}
+                onKeyUp={() => {}}
                 className={cn(
                   pagination.active === page ? 'bg-primary text-white rounded-md' : '',
                   'px-[.6rem] py-[.2rem]',
                 )}
               >
-                {isNaN(page as number) ? '...' : page}
+                {Number.isNaN(page as number) ? '...' : page}
               </span>
             </div>
           );

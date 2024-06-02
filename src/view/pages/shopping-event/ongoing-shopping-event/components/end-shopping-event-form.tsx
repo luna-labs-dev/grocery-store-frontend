@@ -1,8 +1,8 @@
-import { z } from 'zod';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { Form, Button, MoneyInput } from '@/view/components';
 import { useEndShoppingEventMutation } from '@/infrastructure';
+import { Button, Form, MoneyInput } from '@/view/components';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
 
 const FormInputSchema = z.object({
   totalPaid: z.number().min(0.01),

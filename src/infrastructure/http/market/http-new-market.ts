@@ -1,6 +1,6 @@
-import { isAxiosError } from 'axios';
-import { httpClient } from '@/main/clients';
 import { MarketResponse, NewMarketParams } from '@/domain';
+import { httpClient } from '@/main/clients';
+import { isAxiosError } from 'axios';
 
 export const httpNewMarket = async ({ marketName }: NewMarketParams): Promise<MarketResponse> => {
   try {

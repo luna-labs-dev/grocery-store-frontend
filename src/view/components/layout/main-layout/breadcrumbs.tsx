@@ -1,6 +1,3 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { useBreadCrumbs } from '@/view/hooks/use-breadcrumbs';
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -8,6 +5,9 @@ import {
   BreadcrumbList,
   BreadcrumbSeparator,
 } from '@/view/components/shadcn';
+import { useBreadCrumbs } from '@/view/hooks/use-breadcrumbs';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 export const Breadcrumbs = () => {
   const { breadcrumbs } = useBreadCrumbs();
@@ -23,8 +23,8 @@ export const Breadcrumbs = () => {
         <BreadcrumbSeparator />
         {breadcrumbs.map((breadcrumb, index) => {
           return (
-            <React.Fragment key={index}>
-              <BreadcrumbItem key={index}>
+            <React.Fragment key={`${breadcrumb.label}:${breadcrumb.to}`}>
+              <BreadcrumbItem>
                 <BreadcrumbLink asChild>
                   <Link to={breadcrumb.to}>{breadcrumb.label}</Link>
                 </BreadcrumbLink>

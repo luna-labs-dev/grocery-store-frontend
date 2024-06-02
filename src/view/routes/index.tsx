@@ -1,6 +1,6 @@
-import { publicRoutes } from './public-routes';
-import { protectedRoutes } from './protected-routes';
 import { useFirebase } from '../providers/firebase/firebase-context';
+import { protectedRoutes } from './protected-routes';
+import { publicRoutes } from './public-routes';
 
 export const useRoutes = () => {
   const { context } = useFirebase();

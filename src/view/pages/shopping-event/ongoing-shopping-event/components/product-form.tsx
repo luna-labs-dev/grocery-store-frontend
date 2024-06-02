@@ -1,22 +1,22 @@
-import { z } from 'zod';
-import { useForm } from 'react-hook-form';
-import { useState, useEffect } from 'react';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { Product, AddProductToCartSuccessResult } from '@/domain';
+import { AddProductToCartSuccessResult, Product } from '@/domain';
 import { useAddProductCartMutation, useUpdateProductInCartMutation } from '@/infrastructure';
 import {
-  Form,
-  Input,
-  Label,
   Button,
-  Switch,
-  FormItem,
-  FormField,
-  FormLabel,
-  MoneyInput,
+  Form,
   FormControl,
   FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  Input,
+  Label,
+  MoneyInput,
+  Switch,
 } from '@/view/components';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
 
 const FormInputSchema = z.object({
   name: z.string().min(2),

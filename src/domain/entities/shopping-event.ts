@@ -1,7 +1,7 @@
-import { Product } from './product';
-import { MarketResponse } from './market';
-import { ShoppingEventStatus } from './status';
 import { Entity, FetchListParams, FetchListResponse } from '../core';
+import { MarketResponse } from './market';
+import { Product } from './product';
+import { ShoppingEventStatus } from './status';
 
 export interface ShoppingEventCalculatedTotals {
   retailTotal: number;

@@ -2,14 +2,14 @@ import { Product, fCurrency } from '@/domain';
 import { useRemoveProductFromCartMutation } from '@/infrastructure';
 import {
   AlertDialog,
-  AlertDialogTitle,
-  AlertDialogHeader,
-  AlertDialogFooter,
-  AlertDialogCancel,
   AlertDialogAction,
+  AlertDialogCancel,
   AlertDialogContent,
-  AlertDialogTrigger,
   AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
 } from '@/view/components';
 
 interface RemoveProductFromCartDialogProps {
@@ -30,7 +30,11 @@ export const RemoveProductFromCartDialog = ({
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>Remover produto do carrinho?</AlertDialogTitle>
-          <AlertDialogDescription>{`${product.name} - ${product.amount} x ${product.amount >= (product.wholesaleMinAmount ?? 0) && !!product.wholesalePrice ? fCurrency(product.wholesalePrice) : fCurrency(product.price)}`}</AlertDialogDescription>
+          <AlertDialogDescription>{`${product.name} - ${product.amount} x ${
+            product.amount >= (product.wholesaleMinAmount ?? 0) && !!product.wholesalePrice
+              ? fCurrency(product.wholesalePrice)
+              : fCurrency(product.price)
+          }`}</AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancelar</AlertDialogCancel>

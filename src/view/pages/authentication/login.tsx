@@ -1,6 +1,6 @@
-import { Icon } from '@iconify/react';
 import { Button } from '@/view/components';
 import { useFirebase } from '@/view/providers/firebase';
+import { Icon } from '@iconify/react';
 export const Login = () => {
   const { signinWithGoogle } = useFirebase();
 
@@ -20,7 +20,7 @@ export const Login = () => {
             >
               <Icon icon="mdi:google" />
               Entrar
-              <span></span>
+              <span />
             </Button>
           </div>
         </div>

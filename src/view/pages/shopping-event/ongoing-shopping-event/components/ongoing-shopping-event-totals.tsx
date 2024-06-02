@@ -1,5 +1,5 @@
+import { ShoppingEventCalculatedTotals, fCurrency } from '@/domain';
 import { KeyValueWithIcon } from '@/view/components';
-import { fCurrency, ShoppingEventCalculatedTotals } from '@/domain';
 
 interface OngoingShoppingEventTotalsProps {
   calculatedTotals: ShoppingEventCalculatedTotals;
