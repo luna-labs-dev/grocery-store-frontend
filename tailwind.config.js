@@ -1,3 +1,5 @@
+import animate from 'tailwindcss-animate'
+
 /** @type {import('tailwindcss').Config} */
 export const darkMode = ["class"];
 export const content = [
@@ -9,6 +11,9 @@ export const content = [
 ];
 export const prefix = "";
 export const theme = {
+  fontFamily: {
+    'poppins': ["Poppins", 'sans-serif']
+  },
   container: {
     center: true,
     padding: "2rem",
@@ -73,4 +78,4 @@ export const theme = {
     },
   },
 };
-export const plugins = [import("tailwindcss-animate")];
+export const plugins = [animate];

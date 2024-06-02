@@ -1,6 +1,6 @@
 # Grocery Store Frontend
 
-## Info
+## Information
 
 **Project Name**: Grocery Store Frontend
 **Git Name**: grocery-store-frontend
@@ -19,6 +19,6 @@
 * Typescript
 
 **Important Libs**
-
-*** Development***
-***Production***
+- [Tanstack Router](https://tanstack.com/router/latest)
+- [Tanstack React Query](https://tanstack.com/query/latest)
+- [Axios](https://axios-http.com/ptbr/docs/intro)

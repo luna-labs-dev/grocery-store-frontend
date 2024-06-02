@@ -1,13 +1,12 @@
-import { createFileRoute } from '@tanstack/react-router';
+import { publicRoutes } from './public-routes';
+import { protectedRoutes } from './protected-routes';
+import { useFirebase } from '../providers/firebase/firebase-context';
 
-const Index = () => {
-  return (
-    <div>
-      <h1>Example Homepage</h1>
-    </div>
-  );
+export const useRoutes = () => {
+  const { context } = useFirebase();
+
+  const routes = context.userLoggedIn ? protectedRoutes : publicRoutes;
+  // const routes = publicRoutes;
+
+  return { routes };
 };
-
-export const Route = createFileRoute('/')({
-  component: Index,
-});
