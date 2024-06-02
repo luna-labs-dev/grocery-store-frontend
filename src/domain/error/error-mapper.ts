@@ -15,6 +15,13 @@ const mappedErrors: Record<string, MakeMappedError> = {
   SHOPPING_EVENT_NOT_FOUND_ERROR: () => ({
     title: 'Evento de compra não localizado',
   }),
+  EMPTY_CART_ERROR: () => ({
+    title: 'Carrinho vazio',
+    description: 'evento de compra não pode ser encerrado com o carrinho vazio',
+  }),
+  SHOPPING_EVENT_ALREADY_ENDED_ERROR: () => ({
+    title: 'Evento de compra já finalizado',
+  }),
   UNKOWN: () => ({
     title: 'Ocorreu um erro inesperado',
     description: 'Contate um administrador',

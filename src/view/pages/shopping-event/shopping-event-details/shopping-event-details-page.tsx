@@ -2,12 +2,12 @@ import { useGetShoppingEventByIdQuery } from '@/infrastructure';
 import { useParams } from 'react-router-dom';
 
 import {
-  OngoingShoppingEventHeaderDetails,
-  OngoingShoppingEventProducts,
-  OngoingShoppingEventTotals,
+  ShoppingEventDetailsHeader,
+  ShoppingEventDetailsProducts,
+  ShoppingEventDetailsTotals,
 } from './components';
 
-export const OngoingShoppingEventPage = () => {
+export const ShoppingEventDetailsPage = () => {
   const { shoppingEventId } = useParams();
 
   const { data } = useGetShoppingEventByIdQuery({ shoppingEventId });
@@ -18,10 +18,10 @@ export const OngoingShoppingEventPage = () => {
 
   return (
     <div className="flex flex-col gap-4 pt-2">
-      <OngoingShoppingEventHeaderDetails shoppingEvent={data} />
+      <ShoppingEventDetailsHeader shoppingEvent={data} />
       <div className="flex flex-col gap-4 md:flex-row">
-        <OngoingShoppingEventTotals calculatedTotals={data.calculatedTotals} />
-        <OngoingShoppingEventProducts
+        <ShoppingEventDetailsTotals calculatedTotals={data.calculatedTotals} />
+        <ShoppingEventDetailsProducts
           products={data.products}
           shoppingEventId={data.id}
           shoppingEventStatus={data.status}

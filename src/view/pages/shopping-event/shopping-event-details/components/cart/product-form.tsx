@@ -98,7 +98,6 @@ export const ProductForm = ({ setOpen, shoppingEventId, product }: ProductFormPr
       });
     }
 
-    console.log(success);
     if (success) {
       onFinished();
     }
@@ -132,7 +131,6 @@ export const ProductForm = ({ setOpen, shoppingEventId, product }: ProductFormPr
                   {...field}
                   type="number"
                   onChange={(event) => {
-                    console.log(typeof event.target.value);
                     field.onChange(Number(event.target.value));
                   }}
                 />
@@ -160,7 +158,6 @@ export const ProductForm = ({ setOpen, shoppingEventId, product }: ProductFormPr
                       {...field}
                       type="number"
                       onChange={(event) => {
-                        console.log(typeof event.target.value);
                         field.onChange(Number(event.target.value));
                       }}
                     />

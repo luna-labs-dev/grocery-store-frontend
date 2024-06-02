@@ -4,15 +4,13 @@ import { Icon } from '@iconify/react';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 
-import { EndShoppingEventDialog } from './end-shopping-event-dialog';
+import { EndShoppingEventDialog } from './end-shopping-event';
 
-interface OngoingShoppingEventHeaderDetailsProps {
+interface ShoppingEventDetailsHeaderProps {
   shoppingEvent: ShoppingEvent;
 }
 
-export const OngoingShoppingEventHeaderDetails = ({
-  shoppingEvent,
-}: OngoingShoppingEventHeaderDetailsProps) => {
+export const ShoppingEventDetailsHeader = ({ shoppingEvent }: ShoppingEventDetailsHeaderProps) => {
   return (
     <section className="flex justify-between">
       <div className="flex flex-col gap-2 md:flex-row md:gap-6">

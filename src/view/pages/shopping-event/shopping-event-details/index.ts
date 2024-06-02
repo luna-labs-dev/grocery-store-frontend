@@ -1,1 +1,1 @@
-export type {};
+export * from './shopping-event-details-page';

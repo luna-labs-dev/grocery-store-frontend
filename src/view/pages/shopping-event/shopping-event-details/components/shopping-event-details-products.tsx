@@ -4,21 +4,23 @@ import { Icon } from '@iconify/react';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 
-import { AddProductToCartSheet } from './add-product-to-cart-sheet';
-import { RemoveProductFromCartDialog } from './remove-product-from-cart-dialog';
-import { UpdateProductInCartSheet } from './update-product-in-cart-sheet';
+import {
+  AddProductToCartSheet,
+  RemoveProductFromCartDialog,
+  UpdateProductInCartSheet,
+} from './cart';
 
-interface OngoingShoppingEventProductsProps {
+interface ShoppingEventDetailsProductsProps {
   products: Product[];
   shoppingEventId: string;
   shoppingEventStatus: ShoppingEventStatus;
 }
 
-export const OngoingShoppingEventProducts = ({
+export const ShoppingEventDetailsProducts = ({
   products,
   shoppingEventId,
   shoppingEventStatus,
-}: OngoingShoppingEventProductsProps) => {
+}: ShoppingEventDetailsProductsProps) => {
   return (
     <section className="flex flex-col gap-2">
       <div className="flex justify-between">
@@ -72,7 +74,7 @@ export const OngoingShoppingEventProducts = ({
                 <KeyValue
                   props={{
                     title: 'Total',
-                    text: fCurrency(product.amount * product.price ?? 0),
+                    text: fCurrency(product.amount * product.price),
                   }}
                 />
               </div>

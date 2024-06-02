@@ -55,7 +55,7 @@ export const Navigation = () => {
 
   const newVersion = (
     <Drawer open={isOpen} onOpenChange={setIsOpen} direction="left">
-      <DrawerTrigger className="p-4">
+      <DrawerTrigger>
         <Icon icon="mingcute:menu-line" />
       </DrawerTrigger>
       <DrawerContent>
