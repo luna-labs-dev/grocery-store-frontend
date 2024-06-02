@@ -9,14 +9,15 @@ import {
   StartShoppingEventParams,
   StartShoppingEventResult,
   ShoppingEventListResponse,
+  UpdateProductInCartParams,
   GetShoppingEventByIdParams,
   FetchShoppingEventListParams,
   AddProductToCartSuccessResult,
 } from '@/domain';
 
-import { httpStartShoppingEvent, httpGetShoppingEventList } from '../http';
 import { httpAddProductToCart } from '../http/shopping-event/http-add-product-to-cart';
 import { httpGetShoppingEventById } from '../http/shopping-event/http-get-shopping-event-by-id';
+import { httpStartShoppingEvent, httpUpdateProductInCart, httpGetShoppingEventList } from '../http';
 
 export const useGetShoppingEventListQuery = (params: FetchShoppingEventListParams) => {
   const query = useQueryFactory<FetchShoppingEventListParams, ShoppingEventListResponse>({
@@ -80,6 +81,30 @@ export const useAddProductCartMutation = () => {
     onSuccess: (_, params) => {
       toast.success('Produto adicionado ao carrinho', {
         description: `O produto ${params.params.name} foi adicionado ao carrinho`,
+      });
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['get-shopping-event-by-id'],
+      });
+    },
+  });
+
+  return { ...mutation };
+};
+
+export const useUpdateProductOnCartMutation = () => {
+  const queryClient = useQueryClient();
+
+  const mutation = useMutation<void, HttpError, UpdateProductInCartParams>({
+    mutationFn: httpUpdateProductInCart,
+    onError: (error) => {
+      const { title } = errorMapper(error.code ?? '')();
+      toast.error(title);
+    },
+    onSuccess: (_, params) => {
+      toast.success('Produto atualizado', {
+        description: `O produto ${params.params.name} foi atualizado no carrinho`,
       });
     },
     onSettled: () => {
