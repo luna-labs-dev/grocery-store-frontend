@@ -23,4 +23,9 @@ export interface UpdateProductInCartParams extends AddProductToCartParams {
   productId: string;
 }
 
+export interface RemoveProductFromCartParams {
+  shoppingEventId: string;
+  productId: string;
+}
+
 export interface AddProductToCartSuccessResult extends Pick<Product, 'id' | 'addedAt'> {}
