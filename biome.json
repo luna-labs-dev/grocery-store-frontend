@@ -13,6 +13,9 @@
       "suspicious": {
         "noExplicitAny": "off"
       },
+      "correctness": {
+        "noUnusedImports": "error"
+      },
       "style": {
         "useImportType": "off"
       }
@@ -20,13 +23,13 @@
   },
   "formatter": {
     "enabled": true,
-    "lineWidth": 100
+    "lineWidth": 100,
+    "indentStyle": "space"
   },
   "javascript": {
     "formatter": {
       "quoteStyle": "single",
-      "semicolons": "always",
-      "indentStyle": "space"
+      "semicolons": "always"
     }
   }
 }
