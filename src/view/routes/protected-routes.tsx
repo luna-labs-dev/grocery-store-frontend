@@ -6,7 +6,7 @@ import {
   HomeRoute,
   MarketRoute,
   NewMarketRoute,
-  OngoingShoppingEventRoute,
+  ShoppingEventDetailsRoute,
   ShoppingEventListRoute,
   UpdateMarketRoute,
 } from './pages';
@@ -38,7 +38,7 @@ export const protectedRoutes: RouteObject[] = [
       },
       {
         path: '/shopping-event/ongoing/:shoppingEventId',
-        element: <OngoingShoppingEventRoute />,
+        element: <ShoppingEventDetailsRoute />,
       },
     ],
   },

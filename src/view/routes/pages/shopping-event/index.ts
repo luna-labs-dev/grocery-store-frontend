@@ -1,2 +1,2 @@
 export * from './shopping-event-list';
-export * from './ongoing-shopping-event-route';
+export * from './shopping-event-details-route';

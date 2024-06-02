@@ -3,7 +3,7 @@ import { ShoppingEventDetailsPage } from '@/view/pages';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-export const OngoingShoppingEventRoute = () => {
+export const ShoppingEventDetailsRoute = () => {
   const { shoppingEventId } = useParams();
 
   const { addBreadcrumbs } = useBreadCrumbs();
