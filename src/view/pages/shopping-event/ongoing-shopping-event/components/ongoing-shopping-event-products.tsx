@@ -6,6 +6,7 @@ import { Button, KeyValue } from '@/view/components';
 
 import { AddProductToCartSheet } from './add-product-to-cart-sheet';
 import { UpdateProductInCartSheet } from './update-product-in-cart-sheet';
+import { RemoveProductFromCartDialog } from './remove-product-from-cart-dialog';
 
 interface OngoingShoppingEventProductsProps {
   products: Product[];
@@ -77,9 +78,11 @@ export const OngoingShoppingEventProducts = ({
                     <Icon icon="mingcute:edit-2-line" />
                   </Button>
                 </UpdateProductInCartSheet>
-                <Button size="sm" variant="destructive">
-                  <Icon icon="mingcute:delete-2-line" />
-                </Button>
+                <RemoveProductFromCartDialog shoppingEventId={shoppingEventId} product={product}>
+                  <Button size="sm" variant="destructive">
+                    <Icon icon="mingcute:delete-2-line" />
+                  </Button>
+                </RemoveProductFromCartDialog>
               </div>
             </div>
           );
