@@ -58,7 +58,8 @@ export const FirebaseProvider = ({ children }: { children: ReactNode }) => {
 
       auth.onIdTokenChanged(async (user) => {
         if (user) {
-          const idTokenResult = await user.getIdTokenResult(true);
+          const idTokenResult = await user.getIdTokenResult();
+          console.log({ now: new Date(), token: idTokenResult.token });
 
           setAuthToken(idTokenResult.token);
 
