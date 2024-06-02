@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import { Dialog, DialogContent, DialogTrigger } from '@/view/components';
+import { useState } from 'react';
 
 import { EndShoppingEventForm } from './end-shopping-event-form';
 

@@ -1,16 +1,16 @@
-import { useState } from 'react';
-import { Icon } from '@iconify/react';
-import { Link } from 'react-router-dom';
-import { useFirebase } from '@/view/providers/firebase';
 import {
-  Drawer,
   Button,
-  DrawerTitle,
-  DrawerHeader,
-  DrawerFooter,
+  Drawer,
   DrawerContent,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
   DrawerTrigger,
 } from '@/view/components';
+import { useFirebase } from '@/view/providers/firebase';
+import { Icon } from '@iconify/react';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export const Navigation = () => {
   const { signOut } = useFirebase();

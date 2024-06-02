@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
-import { HomePage } from '@/view/pages';
 import { useBreadCrumbs } from '@/view/hooks';
+import { HomePage } from '@/view/pages';
+import { useEffect } from 'react';
 
 export const HomeRoute = () => {
   const { addBreadcrumbs } = useBreadCrumbs();

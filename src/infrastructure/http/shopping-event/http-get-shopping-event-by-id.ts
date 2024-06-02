@@ -1,6 +1,6 @@
-import { isAxiosError } from 'axios';
+import { GetShoppingEventByIdParams, ShoppingEvent } from '@/domain';
 import { httpClient } from '@/main/clients';
-import { ShoppingEvent, GetShoppingEventByIdParams } from '@/domain';
+import { isAxiosError } from 'axios';
 
 export const httpGetShoppingEventById = async ({
   shoppingEventId,

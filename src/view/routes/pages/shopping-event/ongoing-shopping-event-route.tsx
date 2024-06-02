@@ -1,7 +1,7 @@
-import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 import { useBreadCrumbs } from '@/view/hooks';
 import { OngoingShoppingEventPage } from '@/view/pages';
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 export const OngoingShoppingEventRoute = () => {
   const { shoppingEventId } = useParams();

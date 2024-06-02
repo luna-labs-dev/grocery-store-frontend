@@ -1,6 +1,10 @@
 {
-  "*.{js,jsx,ts,tsx}": [
-    "eslint --fix",
-    "git add"
+  "*.{js,jsx,ts,tsx,json}": [
+    "biome check --files-ignore-unknown=true",
+    "biome check --apply --no-errors-on-unmatched",
+    "biome check --apply --organize-imports-enabled=false --no-errors-on-unmatched",
+    "biome check --apply-unsafe --no-errors-on-unmatched",
+    "biome format --write --no-errors-on-unmatched",
+    "biome lint --apply --no-errors-on-unmatched"
   ]
 }

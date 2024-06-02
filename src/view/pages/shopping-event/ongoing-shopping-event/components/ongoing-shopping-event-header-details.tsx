@@ -1,8 +1,8 @@
-import { format } from 'date-fns';
-import { Icon } from '@iconify/react';
-import { ptBR } from 'date-fns/locale';
+import { ShoppingEvent, getStatus } from '@/domain';
 import { Button } from '@/view/components';
-import { getStatus, ShoppingEvent } from '@/domain';
+import { Icon } from '@iconify/react';
+import { format } from 'date-fns';
+import { ptBR } from 'date-fns/locale';
 
 import { EndShoppingEventDialog } from './end-shopping-event-dialog';
 

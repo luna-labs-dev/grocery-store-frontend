@@ -1,7 +1,7 @@
-import { useState } from 'react';
 import { FetchListParams } from '@/domain';
-import { Pagination } from '@/view/components';
 import { useGetMarketListQuery } from '@/infrastructure';
+import { Pagination } from '@/view/components';
+import { useState } from 'react';
 
 import { MarketItem } from './market-item';
 
@@ -31,7 +31,9 @@ export const MarketList = () => {
       />
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {data?.items.map((item) => <MarketItem key={item.id} market={item} />)}
+        {data?.items.map((item) => (
+          <MarketItem key={item.id} market={item} />
+        ))}
       </div>
     </div>
   );

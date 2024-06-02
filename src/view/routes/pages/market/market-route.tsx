@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
 import { useBreadCrumbs } from '@/view/hooks';
 import { MarketPage } from '@/view/pages/market';
+import { useEffect } from 'react';
 
 export const MarketRoute = () => {
   const { addBreadcrumbs } = useBreadCrumbs();

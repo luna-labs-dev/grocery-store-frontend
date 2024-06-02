@@ -1,14 +1,14 @@
-import { RouteObject } from 'react-router-dom';
 import { NotFound, ProtectedApp } from '@/view/pages';
+import { RouteObject } from 'react-router-dom';
 
 import { AppRedirectionHandler } from '../components';
 import {
   HomeRoute,
   MarketRoute,
   NewMarketRoute,
-  UpdateMarketRoute,
-  ShoppingEventListRoute,
   OngoingShoppingEventRoute,
+  ShoppingEventListRoute,
+  UpdateMarketRoute,
 } from './pages';
 
 export const protectedRoutes: RouteObject[] = [

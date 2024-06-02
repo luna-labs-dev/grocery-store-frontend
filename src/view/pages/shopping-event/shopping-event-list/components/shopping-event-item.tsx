@@ -1,16 +1,16 @@
+import { ShoppingEventListItem, fCurrency, getStatus } from '@/domain';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/view/components';
+import { CircleIcon, ViewGridIcon } from '@radix-ui/react-icons';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { useNavigate } from 'react-router-dom';
-import { CircleIcon, ViewGridIcon } from '@radix-ui/react-icons';
-import { fCurrency, getStatus, ShoppingEventListItem } from '@/domain';
-import {
-  Card,
-  CardTitle,
-  CardFooter,
-  CardHeader,
-  CardContent,
-  CardDescription,
-} from '@/view/components';
 
 interface ShoppingEventListItemProps {
   shoppingEvent: ShoppingEventListItem;

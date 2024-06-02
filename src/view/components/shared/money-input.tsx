@@ -2,7 +2,7 @@
 import { useReducer } from 'react';
 import { UseFormReturn } from 'react-hook-form';
 
-import { Input, FormItem, FormField, FormLabel, FormControl, FormMessage } from '../shadcn';
+import { FormControl, FormField, FormItem, FormLabel, FormMessage, Input } from '../shadcn';
 
 type TextInputProps = {
   form: UseFormReturn<any>;

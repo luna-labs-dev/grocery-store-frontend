@@ -1,8 +1,8 @@
-import { ReactNode } from 'react';
 import { useBreadCrumbs } from '@/view/hooks';
+import { ReactNode } from 'react';
 
-import { Navigation } from './navigation';
 import { Breadcrumbs } from './breadcrumbs';
+import { Navigation } from './navigation';
 
 interface MainLayoutProps {
   children: ReactNode;
