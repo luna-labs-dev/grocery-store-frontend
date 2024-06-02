@@ -3,9 +3,9 @@ import { Entity } from '../core';
 export interface Product extends Entity {
   name: string;
   amount: number;
-  wholesaleMinAmount: number;
+  wholesaleMinAmount?: number;
   price: number;
-  wholesalePrice: number;
+  wholesalePrice?: number;
   addedAt: Date;
 }
 

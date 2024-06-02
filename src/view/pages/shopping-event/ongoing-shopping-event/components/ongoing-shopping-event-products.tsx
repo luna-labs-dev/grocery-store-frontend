@@ -5,6 +5,7 @@ import { Product, fCurrency } from '@/domain';
 import { Button, KeyValue } from '@/view/components';
 
 import { AddProductToCartSheet } from './add-product-to-cart-sheet';
+import { UpdateProductInCartSheet } from './update-product-in-cart-sheet';
 
 interface OngoingShoppingEventProductsProps {
   products: Product[];
@@ -71,9 +72,11 @@ export const OngoingShoppingEventProducts = ({
                 />
               </div>
               <div className="flex justify-end gap-2">
-                <Button size="sm">
-                  <Icon icon="mingcute:edit-2-line" />
-                </Button>
+                <UpdateProductInCartSheet shoppingEventId={shoppingEventId} product={product}>
+                  <Button size="sm">
+                    <Icon icon="mingcute:edit-2-line" />
+                  </Button>
+                </UpdateProductInCartSheet>
                 <Button size="sm" variant="destructive">
                   <Icon icon="mingcute:delete-2-line" />
                 </Button>

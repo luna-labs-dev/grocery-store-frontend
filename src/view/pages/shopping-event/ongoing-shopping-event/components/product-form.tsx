@@ -1,8 +1,9 @@
 import { z } from 'zod';
-import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useState, useEffect } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useAddProductCartMutation } from '@/infrastructure';
+import { Product, AddProductToCartSuccessResult } from '@/domain';
+import { useAddProductCartMutation, useUpdateProductInCartMutation } from '@/infrastructure';
 import {
   Form,
   Input,
@@ -30,44 +31,75 @@ type FormInput = z.infer<typeof FormInputSchema>;
 interface ProductFormProps {
   setOpen: (value: boolean) => void;
   shoppingEventId: string;
+  product?: Product;
 }
 
-export const ProductForm = ({ setOpen, shoppingEventId }: ProductFormProps) => {
+export const ProductForm = ({ setOpen, shoppingEventId, product }: ProductFormProps) => {
   const [isWholesale, setIsWholesale] = useState<boolean>(false);
+  const isUpdate = !!product;
+  useEffect(() => {
+    setIsWholesale(!!product && !!product.wholesaleMinAmount);
+  }, [product]);
 
   const form = useForm<FormInput>({
     resolver: zodResolver(FormInputSchema),
-    defaultValues: {
-      name: '',
-      amount: 0,
-      wholesaleMinAmount: 1,
-      price: 0,
-      wholesalePrice: 1,
-    },
+    defaultValues: isUpdate
+      ? {
+          name: product.name,
+          amount: product.amount,
+          wholesaleMinAmount: product.wholesaleMinAmount,
+          price: product.price,
+          wholesalePrice: product.wholesalePrice,
+        }
+      : {
+          name: '',
+          amount: 0,
+          wholesaleMinAmount: 1,
+          price: 0,
+          wholesalePrice: 1,
+        },
   });
 
   const { control, handleSubmit, reset } = form;
 
-  const { mutateAsync } = useAddProductCartMutation();
+  const { mutateAsync: mutateAddProductAsync } = useAddProductCartMutation();
+  const { mutateAsync: mutateUpdateProductAsync } = useUpdateProductInCartMutation();
 
   const onFinished = () => {
     setOpen(false);
   };
 
   const onSubmit = async (values: FormInput) => {
-    console.log(values);
-    const successfully = await mutateAsync({
-      shoppingEventId,
-      params: {
-        name: values.name,
-        amount: values.amount,
-        price: values.price,
-        wholesaleMinAmount: isWholesale ? values.wholesaleMinAmount : undefined,
-        wholesalePrice: isWholesale ? values.wholesalePrice : undefined,
-      },
-    });
+    let success: AddProductToCartSuccessResult | boolean;
+    if (isUpdate) {
+      await mutateUpdateProductAsync({
+        shoppingEventId,
+        productId: product.id,
+        params: {
+          name: values.name,
+          amount: values.amount,
+          price: values.price,
+          wholesaleMinAmount: isWholesale ? values.wholesaleMinAmount : undefined,
+          wholesalePrice: isWholesale ? values.wholesalePrice : undefined,
+        },
+      });
 
-    if (successfully) {
+      success = true;
+    } else {
+      success = await mutateAddProductAsync({
+        shoppingEventId,
+        params: {
+          name: values.name,
+          amount: values.amount,
+          price: values.price,
+          wholesaleMinAmount: isWholesale ? values.wholesaleMinAmount : undefined,
+          wholesalePrice: isWholesale ? values.wholesalePrice : undefined,
+        },
+      });
+    }
+
+    console.log(success);
+    if (success) {
       onFinished();
     }
   };
@@ -159,7 +191,7 @@ export const ProductForm = ({ setOpen, shoppingEventId }: ProductFormProps) => {
           </Button>
 
           <Button type="submit" className="w-full md:w-24">
-            Adicionar
+            {isUpdate ? 'Atualizar' : 'Adicionar'}
           </Button>
         </div>
       </form>

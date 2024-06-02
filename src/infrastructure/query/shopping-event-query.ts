@@ -93,7 +93,7 @@ export const useAddProductCartMutation = () => {
   return { ...mutation };
 };
 
-export const useUpdateProductOnCartMutation = () => {
+export const useUpdateProductInCartMutation = () => {
   const queryClient = useQueryClient();
 
   const mutation = useMutation<void, HttpError, UpdateProductInCartParams>({

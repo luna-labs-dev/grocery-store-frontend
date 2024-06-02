@@ -14,10 +14,6 @@ export const setAuthToken = (token: string) => {
   // TODO Remove this console.log
 
   httpClient.interceptors.request.use((request) => {
-    console.log({
-      current: request.headers.get('x-authorization-token'),
-      token,
-    });
     if (request.headers.get('x-authorization-token') !== token) {
       request.headers.set('x-authorization-token', token);
     }
