@@ -4,10 +4,10 @@ import {
   Button,
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
+  FormMessage,
   Input,
   Label,
   MoneyInput,
@@ -20,8 +20,8 @@ import { z } from 'zod';
 
 const FormInputSchema = z.object({
   name: z.string().min(2),
-  amount: z.number().min(1),
-  wholesaleMinAmount: z.number().optional(),
+  amount: z.number().int().min(1),
+  wholesaleMinAmount: z.number().int().optional(),
   price: z.number().min(1),
   wholesalePrice: z.number().optional(),
 });
@@ -115,14 +115,14 @@ export const ProductForm = ({ setOpen, shoppingEventId, product }: ProductFormPr
               <FormControl>
                 <Input placeholder="Nome do Produto" {...field} />
               </FormControl>
-              {error && <FormDescription>{error.message}</FormDescription>}
+              <FormMessage />
             </FormItem>
           )}
         />
         <FormField
           control={control}
           name="amount"
-          render={({ field, fieldState: { error } }) => (
+          render={({ field }) => (
             <FormItem>
               <FormLabel>Quantidade de produtos</FormLabel>
               <FormControl>
@@ -136,7 +136,7 @@ export const ProductForm = ({ setOpen, shoppingEventId, product }: ProductFormPr
                   }}
                 />
               </FormControl>
-              {error && <FormDescription>{error.message}</FormDescription>}
+              <FormMessage />
             </FormItem>
           )}
         />
@@ -171,6 +171,7 @@ export const ProductForm = ({ setOpen, shoppingEventId, product }: ProductFormPr
                       }}
                     />
                   </FormControl>
+                  <FormMessage />
                 </FormItem>
               )}
             />
