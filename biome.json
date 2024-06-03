@@ -41,7 +41,6 @@
       "**/node_modules/*",
       "src/view/components/shadcn/ui/**/*",
       "src/view/config/style/**/*"
-    ],
-    "include": ["src/**/*"]
+    ]
   }
 }
