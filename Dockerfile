@@ -10,6 +10,8 @@ COPY . .
 
 RUN yarn build
 
+RUN npm install -g serve
+
 EXPOSE 3030
 
-CMD [ "yarn", "preview" ]
+CMD [ "serve", "-s", "-l", "3030", "dist" ]
