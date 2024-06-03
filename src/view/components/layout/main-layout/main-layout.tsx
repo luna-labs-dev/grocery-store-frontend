@@ -1,5 +1,5 @@
 import { useBreadCrumbs } from '@/view/hooks';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 import { Breadcrumbs } from './breadcrumbs';
 import { Navigation } from './navigation';

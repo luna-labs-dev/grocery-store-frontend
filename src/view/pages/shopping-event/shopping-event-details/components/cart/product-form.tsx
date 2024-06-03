@@ -1,4 +1,4 @@
-import { AddProductToCartSuccessResult, Product } from '@/domain';
+import type { AddProductToCartSuccessResult, Product } from '@/domain';
 import { useAddProductCartMutation, useUpdateProductInCartMutation } from '@/infrastructure';
 import {
   Button,

@@ -1,4 +1,4 @@
-import { UpdateProductInCartParams } from '@/domain';
+import type { UpdateProductInCartParams } from '@/domain';
 import { httpClient } from '@/main/clients';
 import { isAxiosError } from 'axios';
 

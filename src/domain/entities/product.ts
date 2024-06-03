@@ -1,4 +1,4 @@
-import { Entity } from '../core';
+import type { Entity } from '../core';
 
 export interface Product extends Entity {
   name: string;

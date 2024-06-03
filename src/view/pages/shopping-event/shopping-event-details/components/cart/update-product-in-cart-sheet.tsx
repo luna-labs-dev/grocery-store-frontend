@@ -1,4 +1,4 @@
-import { Product } from '@/domain';
+import type { Product } from '@/domain';
 import {
   Sheet,
   SheetContent,

@@ -1,5 +1,5 @@
 import { NotFound, ProtectedApp } from '@/view/pages';
-import { RouteObject } from 'react-router-dom';
+import type { RouteObject } from 'react-router-dom';
 
 import { AppRedirectionHandler } from '../components';
 import {

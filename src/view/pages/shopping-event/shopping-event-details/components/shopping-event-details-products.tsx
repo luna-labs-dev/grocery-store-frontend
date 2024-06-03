@@ -1,4 +1,4 @@
-import { Product, ShoppingEventStatus, fCurrency } from '@/domain';
+import { type Product, type ShoppingEventStatus, fCurrency } from '@/domain';
 import { Button, KeyValue } from '@/view/components';
 import { Icon } from '@iconify/react';
 import { format } from 'date-fns';

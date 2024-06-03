@@ -1,4 +1,4 @@
-import { ShoppingEventListItem, fCurrency, getStatus } from '@/domain';
+import { type ShoppingEventListItem, fCurrency, getStatus } from '@/domain';
 import {
   Card,
   CardContent,

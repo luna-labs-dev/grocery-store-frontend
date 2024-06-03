@@ -1,4 +1,4 @@
-import { GetMarketByIdParams, Market } from '@/domain';
+import type { GetMarketByIdParams, Market } from '@/domain';
 import { httpClient } from '@/main/clients';
 import { isAxiosError } from 'axios';
 

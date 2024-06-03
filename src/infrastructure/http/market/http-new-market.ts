@@ -1,4 +1,4 @@
-import { MarketResponse, NewMarketParams } from '@/domain';
+import type { MarketResponse, NewMarketParams } from '@/domain';
 import { httpClient } from '@/main/clients';
 import { isAxiosError } from 'axios';
 

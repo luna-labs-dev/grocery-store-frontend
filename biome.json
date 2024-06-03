@@ -15,9 +15,6 @@
       },
       "correctness": {
         "noUnusedImports": "error"
-      },
-      "style": {
-        "useImportType": "off"
       }
     }
   },

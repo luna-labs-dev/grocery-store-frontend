@@ -1,4 +1,4 @@
-import { Product, fCurrency } from '@/domain';
+import { type Product, fCurrency } from '@/domain';
 import { useRemoveProductFromCartMutation } from '@/infrastructure';
 import {
   AlertDialog,

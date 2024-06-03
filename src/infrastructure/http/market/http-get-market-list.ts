@@ -1,4 +1,4 @@
-import { FetchListParams, MarketListResponse } from '@/domain';
+import type { FetchListParams, MarketListResponse } from '@/domain';
 import { httpClient } from '@/main/clients';
 import { isAxiosError } from 'axios';
 

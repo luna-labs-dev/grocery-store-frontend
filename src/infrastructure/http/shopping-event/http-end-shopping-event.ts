@@ -1,4 +1,4 @@
-import { EndShoppingEventParams, EndShoppingEventResult } from '@/domain';
+import type { EndShoppingEventParams, EndShoppingEventResult } from '@/domain';
 import { httpClient } from '@/main/clients';
 import { isAxiosError } from 'axios';
 

@@ -1,6 +1,6 @@
-import { HttpError } from '@/domain';
+import type { HttpError } from '@/domain';
 import { auth } from '@/main/config/firebase';
-import axios, { AxiosError } from 'axios';
+import axios, { type AxiosError } from 'axios';
 
 import { env } from '../../config/env';
 

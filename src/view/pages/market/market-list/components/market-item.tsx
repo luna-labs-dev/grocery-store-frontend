@@ -1,4 +1,4 @@
-import { MarketListItem } from '@/domain';
+import type { MarketListItem } from '@/domain';
 import { useStartShoppingEventMutation } from '@/infrastructure';
 import {
   Button,

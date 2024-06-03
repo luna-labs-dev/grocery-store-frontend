@@ -1,6 +1,6 @@
 import { AppRedirectionHandler } from '@/view/components';
 import { Login, PublicApp } from '@/view/pages';
-import { RouteObject } from 'react-router-dom';
+import type { RouteObject } from 'react-router-dom';
 
 export const publicRoutes: RouteObject[] = [
   {

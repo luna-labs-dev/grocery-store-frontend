@@ -1,4 +1,4 @@
-import { GetShoppingEventByIdParams, ShoppingEvent } from '@/domain';
+import type { GetShoppingEventByIdParams, ShoppingEvent } from '@/domain';
 import { httpClient } from '@/main/clients';
 import { isAxiosError } from 'axios';
 

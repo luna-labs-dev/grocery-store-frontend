@@ -1,4 +1,4 @@
-import { RemoveProductFromCartParams } from '@/domain';
+import type { RemoveProductFromCartParams } from '@/domain';
 import { httpClient } from '@/main/clients';
 import { isAxiosError } from 'axios';
 

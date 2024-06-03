@@ -1,17 +1,17 @@
 import {
-  FetchListParams,
-  GetMarketByIdParams,
-  HttpError,
-  Market,
-  MarketListResponse,
-  MarketResponse,
-  NewMarketParams,
-  UpdateMarketParams,
+  type FetchListParams,
+  type GetMarketByIdParams,
+  type HttpError,
+  type Market,
+  type MarketListResponse,
+  type MarketResponse,
+  type NewMarketParams,
+  type UpdateMarketParams,
   errorMapper,
   useQueryFactory,
 } from '@/domain';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { AxiosError } from 'axios';
+import type { AxiosError } from 'axios';
 import { toast } from 'sonner';
 
 import { httpGetMarketById, httpGetMarketList, httpUpdateMarket } from '../http';

@@ -1,4 +1,4 @@
-import { FetchListParams } from '@/domain';
+import type { FetchListParams } from '@/domain';
 import { cn } from '@/view/lib/utils';
 import { Icon } from '@iconify/react';
 import { usePagination } from '@mantine/hooks';

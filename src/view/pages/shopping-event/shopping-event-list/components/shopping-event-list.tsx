@@ -1,4 +1,4 @@
-import { FetchShoppingEventListParams } from '@/domain';
+import type { FetchShoppingEventListParams } from '@/domain';
 import { useGetShoppingEventListQuery } from '@/infrastructure';
 import { Pagination } from '@/view/components';
 import { useState } from 'react';

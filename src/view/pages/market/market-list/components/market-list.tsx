@@ -1,4 +1,4 @@
-import { FetchListParams } from '@/domain';
+import type { FetchListParams } from '@/domain';
 import { useGetMarketListQuery } from '@/infrastructure';
 import { Pagination } from '@/view/components';
 import { useState } from 'react';

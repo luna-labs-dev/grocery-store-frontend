@@ -1,8 +1,8 @@
 import { setAuthToken } from '@/main/clients';
 import { auth } from '@/main/config/firebase';
-import { ReactNode, useCallback, useEffect, useReducer } from 'react';
+import { type ReactNode, useCallback, useEffect, useReducer } from 'react';
 
-import { FirebaseContext, FirebaseContextState } from './firebase-context';
+import { FirebaseContext, type FirebaseContextState } from './firebase-context';
 
 const types = ['AUTH_USER'] as const;
 type Types = (typeof types)[number];
