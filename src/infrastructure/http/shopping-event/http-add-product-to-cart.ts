@@ -8,7 +8,7 @@ export const httpAddProductToCart = async ({
 }: AddProductToCartParams): Promise<AddProductToCartSuccessResult> => {
   try {
     const response = await httpClient.post(
-      `/api/grocery-shopping/v1/shopping-event/${shoppingEventId}/cart`,
+      `api/grocery-shopping/v1/shopping-event/${shoppingEventId}/cart`,
       params,
     );
 

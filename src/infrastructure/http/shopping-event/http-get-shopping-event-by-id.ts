@@ -7,7 +7,7 @@ export const httpGetShoppingEventById = async ({
 }: GetShoppingEventByIdParams): Promise<ShoppingEvent> => {
   try {
     const response = await httpClient.get<ShoppingEvent>(
-      `/api/grocery-shopping/v1/shopping-event/${shoppingEventId}`,
+      `api/grocery-shopping/v1/shopping-event/${shoppingEventId}`,
     );
 
     return response.data;

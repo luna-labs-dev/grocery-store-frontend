@@ -9,7 +9,7 @@ export const httpUpdateProductInCart = async ({
 }: UpdateProductInCartParams): Promise<void> => {
   try {
     await httpClient.put(
-      `/api/grocery-shopping/v1/shopping-event/${shoppingEventId}/cart/${productId}`,
+      `api/grocery-shopping/v1/shopping-event/${shoppingEventId}/cart/${productId}`,
       params,
     );
   } catch (error) {

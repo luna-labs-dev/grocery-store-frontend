@@ -4,7 +4,7 @@ import { isAxiosError } from 'axios';
 
 export const httpNewMarket = async ({ marketName }: NewMarketParams): Promise<MarketResponse> => {
   try {
-    const response = await httpClient.post('/api/grocery-shopping/v1/market', {
+    const response = await httpClient.post('api/grocery-shopping/v1/market', {
       marketName,
     });
 

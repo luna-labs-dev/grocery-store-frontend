@@ -6,7 +6,7 @@ export const httpStartShoppingEvent = async ({
   marketId,
 }: StartShoppingEventParams): Promise<StartShoppingEventResult> => {
   try {
-    const response = await httpClient.post('/api/grocery-shopping/v1/shopping-event/start', {
+    const response = await httpClient.post('api/grocery-shopping/v1/shopping-event/start', {
       marketId,
     });
 

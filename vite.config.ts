@@ -5,8 +5,16 @@ import { defineConfig } from 'vite';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
+  base: '/',
   server: {
-    port: 3000,
+    port: 3030,
+    strictPort: true,
+    host: true,
+    origin: 'http://0.0.0.0:3030',
+  },
+  preview: {
+    port: 3030,
+    strictPort: true,
   },
   resolve: {
     alias: {
