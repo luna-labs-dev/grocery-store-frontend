@@ -8,7 +8,7 @@ export const httpRemoveProductFromCart = async ({
 }: RemoveProductFromCartParams): Promise<void> => {
   try {
     await httpClient.delete(
-      `/api/grocery-shopping/v1/shopping-event/${shoppingEventId}/cart/${productId}`,
+      `api/grocery-shopping/v1/shopping-event/${shoppingEventId}/cart/${productId}`,
     );
   } catch (error) {
     console.error(error);

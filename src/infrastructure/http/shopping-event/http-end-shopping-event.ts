@@ -8,7 +8,7 @@ export const httpEndShoppingEvent = async ({
 }: EndShoppingEventParams): Promise<EndShoppingEventResult> => {
   try {
     const response = await httpClient.put(
-      `/api/grocery-shopping/v1/shopping-event/end/${shoppingEventId}`,
+      `api/grocery-shopping/v1/shopping-event/end/${shoppingEventId}`,
       params,
     );
 

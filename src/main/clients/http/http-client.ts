@@ -6,6 +6,8 @@ import { env } from '../../config/env';
 
 const { baseUrl } = env.backend;
 
+console.log(baseUrl);
+
 export const httpClient = axios.create({
   baseURL: baseUrl,
 });

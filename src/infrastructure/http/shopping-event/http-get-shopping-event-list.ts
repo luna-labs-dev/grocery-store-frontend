@@ -7,7 +7,7 @@ export const httpGetShoppingEventList = async (
 ): Promise<ShoppingEventListResponse> => {
   try {
     const response = await httpClient.get<ShoppingEventListResponse>(
-      '/api/grocery-shopping/v1/shopping-event',
+      'api/grocery-shopping/v1/shopping-event',
       {
         params,
       },
