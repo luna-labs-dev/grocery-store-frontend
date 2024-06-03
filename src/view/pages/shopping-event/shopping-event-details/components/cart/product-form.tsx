@@ -109,7 +109,7 @@ export const ProductForm = ({ setOpen, shoppingEventId, product }: ProductFormPr
         <FormField
           control={control}
           name="name"
-          render={({ field, fieldState: { error } }) => (
+          render={({ field }) => (
             <FormItem>
               <FormLabel>Nome</FormLabel>
               <FormControl>
