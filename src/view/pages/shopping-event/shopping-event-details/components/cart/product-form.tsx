@@ -21,9 +21,9 @@ import { z } from 'zod';
 const FormInputSchema = z.object({
   name: z.string().min(2),
   amount: z.number().min(1),
-  wholesaleMinAmount: z.number().min(1).optional(),
+  wholesaleMinAmount: z.number().optional(),
   price: z.number().min(1),
-  wholesalePrice: z.number().min(1).optional(),
+  wholesalePrice: z.number().optional(),
 });
 
 type FormInput = z.infer<typeof FormInputSchema>;
@@ -54,9 +54,9 @@ export const ProductForm = ({ setOpen, shoppingEventId, product }: ProductFormPr
       : {
           name: '',
           amount: 0,
-          wholesaleMinAmount: 1,
+          wholesaleMinAmount: 0,
           price: 0,
-          wholesalePrice: 1,
+          wholesalePrice: 0,
         },
   });
 
@@ -77,9 +77,9 @@ export const ProductForm = ({ setOpen, shoppingEventId, product }: ProductFormPr
         productId: product.id,
         params: {
           name: values.name,
-          amount: values.amount,
+          amount: Number(values.amount),
           price: values.price,
-          wholesaleMinAmount: isWholesale ? values.wholesaleMinAmount : undefined,
+          wholesaleMinAmount: isWholesale ? Number(values.wholesaleMinAmount) : undefined,
           wholesalePrice: isWholesale ? values.wholesalePrice : undefined,
         },
       });
@@ -90,7 +90,7 @@ export const ProductForm = ({ setOpen, shoppingEventId, product }: ProductFormPr
         shoppingEventId,
         params: {
           name: values.name,
-          amount: values.amount,
+          amount: Number(values.amount),
           price: values.price,
           wholesaleMinAmount: isWholesale ? values.wholesaleMinAmount : undefined,
           wholesalePrice: isWholesale ? values.wholesalePrice : undefined,
@@ -124,14 +124,15 @@ export const ProductForm = ({ setOpen, shoppingEventId, product }: ProductFormPr
           name="amount"
           render={({ field, fieldState: { error } }) => (
             <FormItem>
-              <FormLabel>Quantidade</FormLabel>
+              <FormLabel>Quantidade de produtos</FormLabel>
               <FormControl>
                 <Input
                   placeholder="Quantidade"
                   {...field}
                   type="number"
+                  value={field.value === 0 ? '' : field.value}
                   onChange={(event) => {
-                    field.onChange(Number(event.target.value));
+                    field.onChange(event.target.value === '0' ? '' : Number(event.target.value));
                   }}
                 />
               </FormControl>
@@ -139,7 +140,12 @@ export const ProductForm = ({ setOpen, shoppingEventId, product }: ProductFormPr
             </FormItem>
           )}
         />
-        <MoneyInput form={form} label="Preço" name="price" placeholder="Valor do produto" />
+        <MoneyInput
+          form={form}
+          label="Preço de varejo"
+          name="price"
+          placeholder="Valor do produto"
+        />
         <div className="flex items-center space-x-2">
           <Switch id="airplane-mode" checked={isWholesale} onCheckedChange={setIsWholesale} />
           <Label htmlFor="airplane-mode">atacado</Label>
@@ -151,24 +157,26 @@ export const ProductForm = ({ setOpen, shoppingEventId, product }: ProductFormPr
               name="wholesaleMinAmount"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Quantidade atacado</FormLabel>
+                  <FormLabel>Quantidade mínima de atacado</FormLabel>
                   <FormControl>
                     <Input
                       placeholder="Quantidade mín. atacado"
                       {...field}
                       type="number"
+                      value={field.value === 0 ? '' : field.value}
                       onChange={(event) => {
-                        field.onChange(Number(event.target.value));
+                        field.onChange(
+                          event.target.value === '0' ? '' : Number(event.target.value),
+                        );
                       }}
                     />
                   </FormControl>
-                  <FormDescription>Digite aqui a quantidade</FormDescription>
                 </FormItem>
               )}
             />
             <MoneyInput
               form={form}
-              label="Preço atacado"
+              label="Preço de atacado"
               name="wholesalePrice"
               placeholder="Valor do produto"
             />

@@ -10,7 +10,7 @@ export const Login = () => {
         <div className="flex flex-col items-center justify-center w-full py-6 bg-opacity-25 bg-slate-600 backdrop-blur-sm rounded-xl">
           <div className="flex flex-col items-center gap-4 p-4 text-3xl text-white w-80">
             <div className="text-center">
-              <h1 className="font-bold">Bem vindo</h1>
+              <h1 className="font-bold">Bem víndo</h1>
             </div>
             <Button
               className="flex justify-between w-48 gap-2"
