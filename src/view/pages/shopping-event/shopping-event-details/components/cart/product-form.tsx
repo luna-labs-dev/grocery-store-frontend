@@ -146,6 +146,7 @@ export const ProductForm = ({ setOpen, shoppingEventId, product }: ProductFormPr
           name="price"
           placeholder="Valor do produto"
         />
+        OI
         <div className="flex items-center space-x-2">
           <Switch id="airplane-mode" checked={isWholesale} onCheckedChange={setIsWholesale} />
           <Label htmlFor="airplane-mode">atacado</Label>

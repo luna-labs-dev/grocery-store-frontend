@@ -1,5 +1,5 @@
 'use client';
-import { useReducer } from 'react';
+import { useEffect, useReducer, useRef } from 'react';
 import type { UseFormReturn } from 'react-hook-form';
 
 import { FormControl, FormField, FormItem, FormLabel, FormMessage, Input } from '../shadcn';
@@ -22,6 +22,7 @@ const moneyFormatter = Intl.NumberFormat('pt-BR', {
 });
 
 export const MoneyInput = (props: TextInputProps) => {
+  const inputRef = useRef<HTMLInputElement>(null);
   const initialValue = props.form.getValues()[props.name]
     ? moneyFormatter.format(props.form.getValues()[props.name])
     : '';
@@ -36,6 +37,16 @@ export const MoneyInput = (props: TextInputProps) => {
     const realValue = Number(digits) / 100;
     realChangeFn(realValue);
   }
+
+  useEffect(() => {
+    // Coloca o cursor no final do input
+    if (inputRef.current) {
+      setTimeout(() => {
+        const length = value.length;
+        inputRef.current?.setSelectionRange(length, length);
+      }, 0);
+    }
+  }, [value]);
 
   return (
     <FormField
@@ -53,9 +64,12 @@ export const MoneyInput = (props: TextInputProps) => {
                 placeholder={props.placeholder}
                 type="text"
                 {...field}
+                ref={inputRef}
                 onChange={(ev) => {
-                  setValue(ev.target.value);
-                  handleChange(_change, ev.target.value);
+                  const inputValue = ev.target.value;
+
+                  setValue(inputValue);
+                  handleChange(_change, inputValue);
                 }}
                 value={value}
               />
