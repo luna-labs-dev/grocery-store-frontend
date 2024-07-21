@@ -1,1 +1,1 @@
-export * from './family-onboarding-route';
+export * from './family-route';

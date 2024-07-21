@@ -4,3 +4,5 @@ export * from './home-page';
 export * from './not-found-page';
 export * from './shopping-event';
 export * from './market';
+
+export * from './family';

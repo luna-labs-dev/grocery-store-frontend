@@ -1,7 +1,11 @@
 import { useBreadCrumbs } from '@/view/hooks';
+import { FamilyPage } from '@/view/pages';
 import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
-export const FamilyOnboardingRoute = () => {
+export const FamilyRoute = () => {
+  const { familyAction } = useParams();
+
   const { addBreadcrumbs } = useBreadCrumbs();
 
   useEffect(() => {
@@ -11,10 +15,6 @@ export const FamilyOnboardingRoute = () => {
           label: 'Família',
           to: '/family',
         },
-        {
-          label: 'Onboarding',
-          to: '/family/onboarding',
-        },
       ],
       {
         title: 'Onboarding',
@@ -23,5 +23,9 @@ export const FamilyOnboardingRoute = () => {
     );
   }, [addBreadcrumbs]);
 
-  return <div>Family Onboarding</div>;
+  if (familyAction === 'onboarding') {
+    return <FamilyPage />;
+  }
+
+  return <div>Family Route</div>;
 };
