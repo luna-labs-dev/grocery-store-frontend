@@ -18,7 +18,7 @@ export const FamilyOnboardingPage = () => {
       trigger={<Button>Entrar em uma família</Button>}
       context={{
         title: 'Entrar em uma família',
-        description: 'Entre em uma família existente para interagir com o sistema',
+        description: 'Entre em uma famí lia existente para interagir com o sistema',
       }}
     >
       <h1>Entrar em uma família</h1>
@@ -27,12 +27,14 @@ export const FamilyOnboardingPage = () => {
 
   return (
     <div className="flex flex-col items-center justify-center w-full gap-4 pt-8">
-      <div className="flex flex-col gap-4 w-[400px] border p-4 rounded-lg">
+      <div className="flex flex-col gap-8 w-[400px] border p-4 rounded-lg">
         <h1 className="text-sm">
           Para interagir com o sistema, você precisa criar ou entrar em uma família
         </h1>
-        {createFamily}
-        {joinFamily}
+        <div className="flex flex-col gap-4">
+          {createFamily}
+          {joinFamily}
+        </div>
       </div>
     </div>
   );
