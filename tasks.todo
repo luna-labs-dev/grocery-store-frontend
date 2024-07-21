@@ -1,0 +1,37 @@
+☐ FAMILY
+  ☐ screens to be created
+    ☐ family onboarding
+      ☐ create family
+      ☐ join family
+    ☐ family details
+  ☐ features
+    ☐ family details
+      ☐ family owner can remove family member
+      ☐ family member that is not owner cannot remove family member
+  ☐ behavior
+    ☐ redirect user to family onboarding if UserNotAFamilyMemberError
+
+☐ IMPROVEMENTS
+  ☐ market list
+    ☐ add filter
+    ☐ add table view (for desktop)
+  ☐ shopping event
+    ☐ add filter
+      ☐ by date
+      ☐ by market
+    ☐ add table view (for desktop)
+  ☐ shopping event details
+    ☐ fix totals at the top (always visible)
+    ☐ product list
+      ☐ add refresh button so we don't have to refresh the page
+      ☐ add table view (for desktop)
+      ☐ add filter
+        ☐ by name
+        ☐ by isWholesale
+      ☐ product details
+        ☐ compact the list so only important things are displayed
+          ☐ quantity
+          ☐ price
+          ☐ total
+          ☐ an icon or maybe a different color for wich is a wholesale product
+      
