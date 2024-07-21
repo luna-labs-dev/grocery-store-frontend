@@ -1,1 +1,1 @@
-export * from './family-page';
+export * from './family-onboarding-page';
