@@ -1,6 +1,6 @@
 ☐ FAMILY
   ☐ screens to be created
-    ☐ family onboarding
+    ☐ family onboarding @started(24-07-21 02:13)
       ☐ create family
       ☐ join family
     ☐ family details
@@ -9,7 +9,7 @@
       ☐ family owner can remove family member
       ☐ family member that is not owner cannot remove family member
   ☐ behavior
-    ☐ redirect user to family onboarding if UserNotAFamilyMemberError
+    ✔ redirect user to family onboarding if UserNotAFamilyMemberError @done(24-07-21 05:03)
 
 ☐ IMPROVEMENTS
   ☐ market list

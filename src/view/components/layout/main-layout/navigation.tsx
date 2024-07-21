@@ -30,6 +30,11 @@ export const Navigation = () => {
           </Link>
         </li>
         <li>
+          <Link onClick={() => setIsOpen(false)} to={'/family/onboarding'}>
+            Família
+          </Link>
+        </li>
+        <li>
           <Link
             onClick={() => {
               setIsOpen(false);
