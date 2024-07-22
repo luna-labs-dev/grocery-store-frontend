@@ -18,10 +18,10 @@ export const FamilyOnboardingPage = () => {
       trigger={<Button>Entrar em uma família</Button>}
       context={{
         title: 'Entrar em uma família',
-        description: 'Entre em uma famí lia existente para interagir com o sistema',
+        description: 'Entre em uma família existente para interagir com o sistema',
       }}
     >
-      <h1>Entrar em uma família</h1>
+      <FamilyOnboarding.JoinForm />
     </FamilyOnboarding.Sheet>
   );
 
