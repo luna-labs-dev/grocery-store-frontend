@@ -1,3 +1,4 @@
+import { useCreateFamilyMutation } from '@/infrastructure';
 import {
   Button,
   Form,
@@ -11,6 +12,7 @@ import {
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
+import { useFamilyOnboardingContext } from './family-onboarding-context';
 
 const CreateFamilyInputSchema = z.object({
   name: z.string().min(2),
@@ -19,6 +21,8 @@ const CreateFamilyInputSchema = z.object({
 type CreateFamilyInput = z.infer<typeof CreateFamilyInputSchema>;
 
 export const CreateFamilyForm = () => {
+  const { openState } = useFamilyOnboardingContext();
+
   const form = useForm<CreateFamilyInput>({
     resolver: zodResolver(CreateFamilyInputSchema),
     defaultValues: {
@@ -26,10 +30,21 @@ export const CreateFamilyForm = () => {
     },
   });
 
-  const { control, handleSubmit } = form;
+  const { control, handleSubmit, reset } = form;
+
+  const { mutateAsync } = useCreateFamilyMutation();
+
+  const onFinished = () => {
+    reset();
+    openState?.setOpen(false);
+  };
 
   const onSubmit = async (values: CreateFamilyInput) => {
-    console.log(values);
+    await mutateAsync({
+      name: values.name,
+    });
+
+    onFinished();
   };
 
   return (
@@ -51,8 +66,7 @@ export const CreateFamilyForm = () => {
         <div className="flex flex-col-reverse items-end gap-4 md:justify-end md:flex-row">
           <Button
             onClick={() => {
-              // reset();
-              // onFinished();
+              onFinished();
             }}
             variant={'outline'}
             type="button"

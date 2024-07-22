@@ -1,20 +1,20 @@
 import { Button } from '@/view/components';
-import { CreateFamilyForm, FamilyOnboardingSheet } from './components';
+import { FamilyOnboarding } from './components';
 export const FamilyOnboardingPage = () => {
   const createFamily = (
-    <FamilyOnboardingSheet
+    <FamilyOnboarding.Sheet
       trigger={<Button>Criar uma família</Button>}
       context={{
         title: 'Criar uma família',
         description: 'Crie uma nova família para interagir com o sistema',
       }}
     >
-      <CreateFamilyForm />
-    </FamilyOnboardingSheet>
+      <FamilyOnboarding.CreateForm />
+    </FamilyOnboarding.Sheet>
   );
 
   const joinFamily = (
-    <FamilyOnboardingSheet
+    <FamilyOnboarding.Sheet
       trigger={<Button>Entrar em uma família</Button>}
       context={{
         title: 'Entrar em uma família',
@@ -22,7 +22,7 @@ export const FamilyOnboardingPage = () => {
       }}
     >
       <h1>Entrar em uma família</h1>
-    </FamilyOnboardingSheet>
+    </FamilyOnboarding.Sheet>
   );
 
   return (
