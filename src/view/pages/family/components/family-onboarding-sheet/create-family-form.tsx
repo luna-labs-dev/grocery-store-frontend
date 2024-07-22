@@ -8,6 +8,7 @@ import {
   FormItem,
   FormLabel,
   Input,
+  Textarea,
 } from '@/view/components';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
@@ -16,6 +17,7 @@ import { useFamilyOnboardingContext } from './family-onboarding-context';
 
 const CreateFamilyInputSchema = z.object({
   name: z.string().min(2),
+  description: z.string().optional(),
 });
 
 type CreateFamilyInput = z.infer<typeof CreateFamilyInputSchema>;
@@ -27,6 +29,7 @@ export const CreateFamilyForm = () => {
     resolver: zodResolver(CreateFamilyInputSchema),
     defaultValues: {
       name: '',
+      description: '',
     },
   });
 
@@ -60,6 +63,20 @@ export const CreateFamilyForm = () => {
                 <Input disabled={false} placeholder="Nome da família" {...field} />
               </FormControl>
               <FormDescription>Digite aqui o nome da família</FormDescription>
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={control}
+          name="description"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Descrição</FormLabel>
+              <FormControl>
+                <Textarea disabled={false} placeholder="Descrição da família" {...field} />
+              </FormControl>
+              <FormDescription>Digite aqui a descrição da família</FormDescription>
             </FormItem>
           )}
         />

@@ -5,6 +5,7 @@ export * from './dialog';
 export * from './drawer';
 export * from './form';
 export * from './input';
+export * from './textarea'
 export * from './sonner';
 export * from './sheet';
 export * from './switch';

@@ -7,6 +7,7 @@ export interface User extends Entity {
 
 export interface Family extends Entity {
   name: string;
+  description?: string;
   owner: User;
   inviteCode: string;
   members?: User[];
@@ -14,6 +15,4 @@ export interface Family extends Entity {
   createdBy: User;
 }
 
-export interface CreateFamilyParams {
-  name: string;
-}
+export interface CreateFamilyParams extends Pick<Family, 'name' | 'description'> {}
