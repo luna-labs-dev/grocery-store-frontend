@@ -1,5 +1,5 @@
 import { Button } from '@/view/components';
-import { FamilyOnboardingSheet } from './container';
+import { CreateFamilyForm, FamilyOnboardingSheet } from './components';
 export const FamilyOnboardingPage = () => {
   const createFamily = (
     <FamilyOnboardingSheet
@@ -9,7 +9,7 @@ export const FamilyOnboardingPage = () => {
         description: 'Crie uma nova família para interagir com o sistema',
       }}
     >
-      <h1>Criar uma família</h1>
+      <CreateFamilyForm />
     </FamilyOnboardingSheet>
   );
 
