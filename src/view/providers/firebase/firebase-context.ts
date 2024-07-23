@@ -7,6 +7,7 @@ export interface FirebaseContextState {
   currentUser?: User;
   idTokenResult?: IdTokenResult;
   userLoggedIn: boolean;
+
   loading: boolean;
 }
 
@@ -29,6 +30,7 @@ export const useFirebase = () => {
   const signOut = () => {
     auth.signOut();
   };
+
   return {
     signinWithGoogle,
     signOut,

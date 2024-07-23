@@ -1,6 +1,22 @@
+import { useGetFamilyQuery } from '@/infrastructure';
 import { Button } from '@/view/components';
+import { useEffect, useState } from 'react';
 import { FamilyOnboarding } from './components';
+
 export const FamilyOnboardingPage = () => {
+  const { data, isLoading, error } = useGetFamilyQuery();
+
+  const [isFamilyMember, setIsFamilyMember] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (error?.code === 'USER_NOT_A_FAMILY_MEMBER_ERROR') {
+      setIsFamilyMember(false);
+    }
+    if (!error) {
+      setIsFamilyMember(true);
+    }
+  }, [error]);
+
   const createFamily = (
     <FamilyOnboarding.Sheet
       trigger={<Button>Criar uma família</Button>}
@@ -13,6 +29,10 @@ export const FamilyOnboardingPage = () => {
     </FamilyOnboarding.Sheet>
   );
 
+  if (isLoading) {
+    return <div>Carregando...</div>;
+  }
+
   const joinFamily = (
     <FamilyOnboarding.Sheet
       trigger={<Button>Entrar em uma família</Button>}
@@ -24,6 +44,21 @@ export const FamilyOnboardingPage = () => {
       <FamilyOnboarding.JoinForm />
     </FamilyOnboarding.Sheet>
   );
+
+  if (isFamilyMember && data) {
+    return (
+      <div>
+        <div>{data.name}</div>
+        <div>
+          {data.members?.map((member) => (
+            <div key={member.id}>
+              {member.displayName} - {member.email}
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col items-center justify-center w-full gap-4 pt-8">

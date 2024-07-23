@@ -13,6 +13,10 @@
     ✔ redirect user to family onboarding if UserNotAFamilyMemberError @done(24-07-21 05:03)
 
 ☐ IMPROVEMENTS
+  ☐ create logged user component
+    picture
+    email
+    name (maybe)
   ☐ market list
     ☐ add filter
     ☐ add table view (for desktop)
