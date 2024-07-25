@@ -12,7 +12,7 @@ export interface Family extends Entity {
   inviteCode: string;
   members?: User[];
   createdAt: Date;
-  createdBy: User;
+  createdBy: string;
 }
 
 export interface CreateFamilyParams extends Pick<Family, 'name' | 'description'> {}

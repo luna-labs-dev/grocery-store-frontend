@@ -8,7 +8,7 @@ export const useGetFamilyQuery = () => {
   const query = useQuery<Family, AxiosError | HttpError>({
     queryKey: ['family'],
     queryFn: () => httpGetFamily(),
-    staleTime: 0,
+    staleTime: 1000 * 5,
     retry: 1,
     refetchOnMount: true,
     refetchOnWindowFocus: false,

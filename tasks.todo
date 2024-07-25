@@ -1,9 +1,9 @@
 ☐ FAMILY
   ☐ screens to be created
     ☐ family onboarding @started(24-07-21 02:13)
-      ☐ create / join selection @started(24-07-21 12:31)
-      ☐ create family
-      ☐ join family
+      ✔ create / join selection @started(24-07-21 12:31) @done(24-07-25 03:46) @lasted(3d15h15m34s)
+      ✔ create family @done(24-07-25 03:46)
+      ✔ join family @done(24-07-25 03:46)
     ☐ family details
   ☐ features
     ☐ family details
@@ -11,6 +11,7 @@
       ☐ family member that is not owner cannot remove family member
   ☐ behavior
     ✔ redirect user to family onboarding if UserNotAFamilyMemberError @done(24-07-21 05:03)
+    ✔ ensure once user are a family member, the family details are shown instead of the onboarding @done(24-07-23 03:19)
 
 ☐ IMPROVEMENTS
   ☐ create logged user component

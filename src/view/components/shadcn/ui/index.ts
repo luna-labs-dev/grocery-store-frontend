@@ -11,3 +11,4 @@ export * from './sheet';
 export * from './switch';
 export * from './label';
 export * from './alert-dialog';
+export * from './avatar';
