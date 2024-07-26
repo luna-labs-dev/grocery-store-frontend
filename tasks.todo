@@ -7,11 +7,21 @@
     ☐ family details
   ☐ features
     ☐ family details
-      ☐ family owner can remove family member
-      ☐ family member that is not owner cannot remove family member
+      ☐ ensure only family members can remove a member
+      ☐ ensure user info are displayed in the family details
+        ☐ picture
+        ☐ email
+        ☐ name
+      ☐ get two first initials of the user name
   ☐ behavior
     ✔ redirect user to family onboarding if UserNotAFamilyMemberError @done(24-07-21 05:03)
     ✔ ensure once user are a family member, the family details are shown instead of the onboarding @done(24-07-23 03:19)
+
+
+☐ DOING MIND MAP
+  ✔ make family return externalUserId @done(24-07-26 02:17)
+  ☐ get user info from firebase
+
 
 ☐ IMPROVEMENTS
   ☐ create logged user component

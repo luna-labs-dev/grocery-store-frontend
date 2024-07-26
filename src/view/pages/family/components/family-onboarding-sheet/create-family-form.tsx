@@ -45,6 +45,7 @@ export const CreateFamilyForm = () => {
   const onSubmit = async (values: CreateFamilyInput) => {
     await mutateAsync({
       name: values.name,
+      description: values.description,
     });
 
     onFinished();
