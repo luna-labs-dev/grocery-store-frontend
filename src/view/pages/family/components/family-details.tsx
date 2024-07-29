@@ -1,12 +1,18 @@
-import { useGetFamilyQuery } from '@/infrastructure';
+import { useGetFamilyQuery, useRemoveFamilyMemberMutation } from '@/infrastructure';
 
 import { Avatar, AvatarFallback, AvatarImage, Button } from '@/view/components';
+import { useFirebase } from '@/view/providers/firebase';
 import { Icon } from '@iconify/react';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 
 export const FamilyDetails = () => {
   const { data, isLoading } = useGetFamilyQuery();
+  const { isFamilyOwner } = useFirebase();
+
+  const loggedOwner = isFamilyOwner(data?.owner?.externalId);
+
+  const { mutateAsync } = useRemoveFamilyMemberMutation();
 
   if (isLoading) {
     return <div>Carregando...</div>;
@@ -58,22 +64,39 @@ export const FamilyDetails = () => {
             <span className="text-xs font-bold">membros</span>
             <div className="flex flex-col gap-2">
               {data.members?.map((member) => (
-                <div key={member.id} className="flex items-center space-x-4">
-                  <div className="relative">
-                    <Avatar>
-                      <AvatarImage src={member.picture} />
-                      <AvatarFallback>OM</AvatarFallback>
-                    </Avatar>
-                    {member.id === data.owner.id && (
-                      <div className="bg-yellow-300 absolute -top-2 -right-2 rounded-full p-1 shadow-md">
-                        <Icon icon="ph:crown" fontSize=".7rem" />
-                      </div>
-                    )}
+                <div
+                  key={member.id}
+                  className="flex items-center space-x-4 min-w-[20rem] justify-between"
+                >
+                  <div className="flex items-center space-x-4">
+                    <div className="relative">
+                      <Avatar>
+                        <AvatarImage src={member.picture} />
+                        <AvatarFallback>OM</AvatarFallback>
+                      </Avatar>
+                      {member.id === data.owner.id && (
+                        <div className="bg-yellow-300 absolute -top-2 -right-2 rounded-full p-1 shadow-md">
+                          <Icon icon="ph:crown" fontSize=".7rem" />
+                        </div>
+                      )}
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium leading-none">{member.name}</p>
+                      <p className="text-sm text-muted-foreground">{member.email}</p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-sm font-medium leading-none">{member.name}</p>
-                    <p className="text-sm text-muted-foreground">{member.email}</p>
-                  </div>
+                  {loggedOwner && (
+                    <Button
+                      size="icon"
+                      variant="outline"
+                      className="h-10 w-10 text-red-600 hover:text-red-700"
+                      onClick={() => {
+                        mutateAsync({ userToBeRemovedId: member.id });
+                      }}
+                    >
+                      <Icon icon="icons8:remove-user" fontSize={'1.1rem'} />
+                    </Button>
+                  )}
                 </div>
               ))}
             </div>

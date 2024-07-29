@@ -31,9 +31,14 @@ export const useFirebase = () => {
     auth.signOut();
   };
 
+  const isFamilyOwner = (userId?: string): boolean => {
+    return context.currentUser?.uid === userId;
+  };
+
   return {
     signinWithGoogle,
     signOut,
+    isFamilyOwner,
     context,
   };
 };

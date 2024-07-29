@@ -7,7 +7,7 @@
     ☐ family details
   ☐ features
     ☐ family details
-      ☐ ensure only family members can remove a member
+      ✔ ensure only family members can remove a member @done(24-07-29 04:34)
       ✔ ensure user info are displayed in the family details @done(24-07-29 02:33)
         ✔ picture @done(24-07-29 02:33)
         ✔ email @done(24-07-29 02:33)
@@ -23,7 +23,8 @@ DOING MIND MAP
   ☐ remove family member
     ✔ http @done(24-07-29 04:13)
     ✔ query @done(24-07-29 04:13)
-    ☐ visual component
+    ✔ visual component @done(24-07-29 04:34)
+    ☐ add confirmation modal for member removal
 
  
 
