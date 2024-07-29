@@ -1,7 +1,9 @@
 import { Entity } from '../core';
 
 export interface User extends Entity {
-  displayName: string;
+  name: string;
+  picture: string;
+  externalId: string;
   email: string;
 }
 

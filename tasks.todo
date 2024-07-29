@@ -1,6 +1,6 @@
 ☐ FAMILY
   ☐ screens to be created
-    ☐ family onboarding @started(24-07-21 02:13)
+    ✔ family onboarding @started(24-07-21 02:13) @done(24-07-29 02:49) @lasted(1w1d36m47s)
       ✔ create / join selection @started(24-07-21 12:31) @done(24-07-25 03:46) @lasted(3d15h15m34s)
       ✔ create family @done(24-07-25 03:46)
       ✔ join family @done(24-07-25 03:46)
@@ -8,19 +8,21 @@
   ☐ features
     ☐ family details
       ☐ ensure only family members can remove a member
-      ☐ ensure user info are displayed in the family details
-        ☐ picture
-        ☐ email
-        ☐ name
-      ☐ get two first initials of the user name
+      ✔ ensure user info are displayed in the family details @done(24-07-29 02:33)
+        ✔ picture @done(24-07-29 02:33)
+        ✔ email @done(24-07-29 02:33)
+        ✔ name @done(24-07-29 02:33)
+        ✔ crown if owner @done(24-07-29 02:33)
+      ☐ get two first initials of the user name as fallback
   ☐ behavior
     ✔ redirect user to family onboarding if UserNotAFamilyMemberError @done(24-07-21 05:03)
     ✔ ensure once user are a family member, the family details are shown instead of the onboarding @done(24-07-23 03:19)
 
 
-☐ DOING MIND MAP
-  ✔ make family return externalUserId @done(24-07-26 02:17)
-  ☐ get user info from firebase
+DOING MIND MAP
+  ☐ remove family member
+
+ 
 
 
 ☐ IMPROVEMENTS
