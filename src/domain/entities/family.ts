@@ -20,3 +20,7 @@ export interface Family extends Entity {
 export interface CreateFamilyParams extends Pick<Family, 'name' | 'description'> {}
 
 export interface JoinFamilyParams extends Pick<Family, 'inviteCode'> {}
+
+export interface RemoveFamilyMemberParams {
+  userToBeRemovedId: string;
+}

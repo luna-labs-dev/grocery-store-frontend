@@ -1,8 +1,15 @@
-import { CreateFamilyParams, Family, HttpError, JoinFamilyParams, errorMapper } from '@/domain';
+import {
+  CreateFamilyParams,
+  Family,
+  HttpError,
+  JoinFamilyParams,
+  RemoveFamilyMemberParams,
+  errorMapper,
+} from '@/domain';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 import { toast } from 'sonner';
-import { httpCreateFamily, httpGetFamily, httpJoinFamily } from '../http';
+import { httpCreateFamily, httpGetFamily, httpJoinFamily, httpRemoveFamilyMember } from '../http';
 
 export const useGetFamilyQuery = () => {
   const query = useQuery<Family, AxiosError | HttpError>({
@@ -61,6 +68,34 @@ export const useJoinFamilyMutation = () => {
 
     onSuccess: () => {
       toast.success('Entrou na família', { description: 'Agora você faz parte da família' });
+    },
+
+    onSettled: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['family'],
+      });
+    },
+  });
+
+  return { ...mutation };
+};
+
+export const useRemoveFamilyMemberMutation = () => {
+  const queryClient = useQueryClient();
+
+  const mutation = useMutation<void, AxiosError | HttpError, RemoveFamilyMemberParams>({
+    mutationFn: (params: RemoveFamilyMemberParams) => httpRemoveFamilyMember(params),
+
+    onError: (error, params) => {
+      const { title, description } = errorMapper(error.code ?? '')(params);
+
+      toast.error(title, {
+        description,
+      });
+    },
+
+    onSuccess: () => {
+      toast.success('Membro removido da família');
     },
 
     onSettled: () => {

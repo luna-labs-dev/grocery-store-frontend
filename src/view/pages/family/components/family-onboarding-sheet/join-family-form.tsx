@@ -1,4 +1,4 @@
-import { useJoinFamilyMutation } from '@/infrastructure';
+import { useRemoveFamilyMemberMutation } from '@/infrastructure';
 import {
   Button,
   Form,
@@ -32,7 +32,7 @@ export const JoinFamilyForm = () => {
 
   const { control, handleSubmit, reset } = form;
 
-  const { mutateAsync } = useJoinFamilyMutation();
+  const { mutateAsync } = useRemoveFamilyMemberMutation();
 
   const onFinished = () => {
     reset();
