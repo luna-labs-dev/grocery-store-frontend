@@ -84,7 +84,9 @@ export const FamilyDetails = () => {
                       <p className="text-sm text-muted-foreground">{member.email}</p>
                     </div>
                   </div>
-                  {loggedOwner && <RemoveFamilyMemberAlertDialog memberId={member.id} />}
+                  {loggedOwner && member.id !== data.owner.id && (
+                    <RemoveFamilyMemberAlertDialog memberId={member.id} />
+                  )}
                 </div>
               ))}
             </div>
