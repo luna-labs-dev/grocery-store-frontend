@@ -1,18 +1,17 @@
-import { useGetFamilyQuery, useRemoveFamilyMemberMutation } from '@/infrastructure';
+import { useGetFamilyQuery } from '@/infrastructure';
 
 import { Avatar, AvatarFallback, AvatarImage, Button } from '@/view/components';
 import { useFirebase } from '@/view/providers/firebase';
 import { Icon } from '@iconify/react';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
+import { RemoveFamilyMemberAlertDialog } from './remove-family-member-alert-dialog';
 
 export const FamilyDetails = () => {
   const { data, isLoading } = useGetFamilyQuery();
   const { isFamilyOwner } = useFirebase();
 
   const loggedOwner = isFamilyOwner(data?.owner?.externalId);
-
-  const { mutateAsync } = useRemoveFamilyMemberMutation();
 
   if (isLoading) {
     return <div>Carregando...</div>;
@@ -85,18 +84,7 @@ export const FamilyDetails = () => {
                       <p className="text-sm text-muted-foreground">{member.email}</p>
                     </div>
                   </div>
-                  {loggedOwner && (
-                    <Button
-                      size="icon"
-                      variant="outline"
-                      className="h-10 w-10 text-red-600 hover:text-red-700"
-                      onClick={() => {
-                        mutateAsync({ userToBeRemovedId: member.id });
-                      }}
-                    >
-                      <Icon icon="icons8:remove-user" fontSize={'1.1rem'} />
-                    </Button>
-                  )}
+                  {loggedOwner && <RemoveFamilyMemberAlertDialog memberId={member.id} />}
                 </div>
               ))}
             </div>
