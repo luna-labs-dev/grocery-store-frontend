@@ -61,9 +61,9 @@ export const FamilyDetails = () => {
                 >
                   <Icon icon="gravity-ui:copy" />
                 </Button>
-                <Button size="icon" variant="outline" className="h-6 w-6">
+                {/* <Button size="icon" variant="outline" className="h-6 w-6">
                   <Icon icon="material-symbols:refresh" />
-                </Button>
+                </Button> */}
               </div>
             </div>
           </div>
