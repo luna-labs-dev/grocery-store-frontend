@@ -14,18 +14,20 @@
         ✔ name @done(24-07-29 02:33)
         ✔ crown if owner @done(24-07-29 02:33)
       ☐ get two first initials of the user name as fallback
+      ☐ refresh inviteCode
+      ☐ copy invite code
+        ☐ backend route
+        ☐ http layer
+        ☐ query layer
+        ☐ alert dialog cofirmation
   ☐ behavior
     ✔ redirect user to family onboarding if UserNotAFamilyMemberError @done(24-07-21 05:03)
     ✔ ensure once user are a family member, the family details are shown instead of the onboarding @done(24-07-23 03:19)
+    ✔ fix infinite family loading attempts when leaving family @high @done(24-07-29 21:22)
 
 
 DOING MIND MAP
-  ☐ remove family member
-    ✔ http @done(24-07-29 04:13)
-    ✔ query @done(24-07-29 04:13)
-    ✔ visual component @done(24-07-29 04:34)
-    ✔ add confirmation modal for member removal @done(24-07-29 21:02)
-    ✔ Show remove member only on non owner member @done(24-07-29 21:05)
+
 
  
 
@@ -35,6 +37,7 @@ DOING MIND MAP
     picture
     email
     name (maybe)
+  ☐ only redirect to family if the backend error is family related (its important that a propper error is shown if something is wrong with the backend)
   ☐ market list
     ☐ add filter
     ☐ add table view (for desktop)
