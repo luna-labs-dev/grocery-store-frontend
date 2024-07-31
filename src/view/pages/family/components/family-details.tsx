@@ -5,6 +5,7 @@ import { useFirebase } from '@/view/providers/firebase';
 import { Icon } from '@iconify/react';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
+import { toast } from 'sonner';
 import { RemoveFamilyMemberAlertDialog } from './remove-family-member-alert-dialog';
 
 export const FamilyDetails = () => {
@@ -46,7 +47,18 @@ export const FamilyDetails = () => {
             <div className="flex gap-2 border w-fit p-2 rounded-lg">
               <span className="tracking-wider">{data.inviteCode}</span>
               <div className="flex gap-1 items-center">
-                <Button size="icon" variant="outline" className="h-6 w-6">
+                <Button
+                  size="icon"
+                  variant="outline"
+                  className="h-6 w-6"
+                  onClick={() => {
+                    navigator.clipboard.writeText(data.inviteCode);
+                    toast('Código de convite copiado para a área de transferência', {
+                      position: 'top-center',
+                      invert: true,
+                    });
+                  }}
+                >
                   <Icon icon="gravity-ui:copy" />
                 </Button>
                 <Button size="icon" variant="outline" className="h-6 w-6">
