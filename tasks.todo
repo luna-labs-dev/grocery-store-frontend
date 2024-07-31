@@ -20,7 +20,7 @@
         ☐ http layer
         ☐ query layer
         ☐ alert dialog cofirmation
-  ☐ behavior
+  ✔ behavior @done(24-07-31 00:18)
     ✔ redirect user to family onboarding if UserNotAFamilyMemberError @done(24-07-21 05:03)
     ✔ ensure once user are a family member, the family details are shown instead of the onboarding @done(24-07-23 03:19)
     ✔ fix infinite family loading attempts when leaving family @high @done(24-07-29 21:22)
@@ -38,6 +38,7 @@ DOING MIND MAP
     email
     name (maybe)
   ☐ only redirect to family if the backend error is family related (its important that a propper error is shown if something is wrong with the backend)
+  ☐ get rid of family page flickering on family details load
   ☐ market list
     ☐ add filter
     ☐ add table view (for desktop)
