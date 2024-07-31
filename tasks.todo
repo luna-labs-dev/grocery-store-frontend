@@ -1,12 +1,50 @@
-☐ FAMILY
-  ☐ screens to be created
+BACKLOG:
+  IMPROVEMENTS:
+    ☐ create logged user component
+      picture
+      email
+      name (maybe)
+    ☐ only redirect to family if the backend error is family related (its important that a propper error is shown if something is wrong with the backend)
+    ☐ get rid of family page flickering on family details load
+    ☐ market list
+      ☐ add filter
+      ☐ add table view (for desktop)
+    ☐ shopping event
+      ☐ add filter
+        ☐ by date
+        ☐ by market
+      ☐ add table view (for desktop)
+    ☐ shopping event details
+      ☐ fix totals at the top (always visible)
+      ☐ product list
+        ☐ add refresh button so we don't have to refresh the page
+        ☐ add table view (for desktop)
+        ☐ add filter
+          ☐ by name
+          ☐ by isWholesale
+        ☐ product details
+          ☐ compact the list so only important things are displayed
+            ☐ quantity
+            ☐ price
+            ☐ total
+            ☐ an icon or maybe a different color for wich is a wholesale product
+  FAMILY:
+    FEATURES:
+      ☐ refresh inviteCode
+        ☐ backend route
+        ☐ http layer
+        ☐ query layer
+        ☐ alert dialog cofirmation
+
+FAMILY:
+  SCREENS:
     ✔ family onboarding @started(24-07-21 02:13) @done(24-07-29 02:49) @lasted(1w1d36m47s)
       ✔ create / join selection @started(24-07-21 12:31) @done(24-07-25 03:46) @lasted(3d15h15m34s)
       ✔ create family @done(24-07-25 03:46)
       ✔ join family @done(24-07-25 03:46)
-    ☐ family details
-  ☐ features
-    ☐ family details
+    ✔ family details @done(24-07-31 20:11)
+  ✔ features @done(24-07-31 20:11)
+    ✔ family details @done(24-07-31 20:11)
       ✔ ensure only family members can remove a member @done(24-07-29 04:34)
       ✔ ensure user info are displayed in the family details @done(24-07-29 02:33)
         ✔ picture @done(24-07-29 02:33)
@@ -15,50 +53,12 @@
         ✔ crown if owner @done(24-07-29 02:33)
         ✔ get two first initials of the user name as fallback @done(24-07-30 23:59)
       ✔ copy invite code to clipboard @done(24-07-31 00:16)
-      ☐ refresh inviteCode
-        ☐ backend route
-        ☐ http layer
-        ☐ query layer
-        ☐ alert dialog cofirmation
+      
   ✔ behavior @done(24-07-31 00:18)
     ✔ redirect user to family onboarding if UserNotAFamilyMemberError @done(24-07-21 05:03)
     ✔ ensure once user are a family member, the family details are shown instead of the onboarding @done(24-07-23 03:19)
     ✔ fix infinite family loading attempts when leaving family @high @done(24-07-29 21:22)
 
 
-DOING MIND MAP
-
-
- 
-
-
-☐ IMPROVEMENTS
-  ☐ create logged user component
-    picture
-    email
-    name (maybe)
-  ☐ only redirect to family if the backend error is family related (its important that a propper error is shown if something is wrong with the backend)
-  ☐ get rid of family page flickering on family details load
-  ☐ market list
-    ☐ add filter
-    ☐ add table view (for desktop)
-  ☐ shopping event
-    ☐ add filter
-      ☐ by date
-      ☐ by market
-    ☐ add table view (for desktop)
-  ☐ shopping event details
-    ☐ fix totals at the top (always visible)
-    ☐ product list
-      ☐ add refresh button so we don't have to refresh the page
-      ☐ add table view (for desktop)
-      ☐ add filter
-        ☐ by name
-        ☐ by isWholesale
-      ☐ product details
-        ☐ compact the list so only important things are displayed
-          ☐ quantity
-          ☐ price
-          ☐ total
-          ☐ an icon or maybe a different color for wich is a wholesale product
+DOING MIND MAP:
       
