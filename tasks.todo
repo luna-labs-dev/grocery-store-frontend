@@ -13,7 +13,7 @@
         ✔ email @done(24-07-29 02:33)
         ✔ name @done(24-07-29 02:33)
         ✔ crown if owner @done(24-07-29 02:33)
-      ☐ get two first initials of the user name as fallback
+      ✔ get two first initials of the user name as fallback @done(24-07-30 23:59)
       ☐ refresh inviteCode
       ☐ copy invite code
         ☐ backend route

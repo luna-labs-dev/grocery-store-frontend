@@ -1,5 +1,5 @@
+import { getInitials } from '@/domain';
 import { useGetFamilyQuery } from '@/infrastructure';
-
 import { Avatar, AvatarFallback, AvatarImage, Button } from '@/view/components';
 import { useFirebase } from '@/view/providers/firebase';
 import { Icon } from '@iconify/react';
@@ -71,7 +71,13 @@ export const FamilyDetails = () => {
                     <div className="relative">
                       <Avatar>
                         <AvatarImage src={member.picture} />
-                        <AvatarFallback>OM</AvatarFallback>
+                        <AvatarFallback>
+                          {getInitials({
+                            fullName: member.name,
+                            initialsLength: 2,
+                            upperCase: true,
+                          })}
+                        </AvatarFallback>
                       </Avatar>
                       {member.id === data.owner.id && (
                         <div className="bg-yellow-300 absolute -top-2 -right-2 rounded-full p-1 shadow-md">
