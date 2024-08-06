@@ -1,11 +1,11 @@
 BACKLOG:
   IMPROVEMENTS: 
-    ☐ create logged user component
+    ✔ create logged user component @done(24-08-06 00:52)
       picture
       email
       name (maybe)
     ☐ only redirect to family if the backend error is family related (its important that a propper error is shown if something is wrong with the backend)
-    ☐ get rid of family page flickering on family details load
+    ✔ get rid of family page flickering on family details load @done(24-08-06 01:00)
     ☐ market list
       ☐ add filter
       ☐ add table view (for desktop)

@@ -8,10 +8,13 @@ import {
 } from '@/domain';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
+import { useEffect, useState } from 'react';
 import { toast } from 'sonner';
 import { httpCreateFamily, httpGetFamily, httpJoinFamily, httpRemoveFamilyMember } from '../http';
 
 export const useGetFamilyQuery = () => {
+  const [isFamilyMember, setIsFamilyMember] = useState<boolean>(true);
+
   const query = useQuery<Family, AxiosError | HttpError>({
     queryKey: ['family'],
     queryFn: () => httpGetFamily(),
@@ -21,7 +24,18 @@ export const useGetFamilyQuery = () => {
     refetchOnWindowFocus: false,
   });
 
-  return { ...query };
+  const { error } = query;
+
+  useEffect(() => {
+    if (error?.code === 'USER_NOT_A_FAMILY_MEMBER_ERROR') {
+      setIsFamilyMember(false);
+    }
+    if (!error) {
+      setIsFamilyMember(true);
+    }
+  }, [error]);
+
+  return { ...query, isFamilyMember };
 };
 
 export const useCreateFamilyMutation = () => {
