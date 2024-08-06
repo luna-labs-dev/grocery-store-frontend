@@ -1,5 +1,5 @@
 BACKLOG:
-  IMPROVEMENTS:
+  IMPROVEMENTS: 
     ☐ create logged user component
       picture
       email
@@ -17,7 +17,7 @@ BACKLOG:
     ☐ shopping event details
       ☐ fix totals at the top (always visible)
       ☐ product list
-        ☐ add refresh button so we don't have to refresh the page
+        
         ☐ add table view (for desktop)
         ☐ add filter
           ☐ by name
@@ -61,4 +61,6 @@ FAMILY:
 
 
 DOING MIND MAP:
-      
+  PRODUCT LIST:
+    ✔ add refresh button so we don't have to refresh the page @done(24-08-06 00:38)
+    
