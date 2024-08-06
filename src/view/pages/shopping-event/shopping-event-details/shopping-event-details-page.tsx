@@ -10,7 +10,7 @@ import {
 export const ShoppingEventDetailsPage = () => {
   const { shoppingEventId } = useParams();
 
-  const { data } = useGetShoppingEventByIdQuery({ shoppingEventId });
+  const { data, refetch, isFetching } = useGetShoppingEventByIdQuery({ shoppingEventId });
 
   if (!data) {
     return <div>No data</div>;
@@ -25,6 +25,8 @@ export const ShoppingEventDetailsPage = () => {
           products={data.products}
           shoppingEventId={data.id}
           shoppingEventStatus={data.status}
+          refetch={refetch}
+          isFetching={isFetching}
         />
       </div>
     </div>

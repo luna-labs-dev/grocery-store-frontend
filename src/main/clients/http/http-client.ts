@@ -1,7 +1,7 @@
 import { HttpError } from '@/domain';
-import { auth } from '@/main/config/firebase';
 import axios, { AxiosError } from 'axios';
 
+import { history } from '@/domain/utils/history';
 import { env } from '../../config/env';
 
 const { baseUrl } = env.backend;
@@ -24,9 +24,13 @@ export const setAuthToken = (token: string) => {
   });
 
   httpClient.interceptors.response.use(undefined, (error: AxiosError<HttpError>) => {
-    if (error.response?.data?.code === 'UNAUTHORIZED_ERROR') {
-      auth.currentUser?.getIdToken(true);
+    if (
+      error.response?.data?.code === 'UNAUTHORIZED_ERROR' &&
+      error.response.data.requiredAction === 'add-user-to-family'
+    ) {
+      history.navigate('/family/onboarding');
     }
+
     throw error;
   });
 };

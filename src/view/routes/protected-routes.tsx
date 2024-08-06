@@ -3,6 +3,7 @@ import { RouteObject } from 'react-router-dom';
 
 import { AppRedirectionHandler } from '../components';
 import {
+  FamilyRoute,
   HomeRoute,
   MarketRoute,
   NewMarketRoute,
@@ -19,6 +20,14 @@ export const protectedRoutes: RouteObject[] = [
       {
         path: '/',
         element: <HomeRoute />,
+      },
+      {
+        path: '/family/',
+        element: <FamilyRoute />,
+      },
+      {
+        path: '/family/:familyAction',
+        element: <FamilyRoute />,
       },
       {
         path: '/market',
