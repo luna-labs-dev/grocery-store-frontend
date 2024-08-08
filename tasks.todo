@@ -53,6 +53,7 @@ FAMILY:
         ✔ crown if owner @done(24-07-29 02:33)
         ✔ get two first initials of the user name as fallback @done(24-07-30 23:59)
       ✔ copy invite code to clipboard @done(24-07-31 00:16)
+        ✔ Ensure copy also works on mobile @done(24-08-08 00:40)
       
   ✔ behavior @done(24-07-31 00:18)
     ✔ redirect user to family onboarding if UserNotAFamilyMemberError @done(24-07-21 05:03)
