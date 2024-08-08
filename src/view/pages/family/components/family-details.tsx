@@ -58,10 +58,8 @@ export const FamilyDetails = () => {
                   className="h-6 w-6"
                   onClick={async () => {
                     if (window.isSecureContext) {
-                      console.log('secure context');
                       copy(data.inviteCode);
                     } else {
-                      console.log('unsecure context');
                       unsecuredCopyToClipboard(data.inviteCode);
                     }
 
