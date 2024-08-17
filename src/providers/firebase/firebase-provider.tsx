@@ -1,5 +1,5 @@
-import { setAuthToken } from '@/main/clients';
-import { auth } from '@/main/config/firebase';
+import { setAuthToken } from '@/config/clients';
+import { auth } from '@/config/firebase';
 import { ReactNode, useCallback, useEffect, useReducer } from 'react';
 
 import { FirebaseContext, FirebaseContextState } from './firebase-context';

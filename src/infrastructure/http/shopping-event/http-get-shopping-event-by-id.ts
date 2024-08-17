@@ -1,5 +1,5 @@
+import { httpClient } from '@/config/clients';
 import { GetShoppingEventByIdParams, ShoppingEvent } from '@/domain';
-import { httpClient } from '@/main/clients';
 import { isAxiosError } from 'axios';
 
 export const httpGetShoppingEventById = async ({

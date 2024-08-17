@@ -1,8 +1,8 @@
 import { HttpError } from '@/domain';
 import axios, { AxiosError } from 'axios';
 
+import { env } from '@/config/env';
 import { history } from '@/domain/utils/history';
-import { env } from '../../config/env';
 
 const { baseUrl } = env.backend;
 

@@ -1,5 +1,5 @@
+import { httpClient } from '@/config/clients';
 import { EndShoppingEventParams, EndShoppingEventResult } from '@/domain';
-import { httpClient } from '@/main/clients';
 import { isAxiosError } from 'axios';
 
 export const httpEndShoppingEvent = async ({

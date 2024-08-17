@@ -1,4 +1,4 @@
-import { auth } from '@/main/config/firebase';
+import { auth } from '@/config/firebase';
 import { User } from '@firebase/auth';
 import { GoogleAuthProvider, IdTokenResult, signInWithPopup } from 'firebase/auth';
 import { createContext, useContext } from 'react';

@@ -1,5 +1,5 @@
+import { httpClient } from '@/config/clients';
 import { CreateFamilyParams } from '@/domain';
-import { httpClient } from '@/main/clients';
 import { isAxiosError } from 'axios';
 
 export const httpCreateFamily = async (params: CreateFamilyParams) => {

@@ -1,5 +1,5 @@
+import { httpClient } from '@/config/clients';
 import { GetMarketByIdParams, Market } from '@/domain';
-import { httpClient } from '@/main/clients';
 import { isAxiosError } from 'axios';
 
 export const httpGetMarketById = async ({ marketId }: GetMarketByIdParams): Promise<Market> => {
