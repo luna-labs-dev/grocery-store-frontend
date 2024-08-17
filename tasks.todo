@@ -1,7 +1,7 @@
 BACKLOG:
   IMPROVEMENTS:     
+    ☐ @high refactor all the code to "react bulletproof" style
     ☐ only redirect to family if the backend error is family related (its important that a propper error is shown if something is wrong with the backend)
-    ☐ refactor all the code to "react bulletproof" style
     ☐ ensure all breadcrumbs are correctly working
     ☐ market list
       ☐ add filter

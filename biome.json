@@ -39,8 +39,8 @@
       "public/*",
       "**/out/*",
       "**/node_modules/*",
-      "src/view/components/shadcn/ui/**/*",
-      "src/view/config/style/**/*"
+      "src/components/shadcn/ui/**/*",
+      "src/config/style/**/*"
     ]
   }
 }

@@ -1,8 +1,8 @@
-import { Providers } from '@/view';
+import { Providers } from '@/providers';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import './view/config/style/globals.css';
+import './config/style/globals.css';
 
 const rootElement = document.getElementById('root');
 
