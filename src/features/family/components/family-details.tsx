@@ -1,6 +1,7 @@
 import { Avatar, AvatarFallback, AvatarImage, Button } from '@/components';
 import { getInitials, unsecuredCopyToClipboard } from '@/domain';
-import { useGetFamilyQuery } from '@/infrastructure';
+
+import { useGetFamilyQuery } from '@/features/family/infrastructure';
 import { useFirebase } from '@/providers/firebase';
 import { Icon } from '@iconify/react';
 import { useClipboard } from '@mantine/hooks';

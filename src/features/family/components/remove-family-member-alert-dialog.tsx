@@ -10,7 +10,7 @@ import {
   AlertDialogTrigger,
   Button,
 } from '@/components';
-import { useRemoveFamilyMemberMutation } from '@/infrastructure';
+import { useRemoveFamilyMemberMutation } from '@/features/family/infrastructure';
 import { Icon } from '@iconify/react';
 
 interface Props {

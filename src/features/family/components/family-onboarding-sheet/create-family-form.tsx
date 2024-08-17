@@ -9,7 +9,7 @@ import {
   Input,
   Textarea,
 } from '@/components';
-import { useCreateFamilyMutation } from '@/infrastructure';
+import { useCreateFamilyMutation } from '@/features/family/infrastructure';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';

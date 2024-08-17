@@ -8,7 +8,7 @@ import {
   FormLabel,
   Input,
 } from '@/components';
-import { useJoinFamilyMutation } from '@/infrastructure';
+import { useJoinFamilyMutation } from '@/features/family/infrastructure';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';

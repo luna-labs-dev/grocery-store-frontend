@@ -1,5 +1,5 @@
 import { httpClient } from '@/config/clients';
-import { RemoveFamilyMemberParams } from '@/domain';
+import { RemoveFamilyMemberParams } from '@/features/family';
 import { isAxiosError } from 'axios';
 
 export const httpRemoveFamilyMember = async ({

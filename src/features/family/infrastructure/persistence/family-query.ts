@@ -1,11 +1,11 @@
+import { HttpError, errorMapper } from '@/domain';
+
 import {
   CreateFamilyParams,
   Family,
-  HttpError,
   JoinFamilyParams,
   RemoveFamilyMemberParams,
-  errorMapper,
-} from '@/domain';
+} from '@/features/family';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { AxiosError } from 'axios';
 import { useEffect, useState } from 'react';

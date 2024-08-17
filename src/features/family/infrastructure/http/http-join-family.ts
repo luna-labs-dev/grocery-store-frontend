@@ -1,5 +1,5 @@
 import { httpClient } from '@/config/clients';
-import { JoinFamilyParams } from '@/domain';
+import { JoinFamilyParams } from '@/features/family';
 import { isAxiosError } from 'axios';
 
 export const httpJoinFamily = async (params: JoinFamilyParams) => {

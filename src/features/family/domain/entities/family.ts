@@ -1,4 +1,4 @@
-import { Entity } from '../core';
+import { Entity } from '../../../../domain/core';
 
 export interface User extends Entity {
   name: string;

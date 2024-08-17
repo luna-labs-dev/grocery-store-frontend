@@ -1,7 +1,8 @@
 import { useBreadCrumbs } from '@/hooks';
-import { FamilyOnboardingPage } from '@/pages';
+
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { FamilyOnboardingPage } from '../pages';
 
 export const FamilyRoute = () => {
   const { familyAction } = useParams();

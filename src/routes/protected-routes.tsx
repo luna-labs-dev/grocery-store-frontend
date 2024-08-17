@@ -1,9 +1,9 @@
 import { NotFound, ProtectedApp } from '@/pages';
 import { RouteObject } from 'react-router-dom';
 
+import { familyRoutes } from '@/features/family';
 import { AppRedirectionHandler } from '../components';
 import {
-  FamilyRoute,
   HomeRoute,
   MarketRoute,
   NewMarketRoute,
@@ -21,14 +21,8 @@ export const protectedRoutes: RouteObject[] = [
         path: '/',
         element: <HomeRoute />,
       },
-      {
-        path: '/family/',
-        element: <FamilyRoute />,
-      },
-      {
-        path: '/family/:familyAction',
-        element: <FamilyRoute />,
-      },
+      ...familyRoutes,
+
       {
         path: '/market',
         element: <MarketRoute />,

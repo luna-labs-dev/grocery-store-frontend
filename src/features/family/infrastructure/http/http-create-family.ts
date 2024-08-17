@@ -1,10 +1,10 @@
 import { httpClient } from '@/config/clients';
-import { Family } from '@/domain';
+import { CreateFamilyParams } from '@/features/family';
 import { isAxiosError } from 'axios';
 
-export const httpGetFamily = async (): Promise<Family> => {
+export const httpCreateFamily = async (params: CreateFamilyParams) => {
   try {
-    const response = await httpClient.get('api/grocery-shopping/v1/family');
+    const response = await httpClient.post('api/grocery-shopping/v1/family', params);
 
     return response.data;
   } catch (error) {
