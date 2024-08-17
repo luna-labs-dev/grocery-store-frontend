@@ -1,8 +1,8 @@
-import { Link } from 'react-router-dom';
 import { Button } from '@/view/components';
+import { Link } from 'react-router-dom';
 
-import { MarketList } from './components/market-list';
 import { NewMarketDialog } from '../new-market/new-market-dialog';
+import { MarketList } from './components/market-list';
 
 export const MarketPage = () => {
   return (

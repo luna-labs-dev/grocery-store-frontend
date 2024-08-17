@@ -1,4 +1,4 @@
-import { Entity, NewResponse, FetchListResponse } from '../core';
+import { Entity, FetchListResponse, NewResponse } from '../core';
 
 export interface Market extends Entity {
   code: string;

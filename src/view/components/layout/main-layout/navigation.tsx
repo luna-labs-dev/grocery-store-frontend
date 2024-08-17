@@ -1,19 +1,23 @@
-import { useState } from 'react';
-import { Icon } from '@iconify/react';
-import { Link } from 'react-router-dom';
-import { useFirebase } from '@/view/providers/firebase';
+import { getInitials } from '@/domain';
 import {
-  Drawer,
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
   Button,
-  DrawerTitle,
-  DrawerHeader,
-  DrawerFooter,
+  Drawer,
   DrawerContent,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
   DrawerTrigger,
 } from '@/view/components';
+import { useFirebase } from '@/view/providers/firebase';
+import { Icon } from '@iconify/react';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export const Navigation = () => {
-  const { signOut } = useFirebase();
+  const { signOut, context } = useFirebase();
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const navigationItems = (
@@ -27,6 +31,11 @@ export const Navigation = () => {
             to={'/'}
           >
             Home
+          </Link>
+        </li>
+        <li>
+          <Link onClick={() => setIsOpen(false)} to={'/family/onboarding'}>
+            Família
           </Link>
         </li>
         <li>
@@ -55,7 +64,7 @@ export const Navigation = () => {
 
   const newVersion = (
     <Drawer open={isOpen} onOpenChange={setIsOpen} direction="left">
-      <DrawerTrigger className="p-4">
+      <DrawerTrigger>
         <Icon icon="mingcute:menu-line" />
       </DrawerTrigger>
       <DrawerContent>
@@ -63,7 +72,23 @@ export const Navigation = () => {
           <DrawerTitle>Grocery Store</DrawerTitle>
         </DrawerHeader>
         {navigationItems}
-        <DrawerFooter>
+        <DrawerFooter className="flex flex-col gap-2">
+          <div className="flex gap-2 items-center">
+            <Avatar>
+              <AvatarImage src={context.currentUser?.photoURL ?? undefined} />
+              <AvatarFallback>
+                {getInitials({
+                  fullName: context.currentUser?.displayName ?? '',
+                  initialsLength: 2,
+                  upperCase: true,
+                })}
+              </AvatarFallback>
+            </Avatar>
+            <div className="flex flex-col">
+              <p className="font-bold text-sm">{context.currentUser?.displayName}</p>
+              <p className="text-xs">{context.currentUser?.email}</p>
+            </div>
+          </div>
           <Button
             variant={'outline'}
             className="flex gap-1"

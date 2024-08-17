@@ -1,6 +1,6 @@
-import { isAxiosError } from 'axios';
-import { httpClient } from '@/main/clients';
 import { RemoveProductFromCartParams } from '@/domain';
+import { httpClient } from '@/main/clients';
+import { isAxiosError } from 'axios';
 
 export const httpRemoveProductFromCart = async ({
   shoppingEventId,
@@ -8,7 +8,7 @@ export const httpRemoveProductFromCart = async ({
 }: RemoveProductFromCartParams): Promise<void> => {
   try {
     await httpClient.delete(
-      `/api/grocery-shopping/v1/shopping-event/${shoppingEventId}/cart/${productId}`,
+      `api/grocery-shopping/v1/shopping-event/${shoppingEventId}/cart/${productId}`,
     );
   } catch (error) {
     console.error(error);

@@ -1,6 +1,6 @@
-import { auth } from '@/main/config/firebase';
 import { setAuthToken } from '@/main/clients';
-import { ReactNode, useEffect, useReducer, useCallback } from 'react';
+import { auth } from '@/main/config/firebase';
+import { ReactNode, useCallback, useEffect, useReducer } from 'react';
 
 import { FirebaseContext, FirebaseContextState } from './firebase-context';
 
@@ -30,36 +30,7 @@ export const FirebaseProvider = ({ children }: { children: ReactNode }) => {
     try {
       auth.onAuthStateChanged(async (user) => {
         if (user) {
-          const idTokenResult = await user.getIdTokenResult(true);
-
-          setAuthToken(idTokenResult.token);
-
-          dispatch({
-            type: 'AUTH_USER',
-            context: {
-              currentUser: { ...user },
-              userLoggedIn: true,
-              idTokenResult,
-              loading: false,
-            },
-          });
-        } else {
-          dispatch({
-            type: 'AUTH_USER',
-            context: {
-              currentUser: undefined,
-              userLoggedIn: false,
-              idTokenResult: undefined,
-              loading: false,
-            },
-          });
-        }
-      });
-
-      auth.onIdTokenChanged(async (user) => {
-        if (user) {
           const idTokenResult = await user.getIdTokenResult();
-          console.log({ now: new Date(), token: idTokenResult.token });
 
           setAuthToken(idTokenResult.token);
 

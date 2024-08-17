@@ -1,14 +1,15 @@
-import { RouteObject } from 'react-router-dom';
 import { NotFound, ProtectedApp } from '@/view/pages';
+import { RouteObject } from 'react-router-dom';
 
 import { AppRedirectionHandler } from '../components';
 import {
+  FamilyRoute,
   HomeRoute,
   MarketRoute,
   NewMarketRoute,
-  UpdateMarketRoute,
+  ShoppingEventDetailsRoute,
   ShoppingEventListRoute,
-  OngoingShoppingEventRoute,
+  UpdateMarketRoute,
 } from './pages';
 
 export const protectedRoutes: RouteObject[] = [
@@ -19,6 +20,14 @@ export const protectedRoutes: RouteObject[] = [
       {
         path: '/',
         element: <HomeRoute />,
+      },
+      {
+        path: '/family/',
+        element: <FamilyRoute />,
+      },
+      {
+        path: '/family/:familyAction',
+        element: <FamilyRoute />,
       },
       {
         path: '/market',
@@ -38,7 +47,7 @@ export const protectedRoutes: RouteObject[] = [
       },
       {
         path: '/shopping-event/ongoing/:shoppingEventId',
-        element: <OngoingShoppingEventRoute />,
+        element: <ShoppingEventDetailsRoute />,
       },
     ],
   },

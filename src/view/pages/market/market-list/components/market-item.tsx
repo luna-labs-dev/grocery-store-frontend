@@ -1,14 +1,14 @@
 import { MarketListItem } from '@/domain';
-import { Link, useNavigate } from 'react-router-dom';
 import { useStartShoppingEventMutation } from '@/infrastructure';
 import {
-  Card,
   Button,
-  CardTitle,
-  CardHeader,
+  Card,
   CardContent,
   CardDescription,
+  CardHeader,
+  CardTitle,
 } from '@/view/components';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { UpdateMarketDialog } from '../../update-market/update-market-dialog';
 

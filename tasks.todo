@@ -1,0 +1,36 @@
+BACKLOG:
+  IMPROVEMENTS:     
+    ☐ only redirect to family if the backend error is family related (its important that a propper error is shown if something is wrong with the backend)
+    ☐ refactor all the code to "react bulletproof" style
+    ☐ ensure all breadcrumbs are correctly working
+    ☐ market list
+      ☐ add filter
+      ☐ add table view (for desktop)
+    ☐ shopping event
+      ☐ add filter
+        ☐ by date
+        ☐ by market
+      ☐ add table view (for desktop)
+    ☐ shopping event details
+      ☐ fix totals at the top (always visible)
+      ☐ product list        
+        ☐ add table view (for desktop)
+        ☐ add filter
+          ☐ by name
+          ☐ by isWholesale
+        ☐ product details
+          ☐ compact the list so only important things are displayed
+            ☐ quantity
+            ☐ price
+            ☐ total
+            ☐ an icon or maybe a different color for wich is a wholesale product
+          ☐ add / update form
+      
+  FAMILY:
+    FEATURES:
+      ☐ refresh inviteCode
+        ☐ backend route
+        ☐ http layer
+        ☐ query layer
+        ☐ alert dialog cofirmation
+

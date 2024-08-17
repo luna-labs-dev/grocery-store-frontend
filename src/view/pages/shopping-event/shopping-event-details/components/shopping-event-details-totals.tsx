@@ -1,13 +1,13 @@
+import { ShoppingEventCalculatedTotals, fCurrency } from '@/domain';
 import { KeyValueWithIcon } from '@/view/components';
-import { fCurrency, ShoppingEventCalculatedTotals } from '@/domain';
 
-interface OngoingShoppingEventTotalsProps {
+interface ShoppingEventDetailsTotalsProps {
   calculatedTotals: ShoppingEventCalculatedTotals;
 }
 
-export const OngoingShoppingEventTotals = ({
+export const ShoppingEventDetailsTotals = ({
   calculatedTotals,
-}: OngoingShoppingEventTotalsProps) => {
+}: ShoppingEventDetailsTotalsProps) => {
   return (
     <section className="flex flex-col gap-2">
       <h3 className="text-xl font-bold ">Totais</h3>

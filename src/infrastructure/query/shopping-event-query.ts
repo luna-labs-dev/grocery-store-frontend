@@ -1,32 +1,32 @@
-import { toast } from 'sonner';
-import { format } from 'date-fns';
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import {
-  HttpError,
-  errorMapper,
-  useQueryFactory,
   AddProductToCartParams,
+  AddProductToCartSuccessResult,
   EndShoppingEventParams,
   EndShoppingEventResult,
+  FetchShoppingEventListParams,
+  GetShoppingEventByIdParams,
+  HttpError,
+  RemoveProductFromCartParams,
+  ShoppingEventListResponse,
   StartShoppingEventParams,
   StartShoppingEventResult,
-  ShoppingEventListResponse,
   UpdateProductInCartParams,
-  GetShoppingEventByIdParams,
-  RemoveProductFromCartParams,
-  FetchShoppingEventListParams,
-  AddProductToCartSuccessResult,
+  errorMapper,
+  useQueryFactory,
 } from '@/domain';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { format } from 'date-fns';
+import { toast } from 'sonner';
 
-import { httpAddProductToCart } from '../http/shopping-event/http-add-product-to-cart';
-import { httpGetShoppingEventById } from '../http/shopping-event/http-get-shopping-event-by-id';
 import {
   httpEndShoppingEvent,
-  httpStartShoppingEvent,
-  httpUpdateProductInCart,
   httpGetShoppingEventList,
   httpRemoveProductFromCart,
+  httpStartShoppingEvent,
+  httpUpdateProductInCart,
 } from '../http';
+import { httpAddProductToCart } from '../http/shopping-event/http-add-product-to-cart';
+import { httpGetShoppingEventById } from '../http/shopping-event/http-get-shopping-event-by-id';
 
 export const useGetShoppingEventListQuery = (params: FetchShoppingEventListParams) => {
   const query = useQueryFactory<FetchShoppingEventListParams, ShoppingEventListResponse>({
@@ -91,7 +91,10 @@ export const useEndShoppingEventMutation = () => {
     },
     onSuccess: (success) => {
       toast.success('Evento finalizado', {
-        description: `O evento de compra foi finalizado às ${format(success.createdAt, 'HH:mm:ss')}`,
+        description: `O evento de compra foi finalizado às ${format(
+          success.createdAt,
+          'HH:mm:ss',
+        )}`,
       });
     },
     onSettled: () => {
@@ -166,7 +169,7 @@ export const useRemoveProductFromCartMutation = () => {
     },
     onSuccess: () => {
       toast.success('Produto removido', {
-        description: `O produto foi removido no carrinho`,
+        description: 'O produto foi removido no carrinho',
       });
     },
     onSettled: () => {

@@ -1,9 +1,9 @@
+import { useBreadCrumbs } from '@/view/hooks';
+import { ShoppingEventDetailsPage } from '@/view/pages';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useBreadCrumbs } from '@/view/hooks';
-import { OngoingShoppingEventPage } from '@/view/pages';
 
-export const OngoingShoppingEventRoute = () => {
+export const ShoppingEventDetailsRoute = () => {
   const { shoppingEventId } = useParams();
 
   const { addBreadcrumbs } = useBreadCrumbs();
@@ -26,5 +26,5 @@ export const OngoingShoppingEventRoute = () => {
     );
   }, [addBreadcrumbs, shoppingEventId]);
 
-  return <OngoingShoppingEventPage />;
+  return <ShoppingEventDetailsPage />;
 };

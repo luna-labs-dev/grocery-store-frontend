@@ -1,13 +1,13 @@
-import { isAxiosError } from 'axios';
+import { FetchShoppingEventListParams, ShoppingEventListResponse } from '@/domain';
 import { httpClient } from '@/main/clients';
-import { ShoppingEventListResponse, FetchShoppingEventListParams } from '@/domain';
+import { isAxiosError } from 'axios';
 
 export const httpGetShoppingEventList = async (
   params: FetchShoppingEventListParams,
 ): Promise<ShoppingEventListResponse> => {
   try {
     const response = await httpClient.get<ShoppingEventListResponse>(
-      '/api/grocery-shopping/v1/shopping-event',
+      'api/grocery-shopping/v1/shopping-event',
       {
         params,
       },
