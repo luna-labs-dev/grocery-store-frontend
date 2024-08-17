@@ -8,6 +8,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
+  FormMessage,
   Input,
   Label,
   MoneyInput,
@@ -20,10 +21,10 @@ import { z } from 'zod';
 
 const FormInputSchema = z.object({
   name: z.string().min(2),
-  amount: z.number().min(1),
-  wholesaleMinAmount: z.number().min(1).optional(),
-  price: z.number().min(1),
-  wholesalePrice: z.number().min(1).optional(),
+  amount: z.number().int().gt(0),
+  wholesaleMinAmount: z.number().optional(),
+  price: z.number().min(0.01),
+  wholesalePrice: z.number().optional(),
 });
 
 type FormInput = z.infer<typeof FormInputSchema>;
@@ -54,9 +55,9 @@ export const ProductForm = ({ setOpen, shoppingEventId, product }: ProductFormPr
       : {
           name: '',
           amount: 0,
-          wholesaleMinAmount: 1,
+          wholesaleMinAmount: 0,
           price: 0,
-          wholesalePrice: 1,
+          wholesalePrice: 0,
         },
   });
 
@@ -103,6 +104,15 @@ export const ProductForm = ({ setOpen, shoppingEventId, product }: ProductFormPr
     }
   };
 
+  const handleAmountChange = (realChangeFn: (realValue?: number) => void, value: string) => {
+    const textDigits = value.trim().replace(/\D/g, '');
+
+    const digits = Number(textDigits);
+
+    digits === 0 ? realChangeFn(undefined) : realChangeFn(digits);
+
+    realChangeFn(digits);
+  };
   return (
     <Form {...form}>
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
@@ -122,20 +132,19 @@ export const ProductForm = ({ setOpen, shoppingEventId, product }: ProductFormPr
         <FormField
           control={control}
           name="amount"
-          render={({ field, fieldState: { error } }) => (
+          render={({ field }) => (
             <FormItem>
               <FormLabel>Quantidade</FormLabel>
               <FormControl>
                 <Input
                   placeholder="Quantidade"
                   {...field}
-                  type="number"
-                  onChange={(event) => {
-                    field.onChange(Number(event.target.value));
-                  }}
+                  type="text"
+                  value={field.value}
+                  onChange={(event) => handleAmountChange(field.onChange, event.target.value)}
                 />
               </FormControl>
-              {error && <FormDescription>{error.message}</FormDescription>}
+              <FormMessage />
             </FormItem>
           )}
         />
@@ -156,12 +165,11 @@ export const ProductForm = ({ setOpen, shoppingEventId, product }: ProductFormPr
                     <Input
                       placeholder="Quantidade mín. atacado"
                       {...field}
-                      type="number"
-                      onChange={(event) => {
-                        field.onChange(Number(event.target.value));
-                      }}
+                      type="text"
+                      onChange={(event) => handleAmountChange(field.onChange, event.target.value)}
                     />
                   </FormControl>
+                  <FormMessage />
                   <FormDescription>Digite aqui a quantidade</FormDescription>
                 </FormItem>
               )}

@@ -1,8 +1,9 @@
-import { getInitials } from '@/domain';
+import { getInitials, unsecuredCopyToClipboard } from '@/domain';
 import { useGetFamilyQuery } from '@/infrastructure';
 import { Avatar, AvatarFallback, AvatarImage, Button } from '@/view/components';
 import { useFirebase } from '@/view/providers/firebase';
 import { Icon } from '@iconify/react';
+import { useClipboard } from '@mantine/hooks';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { toast } from 'sonner';
@@ -11,6 +12,10 @@ import { RemoveFamilyMemberAlertDialog } from './remove-family-member-alert-dial
 export const FamilyDetails = () => {
   const { data, isLoading } = useGetFamilyQuery();
   const { isFamilyOwner } = useFirebase();
+
+  const { copy } = useClipboard({
+    timeout: 1000,
+  });
 
   const loggedOwner = isFamilyOwner(data?.owner?.externalId);
 
@@ -51,8 +56,13 @@ export const FamilyDetails = () => {
                   size="icon"
                   variant="outline"
                   className="h-6 w-6"
-                  onClick={() => {
-                    navigator.clipboard.writeText(data.inviteCode);
+                  onClick={async () => {
+                    if (window.isSecureContext) {
+                      copy(data.inviteCode);
+                    } else {
+                      unsecuredCopyToClipboard(data.inviteCode);
+                    }
+
                     toast('Código de convite copiado para a área de transferência', {
                       position: 'top-center',
                       invert: true,
@@ -61,6 +71,7 @@ export const FamilyDetails = () => {
                 >
                   <Icon icon="gravity-ui:copy" />
                 </Button>
+
                 {/* <Button size="icon" variant="outline" className="h-6 w-6">
                   <Icon icon="material-symbols:refresh" />
                 </Button> */}
