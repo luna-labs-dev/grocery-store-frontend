@@ -1,6 +1,6 @@
 import { Button, Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components';
 import { MarketListItem } from '@/features/market';
-import { useStartShoppingEventMutation } from '@/infrastructure';
+import { useStartShoppingEventMutation } from '@/features/shopping-event/infrastructure';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { UpdateMarketDialog } from '../../update-market/update-market-dialog';

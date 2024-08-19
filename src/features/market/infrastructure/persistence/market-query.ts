@@ -11,12 +11,13 @@ import {
   NewMarketParams,
   UpdateMarketParams,
 } from '@/features/market';
+
 import {
   httpGetMarketById,
   httpGetMarketList,
+  httpNewMarket,
   httpUpdateMarket,
-} from '../../../../infrastructure/http';
-import { httpNewMarket } from '../../../../infrastructure/http/market/http-new-market';
+} from '@/features/market/infrastructure';
 
 export const useGetMarketListQuery = (params: FetchListParams) => {
   const query = useQueryFactory<FetchListParams, MarketListResponse>({
