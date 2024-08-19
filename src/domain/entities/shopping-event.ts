@@ -1,5 +1,5 @@
+import { MarketResponse } from '../../features/market/domain/entities/market';
 import { Entity, FetchListParams, FetchListResponse } from '../core';
-import { MarketResponse } from './market';
 import { Product } from './product';
 import { ShoppingEventStatus } from './status';
 

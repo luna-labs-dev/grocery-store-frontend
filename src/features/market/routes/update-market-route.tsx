@@ -1,4 +1,4 @@
-import { UpdateMarketPage } from '@/features/market';
+import { UpdateMarketPage } from '@/features/market/features';
 import { useBreadCrumbs } from '@/hooks';
 import { useEffect } from 'react';
 

@@ -1,4 +1,4 @@
-import { MarketForm } from '../components/market-form';
+import { MarketForm } from '../../components/market-form';
 
 export const NewMarketPage = () => {
   return (

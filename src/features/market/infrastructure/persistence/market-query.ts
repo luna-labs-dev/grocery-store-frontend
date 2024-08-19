@@ -1,21 +1,22 @@
+import { FetchListParams, HttpError, errorMapper, useQueryFactory } from '@/domain';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { AxiosError } from 'axios';
+import { toast } from 'sonner';
+
 import {
-  FetchListParams,
   GetMarketByIdParams,
-  HttpError,
   Market,
   MarketListResponse,
   MarketResponse,
   NewMarketParams,
   UpdateMarketParams,
-  errorMapper,
-  useQueryFactory,
-} from '@/domain';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { AxiosError } from 'axios';
-import { toast } from 'sonner';
-
-import { httpGetMarketById, httpGetMarketList, httpUpdateMarket } from '../http';
-import { httpNewMarket } from '../http/market/http-new-market';
+} from '@/features/market';
+import {
+  httpGetMarketById,
+  httpGetMarketList,
+  httpUpdateMarket,
+} from '../../../../infrastructure/http';
+import { httpNewMarket } from '../../../../infrastructure/http/market/http-new-market';
 
 export const useGetMarketListQuery = (params: FetchListParams) => {
   const query = useQueryFactory<FetchListParams, MarketListResponse>({

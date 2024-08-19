@@ -2,15 +2,9 @@ import { NotFound, ProtectedApp } from '@/pages';
 import { RouteObject } from 'react-router-dom';
 
 import { familyRoutes } from '@/features/family';
+import { marketRoutes } from '@/features/market';
 import { AppRedirectionHandler } from '../components';
-import {
-  HomeRoute,
-  MarketRoute,
-  NewMarketRoute,
-  ShoppingEventDetailsRoute,
-  ShoppingEventListRoute,
-  UpdateMarketRoute,
-} from './pages';
+import { HomeRoute, ShoppingEventDetailsRoute, ShoppingEventListRoute } from './pages';
 
 export const protectedRoutes: RouteObject[] = [
   {
@@ -22,19 +16,7 @@ export const protectedRoutes: RouteObject[] = [
         element: <HomeRoute />,
       },
       ...familyRoutes,
-
-      {
-        path: '/market',
-        element: <MarketRoute />,
-      },
-      {
-        path: '/market/new',
-        element: <NewMarketRoute />,
-      },
-      {
-        path: '/market/update/:marketId',
-        element: <UpdateMarketRoute />,
-      },
+      ...marketRoutes,
       {
         path: '/shopping-event',
         element: <ShoppingEventListRoute />,

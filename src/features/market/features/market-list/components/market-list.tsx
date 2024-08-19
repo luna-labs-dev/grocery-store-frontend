@@ -1,6 +1,6 @@
 import { Pagination } from '@/components';
 import { FetchListParams } from '@/domain';
-import { useGetMarketListQuery } from '@/infrastructure';
+import { useGetMarketListQuery } from '@/features/market/infrastructure';
 import { useState } from 'react';
 
 import { MarketItem } from './market-item';
