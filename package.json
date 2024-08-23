@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "biome check --apply-unsafe src",
+    "typecheck": "tsc --noEmit",
     "preview": "vite preview",
     "prepare": "husky"
   },
