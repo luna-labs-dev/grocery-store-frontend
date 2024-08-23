@@ -3,7 +3,7 @@ BACKLOG:
     ✔ @high refactor all the code to "react bulletproof" style @done(24-08-20 00:35)
     ☐ only redirect to family if the backend error is family related (its important that a propper error is shown if something is wrong with the backend)
     ☐ ensure all breadcrumbs are correctly working
-    ☐ remove the family uniqueness check
+    ✔ remove the family uniqueness check @done(24-08-23 02:33)
     Make family membership flow better:
       ☐ When someone joins the family using the invite code, the family owner must accept the invitation
       ☐ On the family view the invites should appear somewhere in the screen to be accepted
@@ -17,7 +17,8 @@ BACKLOG:
       ☐ on the market search page redirect the user to the market creation page (or open the side form) (if the market is not found)      
     
     ☐ market list
-      ☐ make market visible by family (as the rest of the application)
+      ✔ make market visible by family (as the rest of the application) @done(24-08-23 02:33)
+      ✔ remove the market uniqueness check @done(24-08-23 02:34)
       ☐ build an "empty list" view (for when there are no markets)
       ☐ add filter
       ☐ add table view (for desktop)
