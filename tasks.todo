@@ -19,8 +19,8 @@ BACKLOG:
     ☐ market list
       ✔ make market visible by family (as the rest of the application) @done(24-08-23 02:33)
       ✔ remove the market uniqueness check @done(24-08-23 02:34)
-      ☐ build an "empty list" view (for when there are no markets)
-      ☐ add filter
+      ✔ build an "empty list" view (for when there are no markets) @done(24-08-25 02:26)
+      ✔ add filter @done(24-08-25 01:04)
       ☐ add table view (for desktop)
     ☐ shopping event
       ☐ build an "empty list" view (for when there are no events)
