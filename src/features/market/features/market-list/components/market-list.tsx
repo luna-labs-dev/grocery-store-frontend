@@ -1,18 +1,11 @@
 import { Pagination } from '@/components';
-import { FetchListParams } from '@/domain';
 import { useGetMarketListQuery } from '@/features/market/infrastructure';
-import { useState } from 'react';
 
+import { useMarketListContext } from '../market-list-context';
 import { MarketItem } from './market-item';
 
 export const MarketList = () => {
-  const [paginationParams, setPaginationParams] = useState<FetchListParams>({
-    pageIndex: 0,
-    pageSize: 4,
-    orderBy: 'createdAt',
-    orderDirection: 'asc',
-  });
-
+  const { paginationParams, setPaginationParams } = useMarketListContext();
   const { data, status, isFetching } = useGetMarketListQuery(paginationParams);
 
   if (status === 'error') {

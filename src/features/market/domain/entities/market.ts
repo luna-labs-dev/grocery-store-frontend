@@ -1,10 +1,14 @@
-import { Entity, FetchListResponse, NewResponse } from '../../../../domain/core';
+import { Entity, FetchListParams, FetchListResponse, NewResponse } from '@/domain';
 
 export interface Market extends Entity {
   code: string;
   name: string;
   createdAt: Date;
   createdBy: string;
+}
+
+export interface GetMarketListParams extends FetchListParams {
+  search?: string;
 }
 
 export interface GetMarketByIdParams {

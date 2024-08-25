@@ -1,9 +1,10 @@
 import { httpClient } from '@/config/clients';
-import { FetchListParams } from '@/domain';
-import { MarketListResponse } from '@/features/market';
+import { GetMarketListParams, MarketListResponse } from '@/features/market';
 import { isAxiosError } from 'axios';
 
-export const httpGetMarketList = async (params: FetchListParams): Promise<MarketListResponse> => {
+export const httpGetMarketList = async (
+  params: GetMarketListParams,
+): Promise<MarketListResponse> => {
   const response = await httpClient.get('api/grocery-shopping/v1/market', {
     params,
   });
